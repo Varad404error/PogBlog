@@ -1,0 +1,230 @@
+---
+title: "Day 3"
+author: "Varad"
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(ggformula)
+library(mosaic)
+library(kableExtra)
+library(skimr)
+```
+
+```{r}
+taxi <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/modeldata/taxi.csv")
+
+taxi
+```
+
+```{r}
+inspect(taxi)
+```
+
+```{r}
+glimpse(taxi)
+```
+
+```{r}
+skim(taxi)
+```
+
+```{r}
+taxi_modified <- taxi %>% 
+  mutate(
+    dow= factor(dow,
+    levels= c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),
+    labels= c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"),          
+    ordered= TRUE
+    ),
+    
+    
+    local= factor(local,
+    levels= c("yes","no"),
+    labels= c("Yes","No"),
+    ordered= TRUE
+    ),
+    
+    month= factor(month,
+    levels= c("Jan", "Feb", "Mar", "Apr"),
+    labels= c("Jan", "Feb", "Mar", "Apr"),
+    ordered= TRUE
+    )
+  )
+
+glimpse(taxi_modified)
+```
+
+```{r}
+
+gf_bar(~ tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~ tip, color = ~local, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~ tip, fill = ~local, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~ local, fill = ~tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~ dow, fill = ~tip, color = ~local, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+
+gf_bar(~ tip, fill = ~local,position="dodge", data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+
+gf_bar(~ local, fill = ~tip, position="fill", data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~ company, fill = ~tip, position="fill", data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~hour , fill = ~tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~hour , fill = ~tip,position = "fill", data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~month , fill = ~tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~month , fill = ~tip, position='fill', data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~month | dow , fill = ~tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~dow | month , fill = ~tip, data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts of Tips")
+```
+
+```{r}
+
+gf_bar(~dow | company , fill = ~tip, data = taxi_modified) %>%
+  gf_labs(title = "Tips by Company & Day")
+```
+
+```{r}
+
+gf_bar(~dow | company ,  data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts")
+```
+
+```{r}
+
+gf_bar(~company | dow ,  data = taxi_modified) %>%
+  gf_labs(title = "Plot 1A: Counts")
+```
+
+```{r}
+
+gf_bar(~dow | company , fill = ~tip, position = "fill", data = taxi_modified) %>%
+  gf_labs(title = "Tips Proportion by Company & Day")
+```
+
+```{r}
+
+
+gf_bar(~company | dow , fill = ~tip, position = "fill", data = taxi_modified) %>%
+  gf_labs(title = "Tips Proportion by Company & Day")
+```
+
+```{r}
+
+
+chesso <- read_delim(file = '../../datasets/openings.csv', delim = ',')
+chesso
+
+names(chesso)
+```
+
+```{r}
+
+chesso_modified <-chesso %>% 
+  select(-1)
+chesso_modified
+```
+
+```{r}
+
+glimpse(chesso_modified)
+```
+
+```{r}
+inspect(chesso_modified)
+```
+
+```{r}
+
+skim(chesso_modified)
+```
+
+```{r}
+
+chesso2 <- chesso_modified 
+
+
+```
+
+```{r}
+
+## HOW TO FILTER OPENINGS WHICH INCLUDE A SPECIFIC NAME BUT NOT WHOLE NAME IS SAME?
+## E.g. ALL OPENING VARIATIONS WITH WORDS 'NIMZO-INDIAN' IN THEM? 
+
+chesso2 %>% filter(Opening=='Nimzo-Indian Defense')
+```
+
+```{r}
+install.packages('usethis')
+
+```
+
+```{r}
+library('usethis')
+git_sitrep
+
+```

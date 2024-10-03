@@ -1,0 +1,118 @@
+---
+title: "Data Summaries"
+author: "Varad Akolkar"
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(ggformula)
+library(mosaic)
+library(kableExtra)
+library(skimr)
+```
+
+```{r}
+mpg
+```
+
+```{r}
+mpg %>% 
+  head(10)
+```
+
+```{r}
+glimpse(mpg)
+```
+
+```{r}
+inspect(mpg)
+```
+
+```{r}
+skim(mpg)
+```
+
+```{r}
+mpg_modified <- mpg %>% 
+  dplyr::mutate(
+    cyl = as_factor(cyl),
+    fl = as_factor(fl),
+    drv = as_factor(drv),
+    class = as_factor(class),
+    trans = as_factor(trans)
+    )
+glimpse(mpg_modified)
+```
+
+```{r}
+mpg_modified %>% filter(class=='suv') 
+```
+
+```{r}
+#| eval: false
+mpg_modified %>% filter()
+  gf_line(model~year)
+```
+
+```{r}
+mpg_modified %>% filter(manufacturer=='chevrolet') %>% 
+  gf_line(model~hwy)
+```
+
+```{r}
+mpg_modified %>%
+  group_by(manufacturer,cyl, fl) %>%
+  summarize(average_hwy = mean(hwy), count = n())
+```
+
+```{r}
+mpg_modified %>% filter(manufacturer =='audi') %>% 
+  group_by(manufacturer,class,year) %>% 
+  summarise(avg_high= mean(hwy), avg_city= mean(cty))
+
+```
+
+Analysing Math Data
+
+```{r}
+
+math_ax <- read_csv('../../datasets/MathAnxiety.csv')
+math_ax
+
+```
+
+```{r}
+
+math_ax <- read_delim(file = '../../datasets/MathAnxiety.csv', delim = ';')
+math_ax
+```
+
+```{r}
+glimpse(math_ax)
+```
+
+```{r}
+inspect(math_ax)
+
+```
+
+```{r}
+skim(math_ax)
+```
+
+```{r}
+math_ax %>% 
+  group_by(Gender, Grade) %>% 
+  summarise(avg_amas = mean(AMAS), avg_rcm= mean(RCMAS))
+
+```
+
+```{r}
+pivot_longer(cols = c(AMAS,RCMAS),
+             names_to = 'anx',
+             values_to = 'ANX')
+```
+
+```         
+```

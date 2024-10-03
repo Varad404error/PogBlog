@@ -1,0 +1,28 @@
+---
+title: "Entitled"
+author: "Varad"
+---
+
+## Introduction- Data Analysis
+
+There are two types of people in this world. Those who can extrapolate from incomplete data...
+
+```{r}
+#| label: Setup
+library(tidyverse)
+library(ggformula)
+library(babynames)
+```
+
+```{r}
+babynames
+```
+
+```{r}
+babynames %>% filter(name=='Varad') %>%
+  gf_line(n~year)
+```
+
+```{r}
+babynames %>% filter(name =="Varad"| name =="Warad"|name =="Varadh") 
+```
