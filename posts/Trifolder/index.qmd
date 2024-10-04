@@ -15,7 +15,7 @@ library(skimr)
 ```{r}
 taxi <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/modeldata/taxi.csv")
 
-taxi
+head(taxi)
 ```
 
 ```{r}
@@ -60,30 +60,84 @@ glimpse(taxi_modified)
 
 gf_bar(~ tip, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
+
+#The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
+#The data on left side of tilde~ sign is data on x axis
+
+#Data='Database_Name' tells it where to find data from
 ```
 
 ```{r}
 
 gf_bar(~ tip, color = ~local, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
+
+
+#The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
+#The data on left side of tilde~ sign is data on x axis
+
+#Data='Database_Name' tells it where to find data.
+
+#The Color function divides the variables on x axis by changing the color of the OUTLINE only. [Color= ~Variable_Name] Tells which variable to colorize
+
+#Gf labs is for altering text & titles
 ```
 
 ```{r}
 
 gf_bar(~ tip, fill = ~local, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
+
+
+#The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
+#The data on left side of tilde~ sign is data on x axis
+
+#Data='Database_Name' tells it where to find data.
+
+#The Color function divides the variables on x axis by changing the color of the OUTLINE only.[Color= ~Variable_Name] Tells which variable to colorize
+
+#The Fill function divides the variables on x axis by changing the color of the WHOLE BAR [Fill= ~Variable_Name] Tells which variable to colorize fully
+#Fill & Color thus do same thing but for whole bar or only outline
+
+#gf_labs is for altering text & titles
 ```
 
 ```{r}
 
 gf_bar(~ local, fill = ~tip, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
+
+#The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
+#The data on left side of tilde~ sign is data on x axis
+
+#Data='Database_Name' tells it where to find data.
+
+#The Color function divides the variables on x axis by changing the color of the OUTLINE only.[Color= ~Variable_Name] Tells which variable to colorize
+
+#The Fill function divides the variables on x axis by changing the color of the WHOLE BAR [Fill= ~Variable_Name] Tells which variable to colorize fully
+#Fill & Color thus do same thing but for whole bar or only outline
+
+#gf_labs is for altering text & titles
 ```
 
 ```{r}
 
 gf_bar(~ dow, fill = ~tip, color = ~local, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
+
+#Here we have used Color & Fill both at the same time
+
+#The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
+#The data on left side of tilde~ sign is data on x axis
+
+#Data='Database_Name' tells it where to find data.
+
+#The Color function divides the variables on x axis by changing the color of the OUTLINE only.[Color= ~Variable_Name] Tells which variable to colorize
+
+#The Fill function divides the variables on x axis by changing the color of the WHOLE BAR [Fill= ~Variable_Name] Tells which variable to colorize fully
+#Fill & Color thus do same thing but for whole bar or only outline
+
+#gf_labs is for altering text & titles
 ```
 
 ```{r}
@@ -91,6 +145,22 @@ gf_bar(~ dow, fill = ~tip, color = ~local, data = taxi_modified) %>%
 
 gf_bar(~ tip, fill = ~local,position="dodge", data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
+
+
+#The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
+#The data on left side of tilde~ sign is data on x axis
+
+#Data='Database_Name' tells it where to find data.
+
+#The Color function divides the variables on x axis by changing the color of the OUTLINE only.[Color= ~Variable_Name] Tells which variable to colorize
+
+#The Fill function divides the variables on x axis by changing the color of the WHOLE BAR [Fill= ~Variable_Name] Tells which variable to colorize fully
+#Fill & Color thus do same thing but for whole bar or only outline
+
+#The Position function decides position of bars
+#TThe 'Dodge' command under position places colorized bar graphs beside each other instead of on top
+
+#gf_labs is for altering text & titles
 ```
 
 ```{r}
@@ -98,6 +168,30 @@ gf_bar(~ tip, fill = ~local,position="dodge", data = taxi_modified) %>%
 
 gf_bar(~ local, fill = ~tip, position="fill", data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
+
+#The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
+#The data on left side of tilde~ sign is data on x axis
+
+#Data='Database_Name' tells it where to find data.
+
+#The Color function divides the variables on x axis by changing the color of the OUTLINE only.[Color= ~Variable_Name] Tells which variable to colorize
+
+#The Fill function divides the variables on x axis by changing the color of the WHOLE BAR [Fill= ~Variable_Name] Tells which variable to colorize fully
+#Fill & Color thus do same thing but for whole bar or only outline
+
+#The Position function decides position of bars
+#TThe 'Dodge' command (under Position function) places colorized bar graphs beside each other instead of on top
+
+#The 'Fill' command (under Position function) makes all the bars proportionate & equally sized so you can compare ratios & percentages
+
+##DO NOT CONFUSE FILL COMMAND WITH FILL FUNCTION
+
+#FILL FUNCTION COLORIZES FULL BAR BY A VARIABLE
+#FILL COMMAND (UNDER POSITION FUNCTION) MAKES BARS PROPORTIONATE
+
+#gf_labs is for altering text & titles
+
+
 ```
 
 ```{r}
@@ -134,6 +228,32 @@ gf_bar(~month , fill = ~tip, position='fill', data = taxi_modified) %>%
 
 gf_bar(~month | dow , fill = ~tip, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
+
+#The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
+#The data on left side of tilde~ sign is data on x axis
+
+#When you put 2 variables after tilde~, [Var_1 | Var_2], it makes separate graphs based on Var_2 & each graph has Var_1 on X Axis
+
+#Data='Database_Name' tells it where to find data.
+
+#The Color function divides the variables on x axis by changing the color of the OUTLINE only.[Color= ~Variable_Name] Tells which variable to colorize
+
+#The Fill function divides the variables on x axis by changing the color of the WHOLE BAR [Fill= ~Variable_Name] Tells which variable to colorize fully
+#Fill & Color thus do same thing but for whole bar or only outline
+
+#The Position function decides position of bars
+#TThe 'Dodge' command (under Position function) places colorized bar graphs beside each other instead of on top
+
+#The 'Fill' command (under Position function) makes all the bars proportionate & equally sized so you can compare ratios & percentages
+
+##DO NOT CONFUSE FILL COMMAND WITH FILL FUNCTION
+
+#FILL FUNCTION COLORIZES FULL BAR BY A VARIABLE
+#FILL COMMAND (UNDER POSITION FUNCTION) MAKES BARS PROPORTIONATE
+
+
+#gf_labs is for altering text & titles
+
 ```
 
 ```{r}
@@ -205,26 +325,31 @@ skim(chesso_modified)
 
 ```{r}
 
-chesso2 <- chesso_modified 
-
-
-```
-
-```{r}
-
 ## HOW TO FILTER OPENINGS WHICH INCLUDE A SPECIFIC NAME BUT NOT WHOLE NAME IS SAME?
 ## E.g. ALL OPENING VARIATIONS WITH WORDS 'NIMZO-INDIAN' IN THEM? 
 
-chesso2 %>% filter(Opening=='Nimzo-Indian Defense')
+#chesso_modified %>% filter(dplyr::contains(vars = Opening, "Nimzo-Indian Defense"))
+#This does not work
 ```
 
 ```{r}
-install.packages('usethis')
+
+#chesso_modified %>% select(contains('Nimzo-Indian Defense'))
+#This does not work
+```
+
+```{r}
+chesso_modified %>% filter(grepl('Nimzo-Indian Defense', Opening))
+
+#HELL YES. YOU CAN NOW FILTER ROWS WITH A CERTAIN STRING IN A SPECIFIC COLUMN
 
 ```
 
 ```{r}
-library('usethis')
-git_sitrep
 
+chesso_vienna <- chesso_modified %>% filter(grepl('Vienna Game', Opening))
+
+#HELL YES. YOU CAN NOW FILTER ROWS WITH A CERTAIN STRING IN A SPECIFIC COLUMN
+
+(chesso_vienna) #Database of all variations under the Vienna Game
 ```

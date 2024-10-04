@@ -50,12 +50,6 @@ mpg_modified %>% filter(class=='suv')
 ```
 
 ```{r}
-#| eval: false
-mpg_modified %>% filter()
-  gf_line(model~year)
-```
-
-```{r}
 mpg_modified %>% filter(manufacturer=='chevrolet') %>% 
   gf_line(model~hwy)
 ```

@@ -1,0 +1,358 @@
+---
+title: "Quant"
+---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(ggformula)
+library(skimr)
+library(crosstable) # Fast stats for multiple variables in table form
+```
+
+```{r}
+(diamonds)
+```
+
+```{r}
+glimpse(diamonds)
+```
+
+```{r}
+inspect(diamonds)
+
+```
+
+```{r}
+
+##
+gf_histogram(~price, data = diamonds) %>%
+  gf_labs(
+    title = "Plot 1A: Diamond Prices",
+    caption = "ggformula"
+  )
+
+```
+
+```{r}
+## More bins
+gf_histogram(~price,
+  data = diamonds,
+  bins = 100
+#Bins is basically the number of classes. Note that the Y Axis also changes because as we increase number of price classes, each class has a smaller price range. So the number of diamonds in each price range reduces.
+  
+) %>%
+  gf_labs(
+    title = "Plot 1B: Diamond Prices",
+    caption = "ggformula"
+  )
+```
+
+```{r}
+##
+diamonds %>%
+  gf_histogram(~carat) %>%
+  gf_labs(
+    title = "Plot 2A: Carats of Diamonds",
+    caption = "ggformula"
+  )
+```
+
+```{r}
+diamonds %>%
+  gf_histogram(~carat,
+    bins = 100
+  ) %>%
+  gf_labs(
+    title = "Plot 2B: Carats of Diamonds",
+    caption = "ggformula"
+  )
+```
+
+```{r}
+
+gf_histogram(~price, fill = ~cut, data = diamonds) %>%
+  gf_labs(title = "Plot 3A: Diamond Prices", caption = "ggformula")
+```
+
+```{r}
+
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, color = "black", alpha = 0.3) %>%
+  gf_labs(
+    title = "Plot 3B: Prices by Cut",
+    caption = "ggformula"
+  )
+
+##Alpha is the opacity
+```
+
+```{r}
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, color = "black", alpha = 1) %>%
+  gf_labs(
+    title = "Plot 3B: Prices by Cut",
+    caption = "ggformula"
+  )
+
+##Alpha is the opacity
+```
+
+```{r}
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, alpha = 1) %>%
+  gf_labs(
+    title = "Plot 3B: Prices by Cut",
+    caption = "ggformula"
+  )
+
+##Alpha is the opacity
+```
+
+```{r}
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, color = "black", alpha = 0.3) %>%
+  gf_facet_wrap(~cut) %>%
+  ## The wrap function just takes each category within the same variable (Categories like 'Fair','Good' from the Variable 'Cut') and makes a separate graph for each category. (Similar to the 'variable | variable' function, except that one uses multiple variables and this uses only one)
+  
+  gf_labs(
+    title = "Plot 3C: Prices by Filled and Facetted by Cut",
+    caption = "ggformula"
+    #Gf_Labs is for altering the title & text
+  ) %>%
+  gf_theme(theme(
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1
+    )
+    ## Gf_theme is for altering the aesthetics
+  ))
+```
+
+```{r}
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, color = "black", alpha = 0.3) %>%
+  gf_facet_wrap(~cut, scales = "free_y", nrow = 2) %>%
+  #nrow basically changes the distance between points on Y axis (Scale on Y axis)
+  #free_y basically keeps the same scale on Y axis for all graphs
+  
+  gf_labs(
+    title = "Plot 3D: Prices Filled and Facetted by Cut",
+    subtitle = "Free y-scale",
+    caption = "ggformula"
+  ) %>%
+  gf_theme(theme(
+    axis.text.x =
+      element_text(
+        angle = 45, 
+        hjust = 1 
+#Angle just tilts variable names on X axis    
+# Hjust ecides the location of variable names on X axis (Above or below the graph)
+      )
+  ))
+```
+
+```{r}
+
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, color = "black", alpha = 0.3) %>%
+  gf_facet_wrap(~cut, scales = "free_y", nrow = 4) %>%
+  #nrow basically changes the distance between points on Y axis (Scale on Y axis)
+  #free_y basically keeps the same scale on Y axis for all graphs
+  
+  gf_labs(
+    title = "Plot 3D: Prices Filled and Facetted by Cut",
+    subtitle = "Free y-scale",
+    caption = "ggformula"
+  ) %>%
+  gf_theme(theme(
+    axis.text.x =
+      element_text(
+        angle = 45, 
+        hjust = 2 
+#Angle just tilts variable names on X axis    
+# Hjust ecides the location of variable names on X axis (Above or below the graph)
+      )
+  ))
+```
+
+```{r}
+
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, color = "black", alpha = 1) %>%
+  gf_facet_wrap(~cut, nrow = 2) %>%
+  #nrow basically changes the distance between points on Y axis (Scale on Y axis)
+  #free_y basically keeps the same scale on Y axis for all graphs
+  
+  gf_labs(
+    title = "Plot 3D: Prices Filled and Facetted by Cut",
+    subtitle = "Free y-scale",
+    caption = "ggformula"
+  ) %>%
+  gf_theme(theme(
+    axis.text.x =
+      element_text(
+        angle = 45, 
+        hjust = 1 
+#Angle just tilts variable names on X axis    
+# Hjust ecides the location of variable names on X axis (Above or below the graph)
+      )
+  ))
+```
+
+```{r}
+
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, color = "black", alpha = 1) %>%
+  gf_facet_wrap(~cut, nrow = 1) %>%
+  #nrow basically changes the distance between points on Y axis (Scale on Y axis)
+  #free_y basically keeps the same scale on Y axis for all graphs
+  
+  gf_labs(
+    title = "Plot 3D: Prices Filled and Facetted by Cut",
+    subtitle = "Free y-scale",
+    caption = "ggformula"
+  ) %>%
+  gf_theme(theme(
+    axis.text.x =
+      element_text(
+        angle = 45, 
+        hjust = 1 
+#Angle just tilts variable names on X axis    
+# Hjust ecides the location of variable names on X axis (Above or below the graph)
+      )
+  ))
+```
+
+```{r}
+race_df <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv")
+rank_df <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv")
+
+
+(race_df)
+```
+
+```{r}
+glimpse(race_df)
+```
+
+```{r}
+(rank_df)
+glimpse(rank_df)
+```
+
+```{r}
+race_df %>%
+  favstats(~distance, data = .)
+
+#Favstats gives common stats such as median & mode for that variable
+```
+
+```{r}
+##
+race_df %>%
+  favstats(~participants, data = .)
+```
+
+```{r}
+##
+rank_df %>% 
+  drop_na() %>% 
+  favstats(time_in_seconds ~ gender, data = .)
+
+#drop_na basically removes any rows with NULL or missing data
+#The tilde~ in favstats separates column data from row data
+#In this example, it will make a separate row for each gender (Only 2 Rows ehehe) & give favstats (mean,median) about Time variable for each gender
+```
+
+```{r}
+library(crosstable)
+crosstable(time_in_seconds + age ~ gender, data = rank_df) %>%
+  crosstable::as_flextable()
+
+#drop_na basically removes any rows with NULL or missing data
+#The tilde~ in favstats separates column data from row data
+#In this example, it will make a separate row for each gender (Only 2 Rows ehehe) & give favstats (mean,median) about Time variable for each gender
+
+#So Crosstable is like Drop_na but you can have the stats as subrows under a variable row. I.E It compares subcategories of variables across stats (The variables on left side of tilde~ become rows & the subgroups under the variable on right side of tilde~ become columns), i.e. (Here Time & Age are variables on Y Axis & Stats as subrows. It has Gender as a primary column & M/F as subcolumns)
+
+#The Flex_table simply makes the table in a readable form
+```
+
+```{r}
+
+library(crosstable)
+crosstable(time_in_seconds + age ~ gender, data = rank_df) 
+
+#Without using the Flex_table command
+```
+
+```{r}
+
+#Which countries host the maximum number of races? 
+
+race_df %>%
+  count(country) %>%
+  arrange(desc(n))
+
+
+```
+
+```{r}
+#Which countries send the maximum number of participants??
+
+rank_df %>%
+  count(nationality) %>%
+  arrange(desc(n))
+
+
+```
+
+```{r}
+#Which countries have the maximum number of winners (top 3 ranks)?
+
+rank_df %>%
+  filter(rank %in% c(1, 2, 3)) %>%
+  count(nationality) %>%
+  arrange(desc(n))
+
+#Remember in c(i,j,k) , the 'c' combines the elements inside & treats it as a list. So then it checks if the rank is included in the whole list using the %in% command.
+
+
+```
+
+```{r}
+
+#Which countries have had the most top-3 finishes in the longest distance race?
+
+#Here we see we have ranks in one dataset, and race details in another! How do we do this now? We have to JOIN the two data frames into one data frame, using a common variable that uniquely identifies observations in both datasets.
+
+
+longest_races <- race_df %>%
+  slice_max(n = 5, order_by = distance) # Longest distance races
+longest_races
+longest_races %>%
+  left_join(., rank_df, by = "race_year_id") %>% 
+  # total participants in longest 4 races
+  
+  #The . on left side of ~ basically considers the 'aforementioned' dataset, which in this case is race_df. Since we already told it to consider race_df in longest_races, we don't have to specify the name race_df again.
+  
+  filter(rank %in% c(1:10)) %>% # Top 10 ranks
+  count(nationality) %>%
+  arrange(desc(n))
+
+#Join function connects both datasets, similar to SQL
+
+
+```
+
+```{r}
+#Familiar Histogram
+#Bins is number of classes
+
+rank_df %>%
+  gf_histogram(~time_in_seconds, bins = 75) %>%
+  gf_labs(title = "Histogram of Race Times")
+
+#Time 1e+05 seconds basically means 
+```
