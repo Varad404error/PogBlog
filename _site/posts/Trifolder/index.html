@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Varad">
+<meta name="author" content="Varad Akolkar">
 
-<title>PogBlog - Day 3</title>
+<title>PogBlog - Counting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -145,37 +145,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Day 3</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Varad </p>
-            </div>
-    </div>
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Counting</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Varad Akolkar </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <div class="cell">
@@ -271,6 +270,8 @@ The following object is masked from 'package:mosaic':
     n_missing</code></pre>
 </div>
 </div>
+<section id="taxi-data-in-united-states" class="level2">
+<h2 class="anchored" data-anchor-id="taxi-data-in-united-states">Taxi Data in United States</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>taxi <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/modeldata/taxi.csv"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -524,6 +525,8 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </table>
 </div>
 </div>
+<section id="we-need-to-modify-a-few-variables-such-as-dow-local-months-into-factors-so-we-can-process-them" class="level4">
+<h4 class="anchored" data-anchor-id="we-need-to-modify-a-few-variables-such-as-dow-local-months-into-factors-so-we-can-process-them">We need to modify a few variables such as DoW, Local &amp; Months into Factors so we can process them</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>taxi_modified <span class="ot">&lt;-</span> taxi <span class="sc">%&gt;%</span> </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -561,6 +564,11 @@ $ month    &lt;ord&gt; Feb, Mar, Feb, Apr, Mar, Apr, Mar, Jan, Apr, Mar, Mar, Ap
 $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 13, …</code></pre>
 </div>
 </div>
+</section>
+<section id="now-lets-plot-stuff" class="level3">
+<h3 class="anchored" data-anchor-id="now-lets-plot-stuff">Now Let’s Plot Stuff…</h3>
+<section id="counting-rides-with-or-without-a-tip" class="level4">
+<h4 class="anchored" data-anchor-id="counting-rides-with-or-without-a-tip">Counting rides with or without a Tip:</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> tip, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -576,6 +584,9 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Data='Database_Name' tells it where to find data from</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="now-we-have-to-check-if-the-tips-are-local-or-not.-so-we-are-adding-another-variable-to-the-graph-by-changing-the-color" class="level4">
+<h4 class="anchored" data-anchor-id="now-we-have-to-check-if-the-tips-are-local-or-not.-so-we-are-adding-another-variable-to-the-graph-by-changing-the-color">Now we have to check if the tips are local or not. So we are adding another variable to the graph, by changing the color…</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> tip, <span class="at">color =</span> <span class="sc">~</span>local, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -595,6 +606,9 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Gf labs is for altering text &amp; titles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="does-not-look-good-does-it-because-the-color-command-is-only-for-outline.-if-we-want-to-color-the-full-bar-we-use-the-fill-command" class="level4">
+<h4 class="anchored" data-anchor-id="does-not-look-good-does-it-because-the-color-command-is-only-for-outline.-if-we-want-to-color-the-full-bar-we-use-the-fill-command">Does not look good, does it? Because the color command is only for outline. If we want to color the full bar, we use the ‘fill’ command…</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> tip, <span class="at">fill =</span> <span class="sc">~</span>local, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -617,6 +631,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#gf_labs is for altering text &amp; titles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="much-better" class="level4">
+<h4 class="anchored" data-anchor-id="much-better">Much Better!</h4>
+</section>
+<section id="what-if-we-want-the-data-of-all-local-rides-then-see-how-much-of-them-tipped-let-us-try-that." class="level4">
+<h4 class="anchored" data-anchor-id="what-if-we-want-the-data-of-all-local-rides-then-see-how-much-of-them-tipped-let-us-try-that.">What if we want the data of all local rides &amp; then see how much of them tipped? Let us try that.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> local, <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -639,6 +659,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#gf_labs is for altering text &amp; titles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="as-you-can-see-we-just-put-the-locality-variable-on-x-axis.-we-can-change-graphs-using-these-tools-if-we-have-the-right-questions-to-ask." class="level4">
+<h4 class="anchored" data-anchor-id="as-you-can-see-we-just-put-the-locality-variable-on-x-axis.-we-can-change-graphs-using-these-tools-if-we-have-the-right-questions-to-ask.">As you can see, we just put the ‘locality’ variable on X Axis. We can change graphs using these tools, if we have the right questions to ask.</h4>
+</section>
+<section id="just-how-many-variables-can-we-add-to-the-graph-you-can-only-use-one-on-each-axis-one-for-outline-color-one-for-fill" class="level4">
+<h4 class="anchored" data-anchor-id="just-how-many-variables-can-we-add-to-the-graph-you-can-only-use-one-on-each-axis-one-for-outline-color-one-for-fill">Just how many variables can we add to the graph? You can only use one on each axis, one for outline color &amp; one for fill…</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> dow, <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">color =</span> <span class="sc">~</span>local, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -663,6 +689,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 <span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">#gf_labs is for altering text &amp; titles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="that-is-chaotic-good." class="level4">
+<h4 class="anchored" data-anchor-id="that-is-chaotic-good.">That… is chaotic good.</h4>
+</section>
+<section id="lets-keep-it-simple-and-keep-the-tips-on-x-axis-and-segregate-the-locality-by-filled-color.-but-i-dont-what-the-color-divided-graphs-on-top-of-each-other.-how-to-shift-them-we-use-the-dodge-command" class="level4">
+<h4 class="anchored" data-anchor-id="lets-keep-it-simple-and-keep-the-tips-on-x-axis-and-segregate-the-locality-by-filled-color.-but-i-dont-what-the-color-divided-graphs-on-top-of-each-other.-how-to-shift-them-we-use-the-dodge-command">Let’s keep it simple and keep the Tips on X Axis and segregate the Locality by filled color. But I don’t what the color divided graphs on top of each other. How to shift them? We use the Dodge command;</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> tip, <span class="at">fill =</span> <span class="sc">~</span>local,<span class="at">position=</span><span class="st">"dodge"</span>, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -688,8 +720,14 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co">#gf_labs is for altering text &amp; titles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="how-convenient." class="level4">
+<h4 class="anchored" data-anchor-id="how-convenient.">How convenient.</h4>
+</section>
+<section id="but-you-might-be-thinking-what-if-i-want-to-know-actually-how-much-of-the-tips-are-coming-from-local-rides-and-how-many-outside-you-want-to-know-the-proportion-not-the-actual-numbers.-for-that-we-can-make-bars-the-same-size-and-then-see-the-ratios.-note-that-in-this-case-we-cannot-use-the-dodge-command" class="level4">
+<h4 class="anchored" data-anchor-id="but-you-might-be-thinking-what-if-i-want-to-know-actually-how-much-of-the-tips-are-coming-from-local-rides-and-how-many-outside-you-want-to-know-the-proportion-not-the-actual-numbers.-for-that-we-can-make-bars-the-same-size-and-then-see-the-ratios.-note-that-in-this-case-we-cannot-use-the-dodge-command">But you might be thinking, what if I want to know actually how much of the tips are coming from local rides and how many outside? You want to know the proportion, not the actual numbers. For that, we can make bars the same size and then see the ratios. (Note that in this case, we cannot use the dodge command)</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> local, <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">position=</span><span class="st">"fill"</span>, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> tip, <span class="at">fill =</span> <span class="sc">~</span>local, <span class="at">position=</span><span class="st">"fill"</span>, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -720,6 +758,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 <span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="co">#gf_labs is for altering text &amp; titles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="now-we-can-actually-see-that-whenever-the-cab-is-tipped-it-is-more-likely-to-be-interstate-not-local.-and-also-whenever-it-is-not-tipped-it-is-slightly-more-likely-to-be-local.-but-this-is-not-enough-to-conclude-that-local-rides-always-have-less-tips." class="level4">
+<h4 class="anchored" data-anchor-id="now-we-can-actually-see-that-whenever-the-cab-is-tipped-it-is-more-likely-to-be-interstate-not-local.-and-also-whenever-it-is-not-tipped-it-is-slightly-more-likely-to-be-local.-but-this-is-not-enough-to-conclude-that-local-rides-always-have-less-tips.">Now we can actually see that whenever the cab is tipped, it is more likely to be interstate &amp; not local. And also, whenever it is not tipped, it is slightly more likely to be local. But this is not enough to conclude that local rides always have less tips.</h4>
+</section>
+<section id="let-us-now-see-proportions-of-tips-according-to-taxi-services." class="level4">
+<h4 class="anchored" data-anchor-id="let-us-now-see-proportions-of-tips-according-to-taxi-services.">Let us now see proportions of tips according to taxi services.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span> company, <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">position=</span><span class="st">"fill"</span>, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -731,6 +775,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="looks-like-chicago-independence-is-most-tipped-by-proportion-in-general." class="level4">
+<h4 class="anchored" data-anchor-id="looks-like-chicago-independence-is-most-tipped-by-proportion-in-general.">Looks like Chicago Independence is most tipped by proportion in general.</h4>
+</section>
+<section id="how-about-we-factor-in-the-hour-of-day" class="level4">
+<h4 class="anchored" data-anchor-id="how-about-we-factor-in-the-hour-of-day">How about we factor in the hour of day?</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>hour , <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -742,6 +792,9 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="according-to-the-graph-most-tips-happen-in-the-afternoon-least-at-midnight.-but-this-is-because-most-rides-happen-in-the-afternoon-let-us-see-the-proportions-again." class="level4">
+<h4 class="anchored" data-anchor-id="according-to-the-graph-most-tips-happen-in-the-afternoon-least-at-midnight.-but-this-is-because-most-rides-happen-in-the-afternoon-let-us-see-the-proportions-again.">According to the graph, most tips happen in the afternoon &amp; least at midnight. But this is because most rides happen in the afternoon! Let us see the proportions again.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>hour , <span class="at">fill =</span> <span class="sc">~</span>tip,<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -753,6 +806,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="well-well-well.-looks-like-the-highest-proportion-of-tips-actually-occur-when-the-driver-the-taxi-both-burn-midnight-oil-people-are-more-grateful-for-catching-a-ride-at-these-hours." class="level4">
+<h4 class="anchored" data-anchor-id="well-well-well.-looks-like-the-highest-proportion-of-tips-actually-occur-when-the-driver-the-taxi-both-burn-midnight-oil-people-are-more-grateful-for-catching-a-ride-at-these-hours.">Well well well. Looks like the highest proportion of tips actually occur when the driver &amp; the taxi both burn midnight oil… People are more grateful for catching a ride at these hours.</h4>
+</section>
+<section id="looking-at-tips-by-month" class="level4">
+<h4 class="anchored" data-anchor-id="looking-at-tips-by-month">Looking at Tips by Month;</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>month , <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -764,6 +823,9 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="again-proportions" class="level4">
+<h4 class="anchored" data-anchor-id="again-proportions">Again, proportions;</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>month , <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">position=</span><span class="st">'fill'</span>, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -775,6 +837,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="eh-the-proportions-of-tips-is-basically-same-in-all-months-of-the-first-quadrimester-of-the-year." class="level4">
+<h4 class="anchored" data-anchor-id="eh-the-proportions-of-tips-is-basically-same-in-all-months-of-the-first-quadrimester-of-the-year.">Eh, the proportions of Tips is basically same in all months of the first quadrimester of the year.</h4>
+</section>
+<section id="now-i-want-to-see-the-number-of-tips-on-every-day-of-every-month-separatelye.g.-jan-mondays-vs-feb-mondays" class="level4">
+<h4 class="anchored" data-anchor-id="now-i-want-to-see-the-number-of-tips-on-every-day-of-every-month-separatelye.g.-jan-mondays-vs-feb-mondays">Now, I want to see the number of tips on every day of every month separately:(E.g. Jan Mondays vs Feb Mondays)</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>month <span class="sc">|</span> dow , <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -810,6 +878,9 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 <span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="co">#gf_labs is for altering text &amp; titles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="perhaps-if-we-wanted-to-see-an-average-per-month-we-should-sort-the-months-according-to-that-and-put-days-on-x-axis-instead" class="level4">
+<h4 class="anchored" data-anchor-id="perhaps-if-we-wanted-to-see-an-average-per-month-we-should-sort-the-months-according-to-that-and-put-days-on-x-axis-instead">Perhaps if we wanted to see an average per month, we should sort the months according to that and put days on X-Axis instead?</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>dow <span class="sc">|</span> month , <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts of Tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -821,6 +892,9 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="now-instead-of-months-let-us-separate-it-by-taxi-services" class="level4">
+<h4 class="anchored" data-anchor-id="now-instead-of-months-let-us-separate-it-by-taxi-services">Now instead of months, let us separate it by Taxi Services</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>dow <span class="sc">|</span> company , <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Tips by Company &amp; Day"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -832,6 +906,9 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="and-now-i-want-to-see-the-actual-number-of-taxi-rides-per-day-for-each-service-and-not-the-tips" class="level4">
+<h4 class="anchored" data-anchor-id="and-now-i-want-to-see-the-actual-number-of-taxi-rides-per-day-for-each-service-and-not-the-tips">And now I want to see the actual number of taxi rides per day for each service and not the tips;</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>dow <span class="sc">|</span> company ,  <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -843,6 +920,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="looks-like-among-the-listed-services-not-the-others-taxi-affiliation-services-have-most-rides-on-average-in-a-week." class="level4">
+<h4 class="anchored" data-anchor-id="looks-like-among-the-listed-services-not-the-others-taxi-affiliation-services-have-most-rides-on-average-in-a-week.">Looks like among the listed services, (not the Others) Taxi Affiliation Services have most rides on average in a week.</h4>
+</section>
+<section id="what-if-switched-variables-on-x-axis-the-graphs" class="level4">
+<h4 class="anchored" data-anchor-id="what-if-switched-variables-on-x-axis-the-graphs">What if switched variables on X-Axis &amp; the graphs?</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>company <span class="sc">|</span> dow ,  <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Plot 1A: Counts"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -854,6 +937,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="woops.-while-this-data-may-be-true-it-might-not-be-usually-be-required.-also-it-is-painful-to-read." class="level4">
+<h4 class="anchored" data-anchor-id="woops.-while-this-data-may-be-true-it-might-not-be-usually-be-required.-also-it-is-painful-to-read.">Woops. While this data may be true, it might not be usually be required. Also it is PAINFUL to read.</h4>
+</section>
+<section id="if-i-want-to-see-the-proportion-of-tips-per-day-by-company" class="level4">
+<h4 class="anchored" data-anchor-id="if-i-want-to-see-the-proportion-of-tips-per-day-by-company">If I want to see the proportion of Tips per Day &amp; by Company?</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>dow <span class="sc">|</span> company , <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Tips Proportion by Company &amp; Day"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -865,6 +954,12 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="from-this-can-we-say-that-sunday-is-most-tipped-day-proportion-of-tips-to-number-of-rides-for-every-service-yeah." class="level4">
+<h4 class="anchored" data-anchor-id="from-this-can-we-say-that-sunday-is-most-tipped-day-proportion-of-tips-to-number-of-rides-for-every-service-yeah.">From this, can we say that Sunday is most tipped day (proportion of tips to number of rides) for every service? Yeah.</h4>
+</section>
+<section id="would-be-a-shame-if-someone-switched-the-location-of-variables" class="level4">
+<h4 class="anchored" data-anchor-id="would-be-a-shame-if-someone-switched-the-location-of-variables">Would be a shame if someone switched the location of variables…</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>company <span class="sc">|</span> dow , <span class="at">fill =</span> <span class="sc">~</span>tip, <span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">data =</span> taxi_modified) <span class="sc">%&gt;%</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Tips Proportion by Company &amp; Day"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -876,6 +971,20 @@ $ hour     &lt;int&gt; 16, 8, 18, 8, 21, 23, 12, 6, 12, 14, 18, 11, 12, 19, 17, 
 </div>
 </div>
 </div>
+</section>
+<section id="evil-laughter-read-the-graph-at-your-own-risk." class="level4">
+<h4 class="anchored" data-anchor-id="evil-laughter-read-the-graph-at-your-own-risk."><em>*Evil Laughter</em>* Read the graph at your own risk.</h4>
+</section>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">====================================================================</h3>
+</section>
+</section>
+<section id="now-onto-a-new-data-set" class="level2">
+<h2 class="anchored" data-anchor-id="now-onto-a-new-data-set">Now, onto a new data set:</h2>
+</section>
+<section id="chess" class="level2">
+<h2 class="anchored" data-anchor-id="chess">CHESS!</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>chesso <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="st">'../../datasets/openings.csv'</span>, <span class="at">delim =</span> <span class="st">','</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -923,6 +1032,8 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 [25] "White_Wins"     "Black_Wins"    </code></pre>
 </div>
 </div>
+<section id="removing-the-blank-column-glimpsing-the-database" class="level4">
+<h4 class="anchored" data-anchor-id="removing-the-blank-column-glimpsing-the-database">Removing the blank column &amp; glimpsing the database…</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>chesso_modified <span class="ot">&lt;-</span>chesso <span class="sc">%&gt;%</span> </span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
@@ -1463,6 +1574,9 @@ quantitative variables:
 </table>
 </div>
 </div>
+</section>
+<section id="now-i-want-to-find-all-the-variations-of-a-particular-opening.-so-i-will-have-to-filter-the-rows-which-contain-that-name-in-the-opening-column-but-it-is-not-their-entire-name.-how-to-do-that" class="level4">
+<h4 class="anchored" data-anchor-id="now-i-want-to-find-all-the-variations-of-a-particular-opening.-so-i-will-have-to-filter-the-rows-which-contain-that-name-in-the-opening-column-but-it-is-not-their-entire-name.-how-to-do-that">Now, I want to find all the variations of a particular opening. So I will have to filter the rows which contain that name in the Opening column, but it is not their entire name. How to do that??</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="do">## HOW TO FILTER OPENINGS WHICH INCLUDE A SPECIFIC NAME BUT NOT WHOLE NAME IS SAME?</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="do">## E.g. ALL OPENING VARIATIONS WITH WORDS 'NIMZO-INDIAN' IN THEM? </span></span>
@@ -1499,6 +1613,15 @@ quantitative variables:
 </div>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">#HELL YES. YOU CAN NOW FILTER ROWS WITH A CERTAIN STRING IN A SPECIFIC COLUMN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="there-we-go-we-can-also-create-a-mini-database-which-contain-all-variations-of-the-vienna-opening" class="level4">
+<h4 class="anchored" data-anchor-id="there-we-go-we-can-also-create-a-mini-database-which-contain-all-variations-of-the-vienna-opening">There we go! We can also create a mini database which contain all variations of the Vienna Opening:</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Vienna.png" class="img-fluid figure-img" width="300"></p>
+<figcaption>Vienna Opening</figcaption>
+</figure>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>chesso_vienna <span class="ot">&lt;-</span> chesso_modified <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">'Vienna Game'</span>, Opening))</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1527,8 +1650,90 @@ quantitative variables:
 #   White_odds &lt;dbl&gt;, White_Wins &lt;dbl&gt;, Black_Wins &lt;dbl&gt;</code></pre>
 </div>
 </div>
+</section>
+<section id="which-variation-of-vienna-is-played-the-most" class="level4">
+<h4 class="anchored" data-anchor-id="which-variation-of-vienna-is-played-the-most">Which variation of Vienna is played the most?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>chesso_vienna <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Num Games</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 25
+   Opening     Colour `Num Games` ECO   `Last Played` `Perf Rating` `Avg Player`
+   &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;                &lt;dbl&gt;        &lt;dbl&gt;
+ 1 Vienna Gam… white         2821 C26   2018-07-08             2293         2267
+ 2 Vienna Gam… white         1012 C25   2018-07-03             2273         2228
+ 3 Vienna Gam… black          865 C29   2018-07-09             2179         2193
+ 4 Vienna Gam… white          846 C27   2018-04-29             2154         2104
+ 5 Vienna Gam… black          835 C25   2018-07-09             2167         2195
+ 6 Vienna Gam… white          671 C28   2018-07-02             1999         1941
+ 7 Vienna Gam… black          546 C29   2018-07-06             2235         2259
+ 8 Vienna Gam… white          527 C26   2018-06-21             2053         2008
+ 9 Vienna Gam… white          523 C29   2018-07-01             2189         2159
+10 Vienna Gam… black          327 C26   2018-05-08             2132         2156
+# ℹ 11 more rows
+# ℹ 18 more variables: `Player Win %` &lt;dbl&gt;, `Draw %` &lt;dbl&gt;,
+#   `Opponent Win %` &lt;dbl&gt;, Moves &lt;chr&gt;, moves_list &lt;chr&gt;, move1w &lt;chr&gt;,
+#   move1b &lt;chr&gt;, move2w &lt;chr&gt;, move2b &lt;chr&gt;, move3w &lt;chr&gt;, move3b &lt;chr&gt;,
+#   move4w &lt;chr&gt;, move4b &lt;chr&gt;, `White_win%` &lt;dbl&gt;, `Black_win%` &lt;dbl&gt;,
+#   White_odds &lt;dbl&gt;, White_Wins &lt;dbl&gt;, Black_Wins &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="so-apparently-the-mieses--falkbeer-variation-is-played-most-often-among-all-vienna-games" class="level4">
+<h4 class="anchored" data-anchor-id="so-apparently-the-mieses--falkbeer-variation-is-played-most-often-among-all-vienna-games">So apparently the Mieses- Falkbeer Variation is played most often among all Vienna Games:</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Mieses.png" class="img-fluid figure-img" width="300"></p>
+<figcaption>Vienna Game Mieses, Falkbeer Variation</figcaption>
+</figure>
+</div>
+</section>
+<section id="lets-plot-the-opening-vs-number-of-games-bar-graph" class="level4">
+<h4 class="anchored" data-anchor-id="lets-plot-the-opening-vs-number-of-games-bar-graph">Let’s plot the Opening v/s Number of Games Bar Graph…</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co">#chesso_vienna %&gt;%</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#gf_histogram( ~ `Num Games` , fill = ~ Colour) %&gt;%</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># gf_labs(</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  title = "Openings",</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  caption = "Vienna"</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a> <span class="co"># )</span></span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="co">#This code does not give desired result</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">#chesso_vienna %&gt;% </span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># gf_line(Opening ~ `Num Games`)</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co">#This code does not give desired result</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#gf_bar( Opening ~ 'Num Games', data = chesso_vienna)</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#This code does not give desired result</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'chesso_vienna' has a column 'Opening' for opening names and 'Num_Games' for the number of games</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chesso_vienna, <span class="fu">aes</span>(<span class="at">x =</span> Opening, <span class="at">y =</span> <span class="st">`</span><span class="at">Num Games</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span>  <span class="co"># Rotate x-axis labels if needed</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Opening Names"</span>, <span class="at">y =</span> <span class="st">"Number of Games"</span>, <span class="at">title =</span> <span class="st">"Number of Games per Opening"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I used ChatGPT to write this code as I could not figure it myself after numerous tries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="finally-we-have-got-the-information-of-all-openings-vs-the-amount-of-times-they-were-played." class="level4">
+<h4 class="anchored" data-anchor-id="finally-we-have-got-the-information-of-all-openings-vs-the-amount-of-times-they-were-played.">Finally! We have got the information of all openings vs the amount of times they were played.</h4>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

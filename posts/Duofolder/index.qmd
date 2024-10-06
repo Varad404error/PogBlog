@@ -68,7 +68,7 @@ mpg_modified %>%
   summarize(average_hwy = mean(hwy), avg_city= mean(cty), count = n())
 ```
 
-#### We can see from above table that regardless of manufacturer, both the City & Highway mileages decrease in cars as cylinders are increased. That makes sense. Also, the highway mileages suffer more than city mileages. 
+#### We can see from above table that regardless of manufacturer, both the City & Highway mileages decrease in cars as cylinders are increased. That makes sense. Also, the highway mileages suffer more than city mileages.
 
 #### On average, can we say that 6 cylinder Audis & Chevys are better than Dodges & Fords? Most likely. But we only have 3 Chevys. So we need more data do be sure.
 
@@ -108,7 +108,7 @@ mpg_modified %>% filter(manufacturer =='audi', class=='midsize')
 
 #### The cars have from 1999, 2008, 2008 have highway mileages 24,23,25 respectively. So coincidentally, both years average out to 24.
 
-#### This is why it is better to have a large sample size so we can get more accurate results. 
+#### This is why it is better to have a large sample size so we can get more accurate results.
 
 #### ====================================================================
 
@@ -146,6 +146,6 @@ math_ax %>%
 math_ax %>% filter( Gender=='Boy')
 ```
 
-#### And the number of girls & boys in the dataset is close enough. (323 vs 276 ) So if it is the data of a school, it is not like the girls are in the minority and hence not given proper attention while teaching concepts.  That is irrelevant.
+#### And the number of girls & boys in the dataset is close enough. (323 vs 276 ) So if it is the data of a school, it is not like the girls are in the minority and hence not given proper attention while teaching concepts. That is irrelevant.
 
 #### ==============================================================================

@@ -330,7 +330,7 @@ gf_bar(~dow | company ,  data = taxi_modified) %>%
 
 #### Looks like among the listed services, (not the Others) Taxi Affiliation Services have most rides on average in a week.
 
-#### What if switched variables  on X-Axis & the graphs?
+#### What if switched variables on X-Axis & the graphs?
 
 ```{r}
 
@@ -451,21 +451,43 @@ chesso_vienna %>% arrange(desc(`Num Games`))
 #### Let's plot the Opening v/s Number of Games Bar Graph...
 
 ```{r}
-chesso_vienna %>%
-  gf_histogram( ~ `Num Games` , fill = ~ Colour) %>%
-  gf_labs(
-    title = "Openings",
-    caption = "Vienna"
-  )
+
+#chesso_vienna %>%
+  #gf_histogram( ~ `Num Games` , fill = ~ Colour) %>%
+ # gf_labs(
+  #  title = "Openings",
+  #  caption = "Vienna"
+ # )
+
+#This code does not give desired result
 ```
 
 ```{r}
-chesso_vienna %>% 
-  gf_line(Opening ~ `Num Games`)
+#chesso_vienna %>% 
+ # gf_line(Opening ~ `Num Games`)
+
+#This code does not give desired result
 ```
 
 ```{r}
 
  
-  gf_bar( `Num Games`~ 'Opening' , data = chesso_vienna)
+  #gf_bar( Opening ~ 'Num Games', data = chesso_vienna)
+
+  #This code does not give desired result
 ```
+
+```{r}
+library(ggplot2)
+
+# Assuming 'chesso_vienna' has a column 'Opening' for opening names and 'Num_Games' for the number of games
+ggplot(chesso_vienna, aes(x = Opening, y = `Num Games`)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  # Rotate x-axis labels if needed
+  labs(x = "Opening Names", y = "Number of Games", title = "Number of Games per Opening")
+
+
+#I used ChatGPT to write this code as I could not figure it myself after numerous tries
+```
+
+#### Finally! We have got the information of all openings vs the amount of times they were played.

@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -145,37 +145,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Data Summaries</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Varad Akolkar </p>
-            </div>
-    </div>
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Summaries</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Varad Akolkar </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <div class="cell">
@@ -271,6 +270,8 @@ The following object is masked from 'package:mosaic':
     n_missing</code></pre>
 </div>
 </div>
+<section id="viewing-data-about-cars" class="level3">
+<h3 class="anchored" data-anchor-id="viewing-data-about-cars">Viewing data about Cars…</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -619,6 +620,8 @@ $ fl           &lt;fct&gt; p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p,
 $ class        &lt;fct&gt; compact, compact, compact, compact, compact, compact, com…</code></pre>
 </div>
 </div>
+<section id="trying-out-functions" class="level4">
+<h4 class="anchored" data-anchor-id="trying-out-functions">Trying out functions…</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span> <span class="fu">filter</span>(class<span class="sc">==</span><span class="st">'suv'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -638,104 +641,125 @@ $ class        &lt;fct&gt; compact, compact, compact, compact, compact, compact,
 # ℹ 52 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="making-lines-on-graphs.-this-one-gives-highway-mileages-per-each-segment-in-chevrolet" class="level4">
+<h4 class="anchored" data-anchor-id="making-lines-on-graphs.-this-one-gives-highway-mileages-per-each-segment-in-chevrolet">Making lines on graphs. This one gives highway mileages per each segment in Chevrolet</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span> <span class="fu">filter</span>()</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_line</span>(model<span class="sc">~</span>year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span> <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">'chevrolet'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_line</span>(model<span class="sc">~</span>hwy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span> <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">'chevrolet'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_line</span>(model<span class="sc">~</span>hwy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="let-us-look-at-some-more-mileage-information-across-manufacturers" class="level4">
+<h4 class="anchored" data-anchor-id="let-us-look-at-some-more-mileage-information-across-manufacturers">Let us look at some more mileage information across manufacturers…</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,cyl, fl) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">count =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">avg_city=</span> <span class="fu">mean</span>(cty), <span class="at">count =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'manufacturer', 'cyl'. You can override
-using the `.groups` argument.</code></pre>
+<pre><code>`summarise()` has grouped output by 'manufacturer'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 51 × 5
-# Groups:   manufacturer, cyl [32]
-   manufacturer cyl   fl    average_hwy count
-   &lt;chr&gt;        &lt;fct&gt; &lt;fct&gt;       &lt;dbl&gt; &lt;int&gt;
- 1 audi         4     p            28.1     8
- 2 audi         6     p            25.3     9
- 3 audi         8     p            23       1
- 4 chevrolet    4     r            28.5     2
- 5 chevrolet    6     r            27       3
- 6 chevrolet    8     p            24.8     5
- 7 chevrolet    8     r            18       6
- 8 chevrolet    8     e            14.5     2
- 9 chevrolet    8     d            17       1
-10 dodge        4     r            24       1
-# ℹ 41 more rows</code></pre>
+<pre><code># A tibble: 32 × 5
+# Groups:   manufacturer [15]
+   manufacturer cyl   average_hwy avg_city count
+   &lt;chr&gt;        &lt;fct&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+ 1 audi         4            28.1     19.1     8
+ 2 audi         6            25.3     16.4     9
+ 3 audi         8            23       16       1
+ 4 chevrolet    4            28.5     20.5     2
+ 5 chevrolet    6            27       17.7     3
+ 6 chevrolet    8            19.9     13.6    14
+ 7 dodge        4            24       18       1
+ 8 dodge        6            20.7     15      15
+ 9 dodge        8            15.7     11.6    21
+10 ford         6            20.7     15.3    10
+# ℹ 22 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="we-can-see-from-above-table-that-regardless-of-manufacturer-both-the-city-highway-mileages-decrease-in-cars-as-cylinders-are-increased.-that-makes-sense.-also-the-highway-mileages-suffer-more-than-city-mileages." class="level4">
+<h4 class="anchored" data-anchor-id="we-can-see-from-above-table-that-regardless-of-manufacturer-both-the-city-highway-mileages-decrease-in-cars-as-cylinders-are-increased.-that-makes-sense.-also-the-highway-mileages-suffer-more-than-city-mileages.">We can see from above table that regardless of manufacturer, both the City &amp; Highway mileages decrease in cars as cylinders are increased. That makes sense. Also, the highway mileages suffer more than city mileages.</h4>
+</section>
+<section id="on-average-can-we-say-that-6-cylinder-audis-chevys-are-better-than-dodges-fords-most-likely.-but-we-only-have-3-chevys.-so-we-need-more-data-do-be-sure." class="level4">
+<h4 class="anchored" data-anchor-id="on-average-can-we-say-that-6-cylinder-audis-chevys-are-better-than-dodges-fords-most-likely.-but-we-only-have-3-chevys.-so-we-need-more-data-do-be-sure.">On average, can we say that 6 cylinder Audis &amp; Chevys are better than Dodges &amp; Fords? Most likely. But we only have 3 Chevys. So we need more data do be sure.</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span> <span class="fu">filter</span>(manufacturer <span class="sc">==</span><span class="st">'audi'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,class,year) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_high=</span> <span class="fu">mean</span>(hwy), <span class="at">avg_city=</span> <span class="fu">mean</span>(cty))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span> <span class="fu">filter</span>(manufacturer <span class="sc">==</span><span class="st">'audi'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer,class,year) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_high=</span> <span class="fu">mean</span>(hwy), <span class="at">avg_city=</span> <span class="fu">mean</span>(cty), <span class="at">count=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'manufacturer', 'class'. You can override
 using the `.groups` argument.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 5
+<pre><code># A tibble: 4 × 6
 # Groups:   manufacturer, class [2]
-  manufacturer class    year avg_high avg_city
-  &lt;chr&gt;        &lt;fct&gt;   &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 audi         compact  1999     26.4     17.4
-2 audi         compact  2008     27.6     18.6
-3 audi         midsize  1999     24       15  
-4 audi         midsize  2008     24       16.5</code></pre>
+  manufacturer class    year avg_high avg_city count
+  &lt;chr&gt;        &lt;fct&gt;   &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+1 audi         compact  1999     26.4     17.4     8
+2 audi         compact  2008     27.6     18.6     7
+3 audi         midsize  1999     24       15       1
+4 audi         midsize  2008     24       16.5     2</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The filter command filters out all rows with manufacturers as audi (common sense)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#When you use the group_by function, it makes groups of each each year for each class for each manufacturer.</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#E.g. Here it filtered out all the audis, then made a group for each class of an audi (compact &amp; midsize) and then further made a separate row for each year for both the classes.</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The summarize command takes 2 arguments (New_Column_Name ~ Function) </span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Here it has made an average of highway &amp; city mileages separately for: </span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#All compact Audis from 1999</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#All compact Audis from 2008</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#All midsize Audis from 1999</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">#All midsize Audis from 2008</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Remember that even if this table only shows 4 rows, that is because they were grouped by class &amp; year. But there are still differences between cylinders, engine displacement, fuel type in the cars &amp; actually there are a lot of Audi types.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Analysing Math Data</p>
+</section>
+<section id="so-the-above-table-helps-us-understand-about-avg-mileages-in-audi-car-types" class="level4">
+<h4 class="anchored" data-anchor-id="so-the-above-table-helps-us-understand-about-avg-mileages-in-audi-car-types">So the above table helps us understand about avg mileages in Audi car types;</h4>
+</section>
+<section id="both-highway-and-city-mileages-have-increased-or-remained-the-same-for-both-car-types-from-1999-to-2008.-i-believe-it-is-expected-as-cars-become-more-fuel-efficient-with-technological-improvements." class="level4">
+<h4 class="anchored" data-anchor-id="both-highway-and-city-mileages-have-increased-or-remained-the-same-for-both-car-types-from-1999-to-2008.-i-believe-it-is-expected-as-cars-become-more-fuel-efficient-with-technological-improvements.">Both highway and city mileages have increased (or remained the same) for both car types from 1999 to 2008. I believe it is expected, as cars become more fuel efficient with technological improvements.</h4>
+</section>
+<section id="but-why-has-highway-mileage-in-midsize-audis-not-increased-let-us-try-to-investigate." class="level4">
+<h4 class="anchored" data-anchor-id="but-why-has-highway-mileage-in-midsize-audis-not-increased-let-us-try-to-investigate.">But why has highway mileage in midsize Audis not increased? Let us try to investigate.</h4>
+</section>
+<section id="look-at-the-count-column.-we-only-have-data-of-1-audi-midsize-from-1999-2-from-2008." class="level4">
+<h4 class="anchored" data-anchor-id="look-at-the-count-column.-we-only-have-data-of-1-audi-midsize-from-1999-2-from-2008.">Look at the count column. We only have data of 1 Audi Midsize from 1999 &amp; 2 from 2008.</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>math_ax <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'../../datasets/MathAnxiety.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 599 Columns: 1
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): Age;Gender;Grade;AMAS;RCMAS;Arith
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>math_ax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mpg_modified <span class="sc">%&gt;%</span> <span class="fu">filter</span>(manufacturer <span class="sc">==</span><span class="st">'audi'</span>, class<span class="sc">==</span><span class="st">'midsize'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 599 × 1
-   `Age;Gender;Grade;AMAS;RCMAS;Arith`
-   &lt;chr&gt;                              
- 1 137,8;Boy;Secondary;9;20;6         
- 2 140,7;Boy;Secondary;18;8;6         
- 3 137,9;Girl;Secondary;23;26;5       
- 4 142,8;Girl;Secondary;19;18;7       
- 5 135,6;Boy;Secondary;23;20;1        
- 6 135,0;Girl;Secondary;27;33;1       
- 7 133,6;Boy;Secondary;22;23;4        
- 8 139,3;Boy;Secondary;17;11;7        
- 9 131,7;Girl;Secondary;28;32;2       
-10 134,8;Boy;Secondary;20;30;6        
-# ℹ 589 more rows</code></pre>
+<pre><code># A tibble: 3 × 11
+  manufacturer model      displ  year cyl   trans  drv     cty   hwy fl    class
+  &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt;
+1 audi         a6 quattro   2.8  1999 6     auto(… 4        15    24 p     mids…
+2 audi         a6 quattro   3.1  2008 6     auto(… 4        17    25 p     mids…
+3 audi         a6 quattro   4.2  2008 8     auto(… 4        16    23 p     mids…</code></pre>
 </div>
 </div>
+</section>
+<section id="the-cars-have-from-1999-2008-2008-have-highway-mileages-242325-respectively.-so-coincidentally-both-years-average-out-to-24." class="level4">
+<h4 class="anchored" data-anchor-id="the-cars-have-from-1999-2008-2008-have-highway-mileages-242325-respectively.-so-coincidentally-both-years-average-out-to-24.">The cars have from 1999, 2008, 2008 have highway mileages 24,23,25 respectively. So coincidentally, both years average out to 24.</h4>
+</section>
+<section id="this-is-why-it-is-better-to-have-a-large-sample-size-so-we-can-get-more-accurate-results." class="level4">
+<h4 class="anchored" data-anchor-id="this-is-why-it-is-better-to-have-a-large-sample-size-so-we-can-get-more-accurate-results.">This is why it is better to have a large sample size so we can get more accurate results.</h4>
+</section>
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section">====================================================================</h4>
+</section>
+</section>
+<section id="analyzing-math-anxiety-data" class="level3">
+<h3 class="anchored" data-anchor-id="analyzing-math-anxiety-data">Analyzing Math Anxiety Data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>math_ax <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="st">'../../datasets/MathAnxiety.csv'</span>, <span class="at">delim =</span> <span class="st">';'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>math_ax <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="st">'../../datasets/MathAnxiety.csv'</span>, <span class="at">delim =</span> <span class="st">';'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 599 Columns: 6
 ── Column specification ────────────────────────────────────────────────────────
@@ -747,7 +771,7 @@ num (1): Age
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>math_ax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>math_ax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 599 × 6
      Age Gender Grade      AMAS RCMAS Arith
@@ -766,7 +790,7 @@ num (1): Age
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(math_ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(math_ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 599
 Columns: 6
@@ -779,7 +803,7 @@ $ Arith  &lt;dbl&gt; 6, 6, 5, 7, 1, 1, 4, 7, 2, 6, 2, 5, 2, 6, 2, 7, 2, 4, 7, 3,
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(math_ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(math_ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 categorical variables:  
@@ -799,7 +823,7 @@ quantitative variables:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(math_ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(math_ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -977,9 +1001,9 @@ quantitative variables:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>math_ax <span class="sc">%&gt;%</span> </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender, Grade) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_amas =</span> <span class="fu">mean</span>(AMAS), <span class="at">avg_rcm=</span> <span class="fu">mean</span>(RCMAS))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>math_ax <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender, Grade) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_amas =</span> <span class="fu">mean</span>(AMAS), <span class="at">avg_rcm=</span> <span class="fu">mean</span>(RCMAS))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'Gender'. You can override using the
 `.groups` argument.</code></pre>
@@ -995,8 +1019,37 @@ quantitative variables:
 4 Girl   Secondary     23.5    20.3</code></pre>
 </div>
 </div>
+<section id="based-on-this-can-we-say-that-girls-on-average-have-a-higher-anxiety-than-boys-their-age-probably.-we-also-know-that-the-math-anxiety-increases-in-secondary-school-as-math-concepts-get-tougher." class="level4">
+<h4 class="anchored" data-anchor-id="based-on-this-can-we-say-that-girls-on-average-have-a-higher-anxiety-than-boys-their-age-probably.-we-also-know-that-the-math-anxiety-increases-in-secondary-school-as-math-concepts-get-tougher.">Based on this, can we say that girls on average have a higher anxiety than boys their age? Probably. We also know that the math anxiety increases in secondary school as math concepts get tougher.</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>math_ax <span class="sc">%&gt;%</span> <span class="fu">filter</span>( Gender<span class="sc">==</span><span class="st">'Boy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 323 × 6
+     Age Gender Grade      AMAS RCMAS Arith
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1  1378 Boy    Secondary     9    20     6
+ 2  1407 Boy    Secondary    18     8     6
+ 3  1356 Boy    Secondary    23    20     1
+ 4  1336 Boy    Secondary    22    23     4
+ 5  1393 Boy    Secondary    17    11     7
+ 6  1348 Boy    Secondary    20    30     6
+ 7  1413 Boy    Secondary    16    10     2
+ 8  1580 Boy    Secondary    20     4     5
+ 9  1551 Boy    Secondary    21    23     2
+10  1327 Boy    Secondary    36    26     6
+# ℹ 313 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="and-the-number-of-girls-boys-in-the-dataset-is-close-enough.-323-vs-276-so-if-it-is-the-data-of-a-school-it-is-not-like-the-girls-are-in-the-minority-and-hence-not-given-proper-attention-while-teaching-concepts.-that-is-irrelevant." class="level4">
+<h4 class="anchored" data-anchor-id="and-the-number-of-girls-boys-in-the-dataset-is-close-enough.-323-vs-276-so-if-it-is-the-data-of-a-school-it-is-not-like-the-girls-are-in-the-minority-and-hence-not-given-proper-attention-while-teaching-concepts.-that-is-irrelevant.">And the number of girls &amp; boys in the dataset is close enough. (323 vs 276 ) So if it is the data of a school, it is not like the girls are in the minority and hence not given proper attention while teaching concepts. That is irrelevant.</h4>
+</section>
+<section id="section-1" class="level4">
+<h4 class="anchored" data-anchor-id="section-1">==============================================================================</h4>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
