@@ -147,7 +147,7 @@ diamonds %>%
         angle = 45, 
         hjust = 1 
 #Angle just tilts variable names on X axis    
-# Hjust ecides the location of variable names on X axis (Above or below the graph)
+# Hjust decides the location of variable names on X axis (Above or below the graph)
       )
   ))
 ```

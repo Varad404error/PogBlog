@@ -1,6 +1,6 @@
 ---
-title: "Day 3"
-author: "Varad"
+title: "Counting"
+author: "Varad Akolkar"
 ---
 
 ```{r}
@@ -11,6 +11,8 @@ library(mosaic)
 library(kableExtra)
 library(skimr)
 ```
+
+## Taxi Data in United States
 
 ```{r}
 taxi <- read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/modeldata/taxi.csv")
@@ -29,6 +31,8 @@ glimpse(taxi)
 ```{r}
 skim(taxi)
 ```
+
+#### We need to modify a few variables such as DoW, Local & Months into Factors so we can process them
 
 ```{r}
 taxi_modified <- taxi %>% 
@@ -56,6 +60,10 @@ taxi_modified <- taxi %>%
 glimpse(taxi_modified)
 ```
 
+### Now Let's Plot Stuff...
+
+#### Counting rides with or without a Tip:
+
 ```{r}
 
 gf_bar(~ tip, data = taxi_modified) %>%
@@ -66,6 +74,8 @@ gf_bar(~ tip, data = taxi_modified) %>%
 
 #Data='Database_Name' tells it where to find data from
 ```
+
+#### Now we have to check if the tips are local or not. So we are adding another variable to the graph, by changing the color...
 
 ```{r}
 
@@ -82,6 +92,8 @@ gf_bar(~ tip, color = ~local, data = taxi_modified) %>%
 
 #Gf labs is for altering text & titles
 ```
+
+#### Does not look good, does it? Because the color command is only for outline. If we want to color the full bar, we use the 'fill' command...
 
 ```{r}
 
@@ -102,6 +114,10 @@ gf_bar(~ tip, fill = ~local, data = taxi_modified) %>%
 #gf_labs is for altering text & titles
 ```
 
+#### Much Better!
+
+#### What if we want the data of all local rides & then see how much of them tipped? Let us try that.
+
 ```{r}
 
 gf_bar(~ local, fill = ~tip, data = taxi_modified) %>%
@@ -119,6 +135,10 @@ gf_bar(~ local, fill = ~tip, data = taxi_modified) %>%
 
 #gf_labs is for altering text & titles
 ```
+
+#### As you can see, we just put the 'locality' variable on X Axis. We can change graphs using these tools, if we have the right questions to ask.
+
+#### Just how many variables can we add to the graph? You can only use one on each axis, one for outline color & one for fill...
 
 ```{r}
 
@@ -139,6 +159,10 @@ gf_bar(~ dow, fill = ~tip, color = ~local, data = taxi_modified) %>%
 
 #gf_labs is for altering text & titles
 ```
+
+#### That... is chaotic good.
+
+#### Let's keep it simple and keep the Tips on X Axis and segregate the Locality by filled color. But I don't what the color divided graphs on top of each other. How to shift them? We use the Dodge command;
 
 ```{r}
 
@@ -163,10 +187,14 @@ gf_bar(~ tip, fill = ~local,position="dodge", data = taxi_modified) %>%
 #gf_labs is for altering text & titles
 ```
 
+#### How convenient.
+
+#### But you might be thinking, what if I want to know actually how much of the tips are coming from local rides and how many outside? You want to know the proportion, not the actual numbers. For that, we can make bars the same size and then see the ratios. (Note that in this case, we cannot use the dodge command)
+
 ```{r}
 
 
-gf_bar(~ local, fill = ~tip, position="fill", data = taxi_modified) %>%
+gf_bar(~ tip, fill = ~local, position="fill", data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
 
 #The quantity on left side of tilde ~ sign is the data on y axis.If it is unspecified, the default data is number of elements (Count)
@@ -194,11 +222,19 @@ gf_bar(~ local, fill = ~tip, position="fill", data = taxi_modified) %>%
 
 ```
 
+#### Now we can actually see that whenever the cab is tipped, it is more likely to be interstate & not local. And also, whenever it is not tipped, it is slightly more likely to be local. But this is not enough to conclude that local rides always have less tips.
+
+#### Let us now see proportions of tips according to taxi services.
+
 ```{r}
 
 gf_bar(~ company, fill = ~tip, position="fill", data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
 ```
+
+#### Looks like Chicago Independence is most tipped by proportion in general.
+
+#### How about we factor in the hour of day?
 
 ```{r}
 
@@ -206,11 +242,17 @@ gf_bar(~hour , fill = ~tip, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
 ```
 
+#### According to the graph, most tips happen in the afternoon & least at midnight. But this is because most rides happen in the afternoon! Let us see the proportions again.
+
 ```{r}
 
 gf_bar(~hour , fill = ~tip,position = "fill", data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
 ```
+
+#### Well well well. Looks like the highest proportion of tips actually occur when the driver & the taxi both burn midnight oil... People are more grateful for catching a ride at these hours.
+
+#### Looking at Tips by Month;
 
 ```{r}
 
@@ -218,11 +260,17 @@ gf_bar(~month , fill = ~tip, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
 ```
 
+#### Again, proportions;
+
 ```{r}
 
 gf_bar(~month , fill = ~tip, position='fill', data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
 ```
+
+#### Eh, the proportions of Tips is basically same in all months of the first quadrimester of the year.
+
+#### Now, I want to see the number of tips on every day of every month separately:(E.g. Jan Mondays vs Feb Mondays)
 
 ```{r}
 
@@ -256,11 +304,15 @@ gf_bar(~month | dow , fill = ~tip, data = taxi_modified) %>%
 
 ```
 
+#### Perhaps if we wanted to see an average per month, we should sort the months according to that and put days on X-Axis instead?
+
 ```{r}
 
 gf_bar(~dow | month , fill = ~tip, data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts of Tips")
 ```
+
+#### Now instead of months, let us separate it by Taxi Services
 
 ```{r}
 
@@ -268,11 +320,17 @@ gf_bar(~dow | company , fill = ~tip, data = taxi_modified) %>%
   gf_labs(title = "Tips by Company & Day")
 ```
 
+#### And now I want to see the actual number of taxi rides per day for each service and not the tips;
+
 ```{r}
 
 gf_bar(~dow | company ,  data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts")
 ```
+
+#### Looks like among the listed services, (not the Others) Taxi Affiliation Services have most rides on average in a week.
+
+#### What if switched variables  on X-Axis & the graphs?
 
 ```{r}
 
@@ -280,11 +338,19 @@ gf_bar(~company | dow ,  data = taxi_modified) %>%
   gf_labs(title = "Plot 1A: Counts")
 ```
 
+#### Woops. While this data may be true, it might not be usually be required. Also it is PAINFUL to read.
+
+#### If I want to see the proportion of Tips per Day & by Company?
+
 ```{r}
 
 gf_bar(~dow | company , fill = ~tip, position = "fill", data = taxi_modified) %>%
   gf_labs(title = "Tips Proportion by Company & Day")
 ```
+
+#### From this, can we say that Sunday is most tipped day (proportion of tips to number of rides) for every service? Yeah.
+
+#### Would be a shame if someone switched the location of variables...
 
 ```{r}
 
@@ -292,6 +358,14 @@ gf_bar(~dow | company , fill = ~tip, position = "fill", data = taxi_modified) %>
 gf_bar(~company | dow , fill = ~tip, position = "fill", data = taxi_modified) %>%
   gf_labs(title = "Tips Proportion by Company & Day")
 ```
+
+#### *\*Evil Laughter*\* Read the graph at your own risk.
+
+### ====================================================================
+
+## Now, onto a new data set:
+
+## CHESS!
 
 ```{r}
 
@@ -301,6 +375,8 @@ chesso
 
 names(chesso)
 ```
+
+#### Removing the blank column & glimpsing the database...
 
 ```{r}
 
@@ -322,6 +398,8 @@ inspect(chesso_modified)
 
 skim(chesso_modified)
 ```
+
+#### Now, I want to find all the variations of a particular opening. So I will have to filter the rows which contain that name in the Opening column, but it is not their entire name. How to do that??
 
 ```{r}
 
@@ -345,6 +423,10 @@ chesso_modified %>% filter(grepl('Nimzo-Indian Defense', Opening))
 
 ```
 
+#### There we go! We can also create a mini database which contain all variations of the Vienna Opening:
+
+![Vienna Opening](images/Vienna.png){width="300"}
+
 ```{r}
 
 chesso_vienna <- chesso_modified %>% filter(grepl('Vienna Game', Opening))
@@ -352,4 +434,38 @@ chesso_vienna <- chesso_modified %>% filter(grepl('Vienna Game', Opening))
 #HELL YES. YOU CAN NOW FILTER ROWS WITH A CERTAIN STRING IN A SPECIFIC COLUMN
 
 (chesso_vienna) #Database of all variations under the Vienna Game
+```
+
+#### Which variation of Vienna is played the most?
+
+```{r}
+
+chesso_vienna %>% arrange(desc(`Num Games`))
+
+```
+
+#### So apparently the Mieses- Falkbeer Variation is played most often among all Vienna Games:
+
+![Vienna Game Mieses, Falkbeer Variation](images/Mieses.png){width="300"}
+
+#### Let's plot the Opening v/s Number of Games Bar Graph...
+
+```{r}
+chesso_vienna %>%
+  gf_histogram( ~ `Num Games` , fill = ~ Colour) %>%
+  gf_labs(
+    title = "Openings",
+    caption = "Vienna"
+  )
+```
+
+```{r}
+chesso_vienna %>% 
+  gf_line(Opening ~ `Num Games`)
+```
+
+```{r}
+
+ 
+  gf_bar( `Num Games`~ 'Opening' , data = chesso_vienna)
 ```
