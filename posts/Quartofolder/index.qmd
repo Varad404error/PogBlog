@@ -356,3 +356,84 @@ rank_df %>%
 
 #Time 1e+05 seconds basically means 
 ```
+
+```{r}
+#What is the distribution of race distances?
+
+
+race_df %>%
+  gf_histogram(~distance, bins = 50) %>%
+  gf_labs(title = "Histogram of Race Distances")
+
+#The races with 0 distance were probably cancelled
+```
+
+```{r}
+
+#For all races that have a distance around 150, what is the distribution of finishing times? Can these be split/facetted using start_time of the race (i.e. morning / evening) ?
+
+
+
+race_times <- race_df %>%
+  count(start_time) %>%
+  arrange(desc(n))
+race_times
+
+
+```
+
+```{r}
+
+#Let’s convert start_time into a factor with levels: early_morning(0200:0600), late_morning(0600:1000), midday(1000:1400), afternoon(1400: 1800), evening(1800:2200), and night(2200:0200)
+
+
+
+race_start_factor <- race_df %>%
+  filter(distance == 0) %>% # Races that actually took place
+  mutate(
+    start_day_time =
+      case_when(
+        start_time > hms("02:00:00") &
+          start_time <= hms("06:00:00") ~ "early_morning",
+        start_time > hms("06:00:01") &
+          start_time <= hms("10:00:00") ~ "late_morning",
+        start_time > hms("10:00:01") &
+          start_time <= hms("14:00:00") ~ "mid_day",
+        start_time > hms("14:00:01") &
+          start_time <= hms("18:00:00") ~ "afternoon",
+        start_time > hms("18:00:01") &
+          start_time <= hms("22:00:00") ~ "evening",
+        start_time > hms("22:00:01") &
+          start_time <= hms("23:59:59") ~ "night",
+        start_time >= hms("00:00:00") &
+          start_time <= hms("02:00:00") ~ "postmidnight",
+        .default = "other"
+      )
+  ) %>%
+  mutate(
+    start_day_time =
+      as_factor(start_day_time) %>%
+        fct_collapse(
+          .f = .,
+          night = c("night", "postmidnight")
+        )
+  )
+##
+# Join with rank_df
+race_start_factor %>%
+  left_join(rank_df, by = "race_year_id") %>%
+  drop_na(time_in_seconds) %>%
+  gf_histogram(
+    ~time_in_seconds,
+    bins = 75,
+    fill = ~start_day_time,
+    color = ~start_day_time,
+    alpha = 0.5
+  ) %>%
+  gf_facet_wrap(vars(start_day_time), ncol = 2, scales = "free_y") %>%
+  gf_labs(title = "Race Times by Start-Time")
+
+#We see that finish times tend to be longer for afternoon and evening start races; these are lower for early morning and night time starts. Mid-day starts show a curious double hump in finish times that should be studied.
+
+
+```

@@ -12,6 +12,8 @@ library(kableExtra)
 library(skimr)
 ```
 
+Viewing data about cars...
+
 ```{r}
 mpg
 ```
@@ -45,36 +47,72 @@ mpg_modified <- mpg %>%
 glimpse(mpg_modified)
 ```
 
+Trying out functions...
+
 ```{r}
 mpg_modified %>% filter(class=='suv') 
 ```
+
+Making lines on graphs. This one gives highway mileages per each segment in Chevrolet
 
 ```{r}
 mpg_modified %>% filter(manufacturer=='chevrolet') %>% 
   gf_line(model~hwy)
 ```
 
+Let us look at some more mileage information across manufacturers...
+
 ```{r}
 mpg_modified %>%
-  group_by(manufacturer,cyl, fl) %>%
-  summarize(average_hwy = mean(hwy), count = n())
+  group_by(manufacturer,cyl) %>%
+  summarize(average_hwy = mean(hwy), avg_city= mean(cty), count = n())
 ```
+
+We can see from above table that regardless of manufacturer, both the City & Highway mileages decrease in cars as cylinders are increased. That makes sense. Also, the highway mileages suffer more than city mileages.
+
+On average, can we say that 6 cylinder Audis & Chevys are better than Dodges & Fords? Most likely. But we only have 3 Chevys. So we need more data do be sure.
 
 ```{r}
 mpg_modified %>% filter(manufacturer =='audi') %>% 
   group_by(manufacturer,class,year) %>% 
-  summarise(avg_high= mean(hwy), avg_city= mean(cty))
+  summarise(avg_high= mean(hwy), avg_city= mean(cty), count=n())
 
+
+#The filter command filters out all rows with manufacturers as audi (common sense)
+
+#When you use the group_by function, it makes groups of each each year for each class for each manufacturer.
+#E.g. Here it filtered out all the audis, then made a group for each class of an audi (compact & midsize) and then further made a separate row for each year for both the classes.
+
+# The summarize command takes 2 arguments (New_Column_Name ~ Function) 
+#Here it has made an average of highway & city mileages separately for: 
+#All compact Audis from 1999
+#All compact Audis from 2008
+#All midsize Audis from 1999
+#All midsize Audis from 2008
+
+#Remember that even if this table only shows 4 rows, that is because they were grouped by class & year. But there are still differences between cylinders, engine displacement, fuel type in the cars & actually there are a lot of Audi types.
 ```
 
-Analysing Math Data
+So the above table helps us understand about avg mileages in Audi car types;
+
+Both highway and city mileages have increased (or remained the same) for both car types from 1999 to 2008. I believe it is expected, as cars become more fuel efficient with technological improvements.
+
+But why has highway mileage in midsize Audis not increased? Let us try to investigate.
+
+Look at the count column. We only have data of 1 Audi Midsize from 1999 & 2 from 2008.
 
 ```{r}
 
-math_ax <- read_csv('../../datasets/MathAnxiety.csv')
-math_ax
-
+mpg_modified %>% filter(manufacturer =='audi', class=='midsize')
 ```
+
+The cars have from 1999, 2008, 2008 have highway mileages 24,23,25 respectively. So coincidentally, both years average out to 24.
+
+This is why it is better to have a large sample size so we can get more accurate results.
+
+====================================================================
+
+Analyzing Math Anxiety Data
 
 ```{r}
 
@@ -102,11 +140,10 @@ math_ax %>%
 
 ```
 
+Based on this, can we say that girls on average have a higher anxiety than boys their age? Probably. We also know that the math anxiety increases in secondary school as math concepts get tougher.
+
 ```{r}
-pivot_longer(cols = c(AMAS,RCMAS),
-             names_to = 'anx',
-             values_to = 'ANX')
+math_ax %>% filter( Gender=='Boy')
 ```
 
-```         
-```
+And the number of girls & boys in the dataset is close enough. (323 vs 276 ) So if it is the data of a school, it is not like the girls are in the minority and hence not given proper attention while teaching concepts. That is irrelevant.

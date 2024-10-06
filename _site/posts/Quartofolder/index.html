@@ -100,6 +100,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link href="../../site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="../../site_libs/tabwid-1.1.3/tabwid.js"></script>
+
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -705,8 +709,285 @@ $ time_in_seconds &lt;dbl&gt; 95725, 97229, 103747, 111217, 117981, 118000, 1206
 2      W 9191 96695.0 107062 131464.0 296806 117296.5 34604.26  18341       0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#drop_na basically removes any rows with NULL or missing data</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co">#The tilde~ separates column data from row data</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co">#The tilde~ in favstats separates column data from row data</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#In this example, it will make a separate row for each gender (Only 2 Rows ehehe) &amp; give favstats (mean,median) about Time variable for each gender</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crosstable)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(time_in_seconds <span class="sc">+</span> age <span class="sc">~</span> gender, <span class="at">data =</span> rank_df) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  crosstable<span class="sc">::</span><span class="fu">as_flextable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-44d3ff0e{table-layout:auto;}.cl-44cc8dc8{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-44cc8ddc{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-44cf5a58{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-44cf5a6c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-44cf707e{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(0, 0, 0, 1.00);border-top: 1.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44cf7088{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 1.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44cf7089{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44cf7092{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44cf7093{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44cf709c{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44cf709d{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44cf709e{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-44d3ff0e"><thead><tr style="overflow-wrap:break-word;"><th rowspan="2" class="cl-44cf707e"><p class="cl-44cf5a58"><span class="cl-44cc8dc8">label</span></p></th><th rowspan="2" class="cl-44cf707e"><p class="cl-44cf5a58"><span class="cl-44cc8dc8">variable</span></p></th><th colspan="3" class="cl-44cf7088"><p class="cl-44cf5a58"><span class="cl-44cc8dc8">gender</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-44cf7089"><p class="cl-44cf5a58"><span class="cl-44cc8dc8">M</span></p></th><th class="cl-44cf7089"><p class="cl-44cf5a58"><span class="cl-44cc8dc8">W</span></p></th><th class="cl-44cf7089"><p class="cl-44cf5a58"><span class="cl-44cc8dc8">NA</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td rowspan="4" class="cl-44cf7092"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">time_in_seconds</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">Min / Max</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">3600.0 / 2.9e+05</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">9191.0 / 3.0e+05</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">8131.0 / 2.2e+05</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">Med [IQR]</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">1.2e+05 [9.7e+04;1.5e+05]</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">1.1e+05 [9.7e+04;1.3e+05]</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">1.2e+05 [9.9e+04;1.5e+05]</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">Mean (std)</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">1.2e+05 (3.8e+04)</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">1.2e+05 (3.5e+04)</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">1.2e+05 (4.4e+04)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44cf7092"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">N (NA)</span></p></td><td class="cl-44cf7092"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">101643 (15073)</span></p></td><td class="cl-44cf7092"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">18341 (2716)</span></p></td><td class="cl-44cf7092"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">28 (2)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td rowspan="4" class="cl-44cf709c"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">age</span></p></td><td class="cl-44cf709d"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">Min / Max</span></p></td><td class="cl-44cf709d"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">0 / 133.0</span></p></td><td class="cl-44cf709d"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">0 / 81.0</span></p></td><td class="cl-44cf709d"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">29.0 / 59.0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">Med [IQR]</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">47.0 [40.0;53.0]</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">45.0 [39.0;52.0]</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">40.5 [36.0;50.5]</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">Mean (std)</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">46.4 (10.2)</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">45.3 (9.7)</span></p></td><td class="cl-44cf7093"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">41.7 (9.0)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44cf709e"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">N (NA)</span></p></td><td class="cl-44cf709e"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">116716 (0)</span></p></td><td class="cl-44cf709e"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">21057 (0)</span></p></td><td class="cl-44cf709e"><p class="cl-44cf5a6c"><span class="cl-44cc8ddc">30 (0)</span></p></td></tr></tbody></table></div>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#drop_na basically removes any rows with NULL or missing data</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co">#The tilde~ in favstats separates column data from row data</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#In this example, it will make a separate row for each gender (Only 2 Rows ehehe) &amp; give favstats (mean,median) about Time variable for each gender</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co">#So Crosstable is like Drop_na but you can have the stats as subrows under a variable row. I.E It compares subcategories of variables across stats (The variables on left side of tilde~ become rows &amp; the subgroups under the variable on right side of tilde~ become columns), i.e. (Here Time &amp; Age are variables on Y Axis &amp; Stats as subrows. It has Gender as a primary column &amp; M/F as subcolumns)</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co">#The Flex_table simply makes the table in a readable form</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crosstable)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crosstable</span>(time_in_seconds <span class="sc">+</span> age <span class="sc">~</span> gender, <span class="at">data =</span> rank_df) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 6
+  .id             label           variable   M                       W     `NA` 
+  &lt;chr&gt;           &lt;chr&gt;           &lt;chr&gt;      &lt;chr&gt;                   &lt;chr&gt; &lt;chr&gt;
+1 time_in_seconds time_in_seconds Min / Max  3600.0 / 2.9e+05        9191… 8131…
+2 time_in_seconds time_in_seconds Med [IQR]  1.2e+05 [9.7e+04;1.5e+… 1.1e… 1.2e…
+3 time_in_seconds time_in_seconds Mean (std) 1.2e+05 (3.8e+04)       1.2e… 1.2e…
+4 time_in_seconds time_in_seconds N (NA)     101643 (15073)          1834… 28 (…
+5 age             age             Min / Max  0 / 133.0               0 / … 29.0…
+6 age             age             Med [IQR]  47.0 [40.0;53.0]        45.0… 40.5…
+7 age             age             Mean (std) 46.4 (10.2)             45.3… 41.7…
+8 age             age             N (NA)     116716 (0)              2105… 30 (…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Without using the Flex_table command</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Which countries host the maximum number of races? </span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>race_df <span class="sc">%&gt;%</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 61 × 2
+   country            n
+   &lt;chr&gt;          &lt;int&gt;
+ 1 United States    438
+ 2 United Kingdom   110
+ 3 France            56
+ 4 Australia         46
+ 5 Sweden            46
+ 6 China             45
+ 7 Canada            32
+ 8 Spain             27
+ 9 Japan             24
+10 Poland            23
+# ℹ 51 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Which countries send the maximum number of participants??</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>rank_df <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nationality) <span class="sc">%&gt;%</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 133 × 2
+   nationality     n
+   &lt;chr&gt;       &lt;int&gt;
+ 1 USA         47259
+ 2 FRA         28905
+ 3 GBR         11076
+ 4 JPN          6729
+ 5 ESP          5478
+ 6 CHN          4744
+ 7 CAN          2822
+ 8 ITA          2794
+ 9 SWE          2293
+10 AUS          1683
+# ℹ 123 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Which countries have the maximum number of winners (top 3 ranks)?</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>rank_df <span class="sc">%&gt;%</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nationality) <span class="sc">%&gt;%</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 69 × 2
+   nationality     n
+   &lt;chr&gt;       &lt;int&gt;
+ 1 USA          1240
+ 2 GBR           347
+ 3 FRA           210
+ 4 AUS           140
+ 5 CAN           132
+ 6 CHN           128
+ 7 SWE           124
+ 8 ESP           113
+ 9 JPN            94
+10 ITA            79
+# ℹ 59 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Remember in c(i,j,k) , the 'c' combines the elements inside &amp; treats it as a list. So then it checks if the rank is included in the whole list using the %in% command.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Which countries have had the most top-3 finishes in the longest distance race?</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Here we see we have ranks in one dataset, and race details in another! How do we do this now? We have to JOIN the two data frames into one data frame, using a common variable that uniquely identifies observations in both datasets.</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>longest_races <span class="ot">&lt;-</span> race_df <span class="sc">%&gt;%</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">order_by =</span> distance) <span class="co"># Longest distance races</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>longest_races</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 13
+  race_year_id event     race  city  country date       start_time participation
+         &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;date&gt;     &lt;time&gt;     &lt;chr&gt;        
+1        68776 Ultra To… Ut4M… Gren… France  2021-07-16 18:00      Solo         
+2        55551 Ultra Tr… Inth… Chom… Thaila… 2020-02-14 10:00      solo         
+3         7484 Le TREG®… LE T… Fada  Chad    2015-02-06 00:00      solo         
+4         7594 THE GREA… 100 … Pato… Austra… 2014-09-13 00:00      Solo         
+5        71066 ULTRA 01  Ultr… Oyon… France  2021-07-09 18:00      solo         
+6        23565 EstrelAç… Estr… Penh… Portug… 2017-10-06 18:00      Solo         
+# ℹ 5 more variables: distance &lt;dbl&gt;, elevation_gain &lt;dbl&gt;,
+#   elevation_loss &lt;dbl&gt;, aid_stations &lt;dbl&gt;, participants &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>longest_races <span class="sc">%&gt;%</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(., rank_df, <span class="at">by =</span> <span class="st">"race_year_id"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># total participants in longest 4 races</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#The . on left side of ~ basically considers the 'aforementioned' dataset, which in this case is race_df. Since we already told it to consider race_df in longest_races, we don't have to specify the name race_df again.</span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">%&gt;%</span> <span class="co"># Top 10 ranks</span></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nationality) <span class="sc">%&gt;%</span></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 2
+  nationality     n
+  &lt;chr&gt;       &lt;int&gt;
+1 FRA            26
+2 AUS             9
+3 POR             8
+4 THA             8
+5 BEL             1
+6 BRA             1
+7 ESP             1
+8 MAS             1
+9 RUS             1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Join function connects both datasets, similar to SQL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Familiar Histogram</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Bins is number of classes</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>rank_df <span class="sc">%&gt;%</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>time_in_seconds, <span class="at">bins =</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Race Times"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 17791 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Time 1e+05 seconds basically means </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co">#What is the distribution of race distances?</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>race_df <span class="sc">%&gt;%</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>distance, <span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Race Distances"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The races with 0 distance were probably cancelled</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co">#For all races that have a distance around 150, what is the distribution of finishing times? Can these be split/facetted using start_time of the race (i.e. morning / evening) ?</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>race_times <span class="ot">&lt;-</span> race_df <span class="sc">%&gt;%</span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(start_time) <span class="sc">%&gt;%</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>race_times</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 39 × 2
+   start_time     n
+   &lt;time&gt;     &lt;int&gt;
+ 1 00:00        513
+ 2 06:00        114
+ 3 08:00         63
+ 4 10:00         60
+ 5 07:00         58
+ 6 18:00         50
+ 7 05:00         48
+ 8 12:00         38
+ 9 04:00         30
+10 09:00         27
+# ℹ 29 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Let’s convert start_time into a factor with levels: early_morning(0200:0600), late_morning(0600:1000), midday(1000:1400), afternoon(1400: 1800), evening(1800:2200), and night(2200:0200)</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>race_start_factor <span class="ot">&lt;-</span> race_df <span class="sc">%&gt;%</span></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(distance <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># Races that actually took place</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_day_time =</span></span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>        start_time <span class="sc">&gt;</span> <span class="fu">hms</span>(<span class="st">"02:00:00"</span>) <span class="sc">&amp;</span></span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>          start_time <span class="sc">&lt;=</span> <span class="fu">hms</span>(<span class="st">"06:00:00"</span>) <span class="sc">~</span> <span class="st">"early_morning"</span>,</span>
+<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>        start_time <span class="sc">&gt;</span> <span class="fu">hms</span>(<span class="st">"06:00:01"</span>) <span class="sc">&amp;</span></span>
+<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>          start_time <span class="sc">&lt;=</span> <span class="fu">hms</span>(<span class="st">"10:00:00"</span>) <span class="sc">~</span> <span class="st">"late_morning"</span>,</span>
+<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a>        start_time <span class="sc">&gt;</span> <span class="fu">hms</span>(<span class="st">"10:00:01"</span>) <span class="sc">&amp;</span></span>
+<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a>          start_time <span class="sc">&lt;=</span> <span class="fu">hms</span>(<span class="st">"14:00:00"</span>) <span class="sc">~</span> <span class="st">"mid_day"</span>,</span>
+<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a>        start_time <span class="sc">&gt;</span> <span class="fu">hms</span>(<span class="st">"14:00:01"</span>) <span class="sc">&amp;</span></span>
+<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a>          start_time <span class="sc">&lt;=</span> <span class="fu">hms</span>(<span class="st">"18:00:00"</span>) <span class="sc">~</span> <span class="st">"afternoon"</span>,</span>
+<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>        start_time <span class="sc">&gt;</span> <span class="fu">hms</span>(<span class="st">"18:00:01"</span>) <span class="sc">&amp;</span></span>
+<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a>          start_time <span class="sc">&lt;=</span> <span class="fu">hms</span>(<span class="st">"22:00:00"</span>) <span class="sc">~</span> <span class="st">"evening"</span>,</span>
+<span id="cb75-20"><a href="#cb75-20" aria-hidden="true" tabindex="-1"></a>        start_time <span class="sc">&gt;</span> <span class="fu">hms</span>(<span class="st">"22:00:01"</span>) <span class="sc">&amp;</span></span>
+<span id="cb75-21"><a href="#cb75-21" aria-hidden="true" tabindex="-1"></a>          start_time <span class="sc">&lt;=</span> <span class="fu">hms</span>(<span class="st">"23:59:59"</span>) <span class="sc">~</span> <span class="st">"night"</span>,</span>
+<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a>        start_time <span class="sc">&gt;=</span> <span class="fu">hms</span>(<span class="st">"00:00:00"</span>) <span class="sc">&amp;</span></span>
+<span id="cb75-23"><a href="#cb75-23" aria-hidden="true" tabindex="-1"></a>          start_time <span class="sc">&lt;=</span> <span class="fu">hms</span>(<span class="st">"02:00:00"</span>) <span class="sc">~</span> <span class="st">"postmidnight"</span>,</span>
+<span id="cb75-24"><a href="#cb75-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">.default =</span> <span class="st">"other"</span></span>
+<span id="cb75-25"><a href="#cb75-25" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb75-26"><a href="#cb75-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb75-27"><a href="#cb75-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb75-28"><a href="#cb75-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_day_time =</span></span>
+<span id="cb75-29"><a href="#cb75-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as_factor</span>(start_day_time) <span class="sc">%&gt;%</span></span>
+<span id="cb75-30"><a href="#cb75-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fct_collapse</span>(</span>
+<span id="cb75-31"><a href="#cb75-31" aria-hidden="true" tabindex="-1"></a>          <span class="at">.f =</span> .,</span>
+<span id="cb75-32"><a href="#cb75-32" aria-hidden="true" tabindex="-1"></a>          <span class="at">night =</span> <span class="fu">c</span>(<span class="st">"night"</span>, <span class="st">"postmidnight"</span>)</span>
+<span id="cb75-33"><a href="#cb75-33" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb75-34"><a href="#cb75-34" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `start_day_time = `%&gt;%`(...)`.
+Caused by warning:
+! Unknown levels in `f`: night</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with rank_df</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>race_start_factor <span class="sc">%&gt;%</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(rank_df, <span class="at">by =</span> <span class="st">"race_year_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(time_in_seconds) <span class="sc">%&gt;%</span></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(</span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>time_in_seconds,</span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">75</span>,</span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="sc">~</span>start_day_time,</span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="sc">~</span>start_day_time,</span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span></span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_facet_wrap</span>(<span class="fu">vars</span>(start_day_time), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Race Times by Start-Time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We see that finish times tend to be longer for afternoon and evening start races; these are lower for early morning and night time starts. Mid-day starts show a curious double hump in finish times that should be studied.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
