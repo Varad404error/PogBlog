@@ -83,7 +83,7 @@ compact_score <- score[, c("Academic.Subjects.Arts.Music.Average.GPA", "Academic
 colnames(compact_score) <- c("Music", "English","Foreign Languages","Mathematics","NaturalSciences","SocialSciences")
 
 
-compact_score
+head(compact_score)
 
 
 ```
@@ -110,41 +110,41 @@ compact_score
 
 #Again, extracting columns for info about Math scores & Family Incomes
 
-incomemath <- score[,c('State.Code','Family.Income.Less.than.20k.Math','Family.Income.Between.20.40k.Math','Family.Income.Between.40.60k.Math','Family.Income.Between.60.80k.Math','Family.Income.Between.80.100k.Math','Family.Income.More.than.100k.Math'	)]
+#incomemath <- score[,c('State.Code','Family.Income.Less.than.20k.Math','Family.Income.Between.20.40k.Math','Family.Income.Between.40.60k.Math','Family.Income.Between.60.80k.Math','Family.Income.Between.80.100k.Math','Family.Income.More.than.100k.Math'	)]
 
 
-colnames(incomemath) <- c("Alabama","<20k","20-40k", "40-60k","60-80k","80-100k",">100k")
+#colnames(incomemath) <- c("Alabama","<20k","20-40k", "40-60k","60-80k","80-100k",">100k")
 
 
-incomemath %>%  filter(State.Code=='AL')
+#incomemath %>%  filter(State.Code=='AL')
 ```
 
 #### Attempt 2
 
 ```{r}
-library(dplyr)
+#library(dplyr)
 
 # Assuming 'State.Code' is part of the 'score' dataframe
 # Extract the math columns based on family income
-incomemath <- score[, c('Family.Income.Less.than.20k.Math',
-                        'Family.Income.Between.20.40k.Math',
-                        'Family.Income.Between.40.60k.Math',
-                        'Family.Income.Between.60.80k.Math',
-                        'Family.Income.Between.80.100k.Math',
-                        'Family.Income.More.than.100k.Math')]
+#incomemath <- score[, c('Family.Income.Less.than.20k.Math',
+                      #  'Family.Income.Between.20.40k.Math',
+                       # 'Family.Income.Between.40.60k.Math',
+                       # 'Family.Income.Between.60.80k.Math',
+                      #  'Family.Income.Between.80.100k.Math',
+                      #  'Family.Income.More.than.100k.Math')]
 
 # Rename the columns for compactness
-colnames(incomemath) <- c("<20k", "20-40k", "40-60k", "60-80k", "80-100k", ">100k")
+#colnames(incomemath) <- c("<20k", "20-40k", "40-60k", "60-80k", "80-100k", ">100k")
 
 # Combine 'incomemath' with 'State.Code' for filtering purposes
 # We assume that 'State.Code' exists in 'score'
-incomemath <- cbind(State.Code = score$State.Code, incomemath)
+#incomemath <- cbind(State.Code = score$State.Code, incomemath)
 
 # Filter the row where 'State.Code' is 'AL'
-result <- incomemath %>% filter(State.Code == 'AL')
+#result <- incomemath %>% filter(State.Code == 'AL')
 
 # Display the result as a table
-print(result)
+#print(result)
 
 ```
 
@@ -174,7 +174,7 @@ long_format <- incomemath %>%
                values_to = "Math_Scores")  # Store the values in a new column 'Math.Score'
 
 # Display the result
-print(long_format)
+head(long_format)
 
 ```
 
