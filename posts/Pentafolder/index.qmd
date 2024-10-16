@@ -1,0 +1,244 @@
+---
+title: "School Scores"
+---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(ggformula)
+library(GGally)
+library(ggplot2)
+```
+
+## Importing Data
+
+```{r}
+
+
+score<- read.csv(file = '../../datasets/school-scores-data.csv')
+
+(score)
+```
+
+```{r}
+inspect(score)
+glimpse(score)
+skim(score)
+```
+
+## Data Dictionary
+
+## -----------------------------------------------------------------
+
+### Qualitative Variables:
+
+#### State.Name (For IDENTIFYING the State of student)
+
+#### State.Code (For IDENTIFYING the State by initials)
+
+## -------
+
+### Quantitative Variables: 
+
+### Literally all other rows
+
+## -----------------------------------------------------------------
+
+## Observations
+
+### It has a LOT of variables. Mostly quantitative variables that are scores of (along with number of) candidates in various tests & subjects. 
+
+## ------------------------------------
+
+## Research & Hypothesis
+
+### Target Variables could be Total.Math, Total.Verbal because they give a summary of marks of students in that field. 
+
+### Predictor Variables could be the Family.Income.More.Than.000 as they may influence test scores. Also variables such as Academic.Subjects.Average.GPA could be the predictors. (All subjects)
+
+### They must have surveyed schools of every state to dig for student grades & their family background.
+
+## ------------------------------------
+
+# Table 1
+
+## Code
+
+```{r}
+
+#| label: data-preprocessing
+
+#CODE:
+
+#FOR GETTING THE TABLE WITH SCORES BY SUBJECT
+
+
+# Extracting the two columns
+
+compact_score <- score[, c("Academic.Subjects.Arts.Music.Average.GPA", "Academic.Subjects.English.Average.GPA","Academic.Subjects.Foreign.Languages.Average.GPA","Academic.Subjects.Mathematics.Average.GPA","Academic.Subjects.Natural.Sciences.Average.GPA","Academic.Subjects.Social.Sciences.History.Average.GPA")]
+
+# Renaming the columns because the names are annoyingly big
+
+colnames(compact_score) <- c("Music", "English","Foreign Languages","Mathematics","NaturalSciences","SocialSciences")
+
+
+compact_score
+
+
+```
+
+## ----------------------------------------------------------------------------
+
+# Chart 1
+
+### It is like an Uncertainty Line Graph
+
+## Questions:
+
+### What is the correlation between students' GPA in a subject & the number of years for that subject?
+
+## --------------------------------------------------------------------
+
+# Table 2
+
+## Code
+
+#### Attempt 1
+
+```{r}
+
+#Again, extracting columns for info about Math scores & Family Incomes
+
+incomemath <- score[,c('State.Code','Family.Income.Less.than.20k.Math','Family.Income.Between.20.40k.Math','Family.Income.Between.40.60k.Math','Family.Income.Between.60.80k.Math','Family.Income.Between.80.100k.Math','Family.Income.More.than.100k.Math'	)]
+
+
+colnames(incomemath) <- c("Alabama","<20k","20-40k", "40-60k","60-80k","80-100k",">100k")
+
+
+incomemath %>%  filter(State.Code=='AL')
+```
+
+#### Attempt 2
+
+```{r}
+library(dplyr)
+
+# Assuming 'State.Code' is part of the 'score' dataframe
+# Extract the math columns based on family income
+incomemath <- score[, c('Family.Income.Less.than.20k.Math',
+                        'Family.Income.Between.20.40k.Math',
+                        'Family.Income.Between.40.60k.Math',
+                        'Family.Income.Between.60.80k.Math',
+                        'Family.Income.Between.80.100k.Math',
+                        'Family.Income.More.than.100k.Math')]
+
+# Rename the columns for compactness
+colnames(incomemath) <- c("<20k", "20-40k", "40-60k", "60-80k", "80-100k", ">100k")
+
+# Combine 'incomemath' with 'State.Code' for filtering purposes
+# We assume that 'State.Code' exists in 'score'
+incomemath <- cbind(State.Code = score$State.Code, incomemath)
+
+# Filter the row where 'State.Code' is 'AL'
+result <- incomemath %>% filter(State.Code == 'AL')
+
+# Display the result as a table
+print(result)
+
+```
+
+#### Attempt 3
+
+```{r}
+library(dplyr)
+library(tidyr)
+
+# Extract math columns 
+incomemath <- score[c('Family.Income.Less.than.20k.Math',
+                        'Family.Income.Between.20.40k.Math',
+                        'Family.Income.Between.40.60k.Math',
+                        'Family.Income.Between.60.80k.Math',
+                        'Family.Income.Between.80.100k.Math',
+                        'Family.Income.More.than.100k.Math')]
+
+# Rename the columns for compactness
+colnames(incomemath) <- c("<20k", "20-40k", "40-60k", "60-80k", "80-100k", ">100k")
+
+
+
+# Pivot to long format
+long_format <- incomemath %>%
+  pivot_longer(cols = everything(),      # Pivot all remaining columns
+               names_to = "Income_Class", # Create a new column 'Income.Range' for the previous column names
+               values_to = "Math_Scores")  # Store the values in a new column 'Math.Score'
+
+# Display the result
+print(long_format)
+
+```
+
+# Chart 2
+
+### It is a Box-Plot
+
+## ---------------------------
+
+## Questions
+
+### How is the distribution of students' marks in maths exam across all income levels? 
+
+### Does the family income predict a student's success rate in mathematics? Or are the differences in their scores insignificant?
+
+### Which income classes generally have highest and lowest math scores?
+
+## ---------------------------------------
+
+## Code
+
+```{r}
+
+ long_format %>% 
+    gf_boxplot( reorder(Income_Class,Math_Scores) ~ Math_Scores ,
+    fill = ~Income_Class,
+    alpha = 0.5
+  ) %>%
+
+  gf_labs(
+    title = "Math Scores vs Family Income",
+   
+  ) %>% 
+ 
+  gf_labs(
+    y = "Income Classes",
+    x = "Scores in Math"
+  )
+```
+
+### Here we have grouped number of students into boxes with income classes on Y Axis .
+
+### (Also segregated by color.) And their Math Scores are on X Axis. (Collected across all states)
+
+## ---------------------------
+
+## Insights
+
+### There are trends in math scores according to the income. Almost everywhere, the math scores are directly proportional to the family income. 
+
+### Most of the students with 100k+ dollars at home have gotten \>500 Marks.
+
+### More people from the 80-100k class have gotten the highest marks. (Except for the nerd in 20-40k range)
+
+### Also, the scores become more clumped together & symmetrical as the income increases (boxes become thinner, along with the lines & median is in the centre)
+
+### All groups of income have outliers, however the \<20k income group has the outliers clumped into one spot, while \>100k group has scattered outliers.
+
+## ---------------------------
+
+## Inference
+
+### I had half-expected the income to directly influence the math scores, but not this visibly. Because not all rich kids are interested in studying.  I believe that it would be more intuitive if this graph was for college/grad students, as rich students (who like math) may have access to top colleges & hence resources to excel there. While a lot of poor students who like math may not have been able to afford college tuition. (Unless Scholarship) But that is also why the lower income categories have a wider distribution, so that only the very interested ones get good marks.
+
+### Basically, the poorer you are, the more dedicated to math you have to be-compared to your classmates- in order to reach the top. \[The average student in the poor class gets poor marks.\] 
+
+## \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_

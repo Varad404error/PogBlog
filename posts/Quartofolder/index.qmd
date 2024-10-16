@@ -112,8 +112,9 @@ diamonds %>%
 ```{r}
 diamonds %>%
   gf_histogram(~price, fill = ~cut, color = "black", alpha = 0.3) %>%
-  gf_facet_wrap(~cut) %>%
+  gf_facet_wrap(~cut) %>% 
   ## The wrap function just takes each category within the same variable (Categories like 'Fair','Good' from the Variable 'Cut') and makes a separate graph for each category. (Similar to the 'variable | variable' function, except that one uses multiple variables and this uses only one)
+  ##Alpha is the opacity
   
   gf_labs(
     title = "Plot 3C: Prices by Filled and Facetted by Cut",
