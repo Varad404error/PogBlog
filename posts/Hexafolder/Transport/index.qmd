@@ -1,0 +1,165 @@
+---
+title: "Grain"
+author: 'Varad'
+---
+
+# Grain Transportation Cartels
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(ggformula)
+```
+
+```{r}
+cartelstability <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/AER/CartelStability.csv")
+cartelstability
+```
+
+```{r}
+glimpse(cartelstability)
+```
+
+## Data Dictionary
+
+## -----------------------------------------------------------------
+
+### Qualitative Variables:
+
+### rownames (It is just a serial number)
+
+### cartel (Transported by cartel or not)
+
+### season (Date & Month Range)
+
+### ice (Lakes frozen or not)
+
+## -------------------------
+
+### Quantitative Variables:
+
+### price
+
+### quantity
+
+## ----------------------------------------------------------------
+
+##  Observations
+
+### This table shows prices & amount of grain transported by cartels based on the season & condition of lakes.
+
+## ------------------------------------
+
+## Research & Hypothesis
+
+### Target Variable could be 'price', because it is important to understand the demand & profitability of business.
+
+### Predictor Variable would be 'Ice', because the condition of lakes influenced the supply chain of business & hence affected prices.
+
+## ------------------------------------
+
+## Code
+
+```{r}
+#Dataset Processing
+
+cartelmod <- cartelstability %>% 
+  mutate(
+    season= as.ordered(season),
+    
+    
+    
+    cartel= factor(cartel,
+    levels= c("yes","no"),
+    labels= c("Cartel Operational","Cartel Inoperational"),
+
+    ),
+    
+    
+    ice= factor(ice,
+    levels= c("yes","no"),
+    labels= c("Frozen Lakes","Fluid Lakes"),
+
+    ),
+    
+    
+  )
+
+glimpse(cartelmod)
+
+```
+
+```{r}
+cartelmod 
+```
+
+```{r}
+cartel2 <- cartelmod %>% 
+  group_by(season,cartel,ice) %>% 
+  summarise(avg_price= mean(price), avg_haul= mean(quantity)) 
+cartel2
+```
+
+### Data has been processed. Now to plot it...
+
+#### Attempt 1
+
+```{r}
+cartel2 %>% 
+gf_line(avg_price ~ season | ice ,color = ~cartel)
+
+
+ggplot(cartel2, aes(y = avg_price, x = `season`)) +
+  geom_line(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  # Rotate x-axis labels if needed
+  labs(x = "Price", y = "Season", title = "Price Index by Weight")
+```
+
+#### That... is not what I wanted. I think I should create a scatterplot first.
+
+#### Attempt 2
+
+```{r}
+
+cartel2 %>%
+  gf_point(  avg_price ~ season | ice, color = ~cartel ) %>%
+  
+  gf_line(avg_price ~ season, group = ~cartel) %>%  
+
+  gf_lm() %>%
+  
+  gf_refine(theme(axis.text.x = element_text(angle = 45, hjust = 1))) %>% 
+  
+  gf_labs(
+    title = "Price Index by Ton",
+    subtitle = "Railway Firms"
+  )
+
+```
+
+#### Finally! We can now see the flows distinctly. But for some reason I am not able to arrange the Dates in order....
+
+## --------------------------------------------------
+
+## Observations
+
+### The given chart is a Scatterplot with Lines connecting the dots. 
+
+### It has Prices on Y axis, Season on X axis, graphs are separate for each Lake Condition & separate colors for Cartel Operation.
+
+### The data had to be processed- converting variable types of Cartel & Ice to Characters, & Ordering the Season variable.
+
+## ---------------------------------------------------
+
+## Inference
+
+### The graph shows how functionality of cartel affects price, in case of lakes being frozen or not, in all seasons.
+
+### We see that prices on average are higher when the cartel is operational than when it is not. Also the prices are slightly higher when the lakes are frozen, because the transportation becomes a headache.
+
+### Also, if lakes are frozen, the prices for inoperational cartel also shoot up for a brief amount of time in late winter/early summer. 
+
+### Based on the graphs, I would say that the cartel was not beneficial for the JEC customers, as it increased the prices of grain, regardless of the condition of lakes. They were better off when cartel was inoperational.
+
+## ========================================

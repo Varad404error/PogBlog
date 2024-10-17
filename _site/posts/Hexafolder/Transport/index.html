@@ -8,7 +8,7 @@
 
 <meta name="author" content="Varad">
 
-<title>PogBlog - Movie</title>
+<title>PogBlog - Grain</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Movie</h1>
+<h1 class="title">Grain</h1>
 </div>
 
 
@@ -177,10 +177,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="movie-success" class="level1">
-<h1>Movie Success</h1>
-<section id="setup" class="level4">
-<h4 class="anchored" data-anchor-id="setup">Setup</h4>
+<section id="grain-transportation-cartels" class="level1">
+<h1>Grain Transportation Cartels</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -240,308 +238,51 @@ The following object is masked from 'package:mosaic':
 
     n_missing</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>film <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="st">'../../../datasets/movie_profit.csv'</span>, <span class="at">delim =</span> <span class="st">';'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cartelstability <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/AER/CartelStability.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 3310 Columns: 10
+<pre><code>Rows: 328 Columns: 6
 ── Column specification ────────────────────────────────────────────────────────
-Delimiter: ";"
-chr  (4): movie, distributor, mpaa_rating, genre
-dbl  (4): production_budget, domestic_gross, worldwide_gross, decade
-num  (1): profit_ratio
-date (1): release_date
+Delimiter: ","
+chr (3): cartel, season, ice
+dbl (3): rownames, price, quantity
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(film)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cartelstability</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3,310 × 10
-   release_date movie           production_budget domestic_gross worldwide_gross
-   &lt;date&gt;       &lt;chr&gt;                       &lt;dbl&gt;          &lt;dbl&gt;           &lt;dbl&gt;
- 1 2005-07-22   November                   250000         191862          191862
- 2 1998-08-28   I Married a St…            250000         203134          203134
- 3 1997-03-28   Love and Other…            250000         212285          743216
- 4 2000-07-14   Chuck&amp;Buck                 250000        1055671         1157672
- 5 2011-10-28   Like Crazy                 250000        3395391         3728400
- 6 2003-04-11   Better Luck To…            250000        3802390         3809226
- 7 2017-04-28   Sleight                    250000        3930990         3934450
- 8 2002-06-28   Lovely and Ama…            250000        4210379         4613482
- 9 2012-08-17   Compliance                 270000         319285          830700
-10 2005-05-06   Fighting Tommy…            300000          10514           10514
-# ℹ 3,300 more rows
-# ℹ 5 more variables: distributor &lt;chr&gt;, mpaa_rating &lt;chr&gt;, genre &lt;chr&gt;,
-#   profit_ratio &lt;dbl&gt;, decade &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 328 × 6
+   rownames price cartel quantity season          ice  
+      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;
+ 1        1  0.4  yes       13632 Jan  1 - Jan 28 yes  
+ 2        2  0.4  yes       20035 Jan  1 - Jan 28 yes  
+ 3        3  0.4  yes       16319 Jan  1 - Jan 28 yes  
+ 4        4  0.4  yes       12603 Jan  1 - Jan 28 yes  
+ 5        5  0.4  yes       23079 Jan 29 - Feb 25 yes  
+ 6        6  0.4  yes       19652 Jan 29 - Feb 25 yes  
+ 7        7  0.4  yes       16211 Jan 29 - Feb 25 yes  
+ 8        8  0.4  yes       22914 Jan 29 - Feb 25 yes  
+ 9        9  0.4  yes       23710 Feb 26 - Mar 26 yes  
+10       10  0.35 yes       23036 Feb 26 - Mar 26 yes  
+# ℹ 318 more rows</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(film)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Data summary</caption>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Name</td>
-<td style="text-align: left;">film</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Number of rows</td>
-<td style="text-align: left;">3310</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Number of columns</td>
-<td style="text-align: left;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">_______________________</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Column type frequency:</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Date</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">________________________</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Group variables</td>
-<td style="text-align: left;">None</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: character</strong></p>
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 13%">
-<col style="width: 19%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 8%">
-<col style="width: 12%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: right;">min</th>
-<th style="text-align: right;">max</th>
-<th style="text-align: right;">empty</th>
-<th style="text-align: right;">n_unique</th>
-<th style="text-align: right;">whitespace</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">movie</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3310</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">distributor</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">0.99</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">mpaa_rating</td>
-<td style="text-align: right;">130</td>
-<td style="text-align: right;">0.96</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">genre</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">0</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: Date</strong></p>
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 12%">
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: left;">min</th>
-<th style="text-align: left;">max</th>
-<th style="text-align: left;">median</th>
-<th style="text-align: right;">n_unique</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">release_date</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">1936-02-05</td>
-<td style="text-align: left;">2017-12-22</td>
-<td style="text-align: left;">2005-06-30</td>
-<td style="text-align: right;">1723</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: numeric</strong></p>
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 7%">
-<col style="width: 10%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 6%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 4%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
-<th style="text-align: right;">p0</th>
-<th style="text-align: right;">p25</th>
-<th style="text-align: right;">p50</th>
-<th style="text-align: right;">p75</th>
-<th style="text-align: right;">p100</th>
-<th style="text-align: left;">hist</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">production_budget</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3.326794e+07</td>
-<td style="text-align: right;">3.460741e+07</td>
-<td style="text-align: right;">2.50e+05</td>
-<td style="text-align: right;">9.500000e+06</td>
-<td style="text-align: right;">2.000000e+07</td>
-<td style="text-align: right;">4.500000e+07</td>
-<td style="text-align: right;">1.750000e+08</td>
-<td style="text-align: left;">▇▂▁▁▁</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">domestic_gross</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4.551509e+07</td>
-<td style="text-align: right;">5.852794e+07</td>
-<td style="text-align: right;">0.00e+00</td>
-<td style="text-align: right;">6.530094e+06</td>
-<td style="text-align: right;">2.558731e+07</td>
-<td style="text-align: right;">6.046695e+07</td>
-<td style="text-align: right;">4.745447e+08</td>
-<td style="text-align: left;">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">worldwide_gross</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">9.384123e+07</td>
-<td style="text-align: right;">1.389514e+08</td>
-<td style="text-align: right;">4.23e+02</td>
-<td style="text-align: right;">1.086144e+07</td>
-<td style="text-align: right;">4.040903e+07</td>
-<td style="text-align: right;">1.184703e+08</td>
-<td style="text-align: right;">1.162782e+09</td>
-<td style="text-align: left;">▇▁▁▁▁</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">profit_ratio</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4.319388e+14</td>
-<td style="text-align: right;">1.501736e+15</td>
-<td style="text-align: right;">1.38e+10</td>
-<td style="text-align: right;">7.861269e+13</td>
-<td style="text-align: right;">1.962499e+14</td>
-<td style="text-align: right;">3.942158e+14</td>
-<td style="text-align: right;">4.315179e+16</td>
-<td style="text-align: left;">▇▁▁▁▁</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">decade</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1.998790e+03</td>
-<td style="text-align: right;">1.061000e+01</td>
-<td style="text-align: right;">1.93e+03</td>
-<td style="text-align: right;">1.990000e+03</td>
-<td style="text-align: right;">2.000000e+03</td>
-<td style="text-align: right;">2.010000e+03</td>
-<td style="text-align: right;">2.010000e+03</td>
-<td style="text-align: left;">▁▁▁▃▇</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span> (film)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cartelstability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 3,310
-Columns: 10
-$ release_date      &lt;date&gt; 2005-07-22, 1998-08-28, 1997-03-28, 2000-07-14, 201…
-$ movie             &lt;chr&gt; "November", "I Married a Strange Person", "Love and …
-$ production_budget &lt;dbl&gt; 250000, 250000, 250000, 250000, 250000, 250000, 2500…
-$ domestic_gross    &lt;dbl&gt; 191862, 203134, 212285, 1055671, 3395391, 3802390, 3…
-$ worldwide_gross   &lt;dbl&gt; 191862, 203134, 743216, 1157672, 3728400, 3809226, 3…
-$ distributor       &lt;chr&gt; "Other", "Other", "Other", "Other", "Paramount&nbsp;Pictu…
-$ mpaa_rating       &lt;chr&gt; "R", NA, "R", "R", "PG-13", "R", "R", "R", "R", "R",…
-$ genre             &lt;chr&gt; "Drama", "Comedy", "Comedy", "Drama", "Drama", "Dram…
-$ profit_ratio      &lt;dbl&gt; 7.674480e+13, 8.125360e+13, 2.972864e+14, 4.630688e+…
-$ decade            &lt;dbl&gt; 2000, 1990, 1990, 2000, 2010, 2000, 2010, 2000, 2010…</code></pre>
+<pre><code>Rows: 328
+Columns: 6
+$ rownames &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
+$ price    &lt;dbl&gt; 0.40, 0.40, 0.40, 0.40, 0.40, 0.40, 0.40, 0.40, 0.40, 0.35, 0…
+$ cartel   &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"…
+$ quantity &lt;dbl&gt; 13632, 20035, 16319, 12603, 23079, 19652, 16211, 22914, 23710…
+$ season   &lt;chr&gt; "Jan  1 - Jan 28", "Jan  1 - Jan 28", "Jan  1 - Jan 28", "Jan…
+$ ice      &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"…</code></pre>
 </div>
 </div>
-</section>
 <section id="data-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h2>
 </section>
@@ -550,17 +291,17 @@ $ decade            &lt;dbl&gt; 2000, 1990, 1990, 2000, 2010, 2000, 2010, 2000, 
 <section id="qualitative-variables" class="level3">
 <h3 class="anchored" data-anchor-id="qualitative-variables">Qualitative Variables:</h3>
 </section>
-<section id="movie-it-is-a-name" class="level3">
-<h3 class="anchored" data-anchor-id="movie-it-is-a-name">movie (It is a name)</h3>
+<section id="rownames-it-is-just-a-serial-number" class="level3">
+<h3 class="anchored" data-anchor-id="rownames-it-is-just-a-serial-number">rownames (It is just a serial number)</h3>
 </section>
-<section id="distributor-it-is-a-name" class="level3">
-<h3 class="anchored" data-anchor-id="distributor-it-is-a-name">distributor (It is a name)</h3>
+<section id="cartel-transported-by-cartel-or-not" class="level3">
+<h3 class="anchored" data-anchor-id="cartel-transported-by-cartel-or-not">cartel (Transported by cartel or not)</h3>
 </section>
-<section id="mpaa_rating-it-is-a-letter-which-is-not-calculated" class="level3">
-<h3 class="anchored" data-anchor-id="mpaa_rating-it-is-a-letter-which-is-not-calculated">mpaa_rating (It is a letter which is not calculated)</h3>
+<section id="season-date-month-range" class="level3">
+<h3 class="anchored" data-anchor-id="season-date-month-range">season (Date &amp; Month Range)</h3>
 </section>
-<section id="genre-again-a-type-of-nominal-variable" class="level3">
-<h3 class="anchored" data-anchor-id="genre-again-a-type-of-nominal-variable">genre (Again, a type of nominal variable)</h3>
+<section id="ice-lakes-frozen-or-not" class="level3">
+<h3 class="anchored" data-anchor-id="ice-lakes-frozen-or-not">ice (Lakes frozen or not)</h3>
 </section>
 </section>
 <section id="section-1" class="level2">
@@ -568,23 +309,11 @@ $ decade            &lt;dbl&gt; 2000, 1990, 1990, 2000, 2010, 2000, 2010, 2000, 
 <section id="quantitative-variables" class="level3">
 <h3 class="anchored" data-anchor-id="quantitative-variables">Quantitative Variables:</h3>
 </section>
-<section id="release_date" class="level3">
-<h3 class="anchored" data-anchor-id="release_date">release_date</h3>
+<section id="price" class="level3">
+<h3 class="anchored" data-anchor-id="price">price</h3>
 </section>
-<section id="production_budget" class="level3">
-<h3 class="anchored" data-anchor-id="production_budget">production_budget</h3>
-</section>
-<section id="domestic_gross" class="level3">
-<h3 class="anchored" data-anchor-id="domestic_gross">domestic_gross</h3>
-</section>
-<section id="worldwide_gross" class="level3">
-<h3 class="anchored" data-anchor-id="worldwide_gross">worldwide_gross</h3>
-</section>
-<section id="profit_ratio" class="level3">
-<h3 class="anchored" data-anchor-id="profit_ratio">profit_ratio</h3>
-</section>
-<section id="decade" class="level3">
-<h3 class="anchored" data-anchor-id="decade">decade</h3>
+<section id="quantity" class="level3">
+<h3 class="anchored" data-anchor-id="quantity">quantity</h3>
 </section>
 </section>
 <section id="section-2" class="level2">
@@ -592,8 +321,8 @@ $ decade            &lt;dbl&gt; 2000, 1990, 1990, 2000, 2010, 2000, 2010, 2000, 
 </section>
 <section id="observations" class="level2">
 <h2 class="anchored" data-anchor-id="observations">Observations</h2>
-<section id="this-table-shows-movie-titles-sorted-by-their-genre-and-budget-as-well-as-the-gross." class="level3">
-<h3 class="anchored" data-anchor-id="this-table-shows-movie-titles-sorted-by-their-genre-and-budget-as-well-as-the-gross.">This table shows movie titles sorted by their genre and budget, as well as the gross.</h3>
+<section id="this-table-shows-prices-amount-of-grain-transported-by-cartels-based-on-the-season-condition-of-lakes." class="level3">
+<h3 class="anchored" data-anchor-id="this-table-shows-prices-amount-of-grain-transported-by-cartels-based-on-the-season-condition-of-lakes.">This table shows prices &amp; amount of grain transported by cartels based on the season &amp; condition of lakes.</h3>
 </section>
 </section>
 <section id="section-3" class="level2">
@@ -601,14 +330,11 @@ $ decade            &lt;dbl&gt; 2000, 1990, 1990, 2000, 2010, 2000, 2010, 2000, 
 </section>
 <section id="research-hypothesis" class="level2">
 <h2 class="anchored" data-anchor-id="research-hypothesis">Research &amp; Hypothesis</h2>
-<section id="target-variable-could-be-worldwide_gross-because-it-usually-reflects-the-success-of-a-movie.-even-profit_ratio-can-work." class="level3">
-<h3 class="anchored" data-anchor-id="target-variable-could-be-worldwide_gross-because-it-usually-reflects-the-success-of-a-movie.-even-profit_ratio-can-work.">Target Variable could be ‘worldwide_gross’, because it (usually) reflects the success of a movie. Even ‘profit_ratio’ can work.</h3>
+<section id="target-variable-could-be-price-because-it-is-important-to-understand-the-demand-profitability-of-business." class="level3">
+<h3 class="anchored" data-anchor-id="target-variable-could-be-price-because-it-is-important-to-understand-the-demand-profitability-of-business.">Target Variable could be ‘price’, because it is important to understand the demand &amp; profitability of business.</h3>
 </section>
-<section id="predictor-variables-could-be-the-production_budget-genre-mpaa_rating-as-they-may-influence-attraction-of-audience." class="level3">
-<h3 class="anchored" data-anchor-id="predictor-variables-could-be-the-production_budget-genre-mpaa_rating-as-they-may-influence-attraction-of-audience.">Predictor Variables could be the ‘production_budget’, ‘genre’, ‘mpaa_rating’ as they may influence attraction of audience.</h3>
-</section>
-<section id="if-the-movie-studio-budget-is-high-they-can-create-very-good-visuals.-if-the-mpaa_rating-is-a-adult-it-would-naturally-be-seen-by-a-fraction-of-total-audience.-if-the-genre-is-horror-only-the-spook-fanatics-would-be-interested-in-watching-that-in-theatres." class="level3">
-<h3 class="anchored" data-anchor-id="if-the-movie-studio-budget-is-high-they-can-create-very-good-visuals.-if-the-mpaa_rating-is-a-adult-it-would-naturally-be-seen-by-a-fraction-of-total-audience.-if-the-genre-is-horror-only-the-spook-fanatics-would-be-interested-in-watching-that-in-theatres.">If the movie studio budget is high, they can create very good visuals. If the mpaa_rating is A (Adult), it would naturally be seen by a fraction of total audience. If the genre is ‘horror’, only the spook fanatics would be interested in watching that in theatres.</h3>
+<section id="predictor-variable-would-be-ice-because-the-condition-of-lakes-influenced-the-supply-chain-of-business-hence-affected-prices." class="level3">
+<h3 class="anchored" data-anchor-id="predictor-variable-would-be-ice-because-the-condition-of-lakes-influenced-the-supply-chain-of-business-hence-affected-prices.">Predictor Variable would be ‘Ice’, because the condition of lakes influenced the supply chain of business &amp; hence affected prices.</h3>
 </section>
 </section>
 <section id="section-4" class="level2">
@@ -617,107 +343,189 @@ $ decade            &lt;dbl&gt; 2000, 1990, 1990, 2000, 2010, 2000, 2010, 2000, 
 <section id="code" class="level2">
 <h2 class="anchored" data-anchor-id="code">Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>film_modified <span class="ot">&lt;-</span> film <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">profit_ratio =</span> <span class="fu">as_factor</span>(profit_ratio)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Dataset Processing</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>cartelmod <span class="ot">&lt;-</span> cartelstability <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">season=</span> <span class="fu">as.ordered</span>(season),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cartel=</span> <span class="fu">factor</span>(cartel,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels=</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>),</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span> <span class="fu">c</span>(<span class="st">"Cartel Operational"</span>,<span class="st">"Cartel Inoperational"</span>),</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ice=</span> <span class="fu">factor</span>(ice,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels=</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>),</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span> <span class="fu">c</span>(<span class="st">"Frozen Lakes"</span>,<span class="st">"Fluid Lakes"</span>),</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cartelmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 328
+Columns: 6
+$ rownames &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
+$ price    &lt;dbl&gt; 0.40, 0.40, 0.40, 0.40, 0.40, 0.40, 0.40, 0.40, 0.40, 0.35, 0…
+$ cartel   &lt;fct&gt; Cartel Operational, Cartel Operational, Cartel Operational, C…
+$ quantity &lt;dbl&gt; 13632, 20035, 16319, 12603, 23079, 19652, 16211, 22914, 23710…
+$ season   &lt;ord&gt; Jan  1 - Jan 28, Jan  1 - Jan 28, Jan  1 - Jan 28, Jan  1 - J…
+$ ice      &lt;fct&gt; Frozen Lakes, Frozen Lakes, Frozen Lakes, Frozen Lakes, Froze…</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(genre <span class="sc">~</span> profit_ratio <span class="sc">|</span> distributor  ,  <span class="at">data =</span> film) <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Profits to Budget Ratio by Directors"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Ignoring unknown aesthetics: .</code></pre>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cartelmod </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 328 × 6
+   rownames price cartel             quantity season          ice         
+      &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;                 &lt;dbl&gt; &lt;ord&gt;           &lt;fct&gt;       
+ 1        1  0.4  Cartel Operational    13632 Jan  1 - Jan 28 Frozen Lakes
+ 2        2  0.4  Cartel Operational    20035 Jan  1 - Jan 28 Frozen Lakes
+ 3        3  0.4  Cartel Operational    16319 Jan  1 - Jan 28 Frozen Lakes
+ 4        4  0.4  Cartel Operational    12603 Jan  1 - Jan 28 Frozen Lakes
+ 5        5  0.4  Cartel Operational    23079 Jan 29 - Feb 25 Frozen Lakes
+ 6        6  0.4  Cartel Operational    19652 Jan 29 - Feb 25 Frozen Lakes
+ 7        7  0.4  Cartel Operational    16211 Jan 29 - Feb 25 Frozen Lakes
+ 8        8  0.4  Cartel Operational    22914 Jan 29 - Feb 25 Frozen Lakes
+ 9        9  0.4  Cartel Operational    23710 Feb 26 - Mar 26 Frozen Lakes
+10       10  0.35 Cartel Operational    23036 Feb 26 - Mar 26 Frozen Lakes
+# ℹ 318 more rows</code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cartel2 <span class="ot">&lt;-</span> cartelmod <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(season,cartel,ice) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_price=</span> <span class="fu">mean</span>(price), <span class="at">avg_haul=</span> <span class="fu">mean</span>(quantity)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: The following aesthetics were dropped during statistical transformation: ..
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?
-The following aesthetics were dropped during statistical transformation: ..
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?
-The following aesthetics were dropped during statistical transformation: ..
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?
-The following aesthetics were dropped during statistical transformation: ..
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?
-The following aesthetics were dropped during statistical transformation: ..
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?
-The following aesthetics were dropped during statistical transformation: ..
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?
-The following aesthetics were dropped during statistical transformation: ..
-ℹ This can happen when ggplot fails to infer the correct grouping structure in
-  the data.
-ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-  variable into a factor?</code></pre>
+<pre><code>`summarise()` has grouped output by 'season', 'cartel'. You can override using
+the `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cartel2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 5
+# Groups:   season, cartel [26]
+   season          cartel               ice          avg_price avg_haul
+   &lt;ord&gt;           &lt;fct&gt;                &lt;fct&gt;            &lt;dbl&gt;    &lt;dbl&gt;
+ 1 Apr 24 - May 21 Cartel Operational   Frozen Lakes     0.3     36457.
+ 2 Apr 24 - May 21 Cartel Operational   Fluid Lakes      0.27    14150.
+ 3 Apr 24 - May 21 Cartel Inoperational Frozen Lakes     0.186   45819.
+ 4 Apr 24 - May 21 Cartel Inoperational Fluid Lakes      0.2     29186 
+ 5 Aug 14 - Sep 10 Cartel Operational   Fluid Lakes      0.268   17011.
+ 6 Aug 14 - Sep 10 Cartel Inoperational Fluid Lakes      0.185   22766 
+ 7 Dec  4 - Dec 31 Cartel Operational   Frozen Lakes     0.286   25481.
+ 8 Dec  4 - Dec 31 Cartel Operational   Fluid Lakes      0.225   34980 
+ 9 Dec  4 - Dec 31 Cartel Inoperational Frozen Lakes     0.181   25642.
+10 Feb 26 - Mar 26 Cartel Operational   Frozen Lakes     0.288   28736.
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+<section id="data-has-been-processed.-now-to-plot-it" class="level3">
+<h3 class="anchored" data-anchor-id="data-has-been-processed.-now-to-plot-it">Data has been processed. Now to plot it…</h3>
+<section id="attempt-1" class="level4">
+<h4 class="anchored" data-anchor-id="attempt-1">Attempt 1</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cartel2 <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_line</span>(avg_price <span class="sc">~</span> season <span class="sc">|</span> ice ,<span class="at">color =</span> <span class="sc">~</span>cartel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cartel2, <span class="fu">aes</span>(<span class="at">y =</span> avg_price, <span class="at">x =</span> <span class="st">`</span><span class="at">season</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span>  <span class="co"># Rotate x-axis labels if needed</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Price"</span>, <span class="at">y =</span> <span class="st">"Season"</span>, <span class="at">title =</span> <span class="st">"Price Index by Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="i-was-not-able-to-showcase-the-profit_ratios-as-factors-on-the-x-axis" class="level4">
-<h4 class="anchored" data-anchor-id="i-was-not-able-to-showcase-the-profit_ratios-as-factors-on-the-x-axis">I was not able to showcase the Profit_Ratios as factors on the X Axis</h4>
+</section>
+<section id="that-is-not-what-i-wanted.-i-think-i-should-create-a-scatterplot-first." class="level4">
+<h4 class="anchored" data-anchor-id="that-is-not-what-i-wanted.-i-think-i-should-create-a-scatterplot-first.">That… is not what I wanted. I think I should create a scatterplot first.</h4>
+</section>
+<section id="attempt-2" class="level4">
+<h4 class="anchored" data-anchor-id="attempt-2">Attempt 2</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cartel2 <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(  avg_price <span class="sc">~</span> season <span class="sc">|</span> ice, <span class="at">color =</span> <span class="sc">~</span>cartel ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_line</span>(avg_price <span class="sc">~</span> season, <span class="at">group =</span> <span class="sc">~</span>cartel) <span class="sc">%&gt;%</span>  </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lm</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_refine</span>(<span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Price Index by Ton"</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Railway Firms"</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="finally-we-can-now-see-the-flows-distinctly.-but-for-some-reason-i-am-not-able-to-arrange-the-dates-in-order." class="level4">
+<h4 class="anchored" data-anchor-id="finally-we-can-now-see-the-flows-distinctly.-but-for-some-reason-i-am-not-able-to-arrange-the-dates-in-order.">Finally! We can now see the flows distinctly. But for some reason I am not able to arrange the Dates in order….</h4>
+</section>
 </section>
 </section>
 <section id="section-5" class="level2">
 <h2 class="anchored" data-anchor-id="section-5">————————————————–</h2>
 </section>
-<section id="inference" class="level2">
-<h2 class="anchored" data-anchor-id="inference">Inference</h2>
-<section id="the-plot-is-a-bar-graph-that-is-grouped-according-to-genre-distributor-versus-profit_ratio" class="level3">
-<h3 class="anchored" data-anchor-id="the-plot-is-a-bar-graph-that-is-grouped-according-to-genre-distributor-versus-profit_ratio">The plot is a bar graph that is grouped according to Genre &amp; Distributor versus Profit_Ratio</h3>
+<section id="observations-1" class="level2">
+<h2 class="anchored" data-anchor-id="observations-1">Observations</h2>
+<section id="the-given-chart-is-a-scatterplot-with-lines-connecting-the-dots." class="level3">
+<h3 class="anchored" data-anchor-id="the-given-chart-is-a-scatterplot-with-lines-connecting-the-dots.">The given chart is a Scatterplot with Lines connecting the dots.</h3>
 </section>
-<section id="according-to-the-actual-graph-i-would-say-that-horror-adventure-genres-are-best-to-invest-in." class="level3">
-<h3 class="anchored" data-anchor-id="according-to-the-actual-graph-i-would-say-that-horror-adventure-genres-are-best-to-invest-in.">According to the actual graph, I would say that Horror &amp; Adventure genres are best to invest in.</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/profits.png" class="img-fluid figure-img"></p>
-<figcaption>Actual Graph</figcaption>
-</figure>
-</div>
+<section id="it-has-prices-on-y-axis-season-on-x-axis-graphs-are-separate-for-each-lake-condition-separate-colors-for-cartel-operation." class="level3">
+<h3 class="anchored" data-anchor-id="it-has-prices-on-y-axis-season-on-x-axis-graphs-are-separate-for-each-lake-condition-separate-colors-for-cartel-operation.">It has Prices on Y axis, Season on X axis, graphs are separate for each Lake Condition &amp; separate colors for Cartel Operation.</h3>
 </section>
-<section id="under-the-gf_bar-command-using-the-symbol-before-the-distributor-variable-allows-to-separates-charts-by-distributor." class="level3">
-<h3 class="anchored" data-anchor-id="under-the-gf_bar-command-using-the-symbol-before-the-distributor-variable-allows-to-separates-charts-by-distributor.">Under the gf_bar() command, using the ‘|’ symbol before the ‘distributor’ variable allows to separates charts by ‘distributor’.</h3>
-</section>
-<section id="if-the-original-dataset-had-budgets-costs-in-separate-columns-you-can-create-a-new-column-for-the-ratio" class="level3">
-<h3 class="anchored" data-anchor-id="if-the-original-dataset-had-budgets-costs-in-separate-columns-you-can-create-a-new-column-for-the-ratio">If the original dataset had Budgets &amp; Costs in separate columns, you can create a new column for the ratio…</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(dplyr)</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#film_profits &lt;- film %&gt;%</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a> <span class="co"># mutate(profits = 'Costs'/'Budgets' )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="like-this.-and-then-put-that-column-profits-on-the-x-axis-on-the-graph." class="level3">
-<h3 class="anchored" data-anchor-id="like-this.-and-then-put-that-column-profits-on-the-x-axis-on-the-graph.">…like this. And then put that column (profits) on the X axis on the graph.</h3>
-</section>
-<section id="i-am-not-surprised-that-horror-adventure-are-highest-grossing-genres.-although-i-prefer-action-sci-fi.-all-these-big-names-in-the-industry-have-made-diverse-movies-some-of-which-have-been-very-popular.-but-nobody-seems-to-remember-the-studio-names-when-the-movie-is-mentioned-unless-it-is-among-the-titans-disneydreamworksmarveldc.-they-only-remember-the-cast-the-director." class="level3">
-<h3 class="anchored" data-anchor-id="i-am-not-surprised-that-horror-adventure-are-highest-grossing-genres.-although-i-prefer-action-sci-fi.-all-these-big-names-in-the-industry-have-made-diverse-movies-some-of-which-have-been-very-popular.-but-nobody-seems-to-remember-the-studio-names-when-the-movie-is-mentioned-unless-it-is-among-the-titans-disneydreamworksmarveldc.-they-only-remember-the-cast-the-director.">I am not surprised that Horror &amp; Adventure are highest grossing genres. Although I prefer Action &amp; Sci-Fi. All these big names in the industry have made diverse movies, some of which have been very popular. But nobody seems to remember the studio names when the movie is mentioned, unless it is among the titans (Disney/Dreamworks/Marvel/DC). They only remember the cast &amp; the director.</h3>
+<section id="the-data-had-to-be-processed--converting-variable-types-of-cartel-ice-to-characters-ordering-the-season-variable." class="level3">
+<h3 class="anchored" data-anchor-id="the-data-had-to-be-processed--converting-variable-types-of-cartel-ice-to-characters-ordering-the-season-variable.">The data had to be processed- converting variable types of Cartel &amp; Ice to Characters, &amp; Ordering the Season variable.</h3>
 </section>
 </section>
 <section id="section-6" class="level2">
-<h2 class="anchored" data-anchor-id="section-6">==========================================</h2>
+<h2 class="anchored" data-anchor-id="section-6">—————————————————</h2>
+</section>
+<section id="inference" class="level2">
+<h2 class="anchored" data-anchor-id="inference">Inference</h2>
+<section id="the-graph-shows-how-functionality-of-cartel-affects-price-in-case-of-lakes-being-frozen-or-not-in-all-seasons." class="level3">
+<h3 class="anchored" data-anchor-id="the-graph-shows-how-functionality-of-cartel-affects-price-in-case-of-lakes-being-frozen-or-not-in-all-seasons.">The graph shows how functionality of cartel affects price, in case of lakes being frozen or not, in all seasons.</h3>
+</section>
+<section id="we-see-that-prices-on-average-are-higher-when-the-cartel-is-operational-than-when-it-is-not.-also-the-prices-are-slightly-higher-when-the-lakes-are-frozen-because-the-transportation-becomes-a-headache." class="level3">
+<h3 class="anchored" data-anchor-id="we-see-that-prices-on-average-are-higher-when-the-cartel-is-operational-than-when-it-is-not.-also-the-prices-are-slightly-higher-when-the-lakes-are-frozen-because-the-transportation-becomes-a-headache.">We see that prices on average are higher when the cartel is operational than when it is not. Also the prices are slightly higher when the lakes are frozen, because the transportation becomes a headache.</h3>
+</section>
+<section id="also-if-lakes-are-frozen-the-prices-for-inoperational-cartel-also-shoot-up-for-a-brief-amount-of-time-in-late-winterearly-summer." class="level3">
+<h3 class="anchored" data-anchor-id="also-if-lakes-are-frozen-the-prices-for-inoperational-cartel-also-shoot-up-for-a-brief-amount-of-time-in-late-winterearly-summer.">Also, if lakes are frozen, the prices for inoperational cartel also shoot up for a brief amount of time in late winter/early summer.</h3>
+</section>
+<section id="based-on-the-graphs-i-would-say-that-the-cartel-was-not-beneficial-for-the-jec-customers-as-it-increased-the-prices-of-grain-regardless-of-the-condition-of-lakes.-they-were-better-off-when-cartel-was-inoperational." class="level3">
+<h3 class="anchored" data-anchor-id="based-on-the-graphs-i-would-say-that-the-cartel-was-not-beneficial-for-the-jec-customers-as-it-increased-the-prices-of-grain-regardless-of-the-condition-of-lakes.-they-were-better-off-when-cartel-was-inoperational.">Based on the graphs, I would say that the cartel was not beneficial for the JEC customers, as it increased the prices of grain, regardless of the condition of lakes. They were better off when cartel was inoperational.</h3>
+</section>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">========================================</h2>
 
 
 </section>

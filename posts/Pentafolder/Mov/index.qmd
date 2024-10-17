@@ -3,11 +3,16 @@ title: "Movie"
 author: "Varad"
 ---
 
+# Movie Success
+
+#### Setup
+
 ```{r}
 library(tidyverse)
 library(mosaic)
 library(skimr)
 library(ggformula)
+library(mosaic)
 ```
 
 ```{r}
@@ -15,3 +20,105 @@ film <- read_delim(file = '../../../datasets/movie_profit.csv', delim = ';')
 
 (film)
 ```
+
+```{r}
+skim(film)
+glimpse (film)
+```
+
+## Data Dictionary
+
+## -----------------------------------------------------------------
+
+### Qualitative Variables:
+
+### movie (It is a name)
+
+### distributor (It is a name)
+
+### mpaa_rating (It is a letter which is not calculated)
+
+### genre (Again, a type of nominal variable)
+
+## -------------------------
+
+### Quantitative Variables:
+
+### release_date
+
+### production_budget
+
+### domestic_gross
+
+### worldwide_gross
+
+### profit_ratio
+
+### decade
+
+## ----------------------------------------------------------------
+
+## Observations
+
+### This table shows movie titles sorted by their genre and budget, as well as the gross.
+
+## ------------------------------------
+
+## Research & Hypothesis
+
+### Target Variable could be 'worldwide_gross', because it (usually) reflects the success of a movie. Even 'profit_ratio' can work.
+
+### Predictor Variables could be the 'production_budget', 'genre', 'mpaa_rating' as they may influence attraction of audience.
+
+### If the movie studio budget is high, they can create very good visuals. If the mpaa_rating is A (Adult), it would naturally be seen by a fraction of total audience. If the genre is 'horror', only the spook fanatics would be interested in watching that in theatres.
+
+## ------------------------------------
+
+## Code
+
+```{r}
+film_modified <- film %>% 
+  dplyr::mutate(
+    profit_ratio = as_factor(profit_ratio)
+    )
+```
+
+```{r}
+library(ggformula)
+
+gf_bar(genre ~ profit_ratio | distributor  ,  data = film) %>%
+  gf_labs(title = "Profits to Budget Ratio by Directors") 
+
+```
+
+#### I was not able to showcase the Profit_Ratios as factors on the X Axis
+
+## --------------------------------------------------
+
+## Inference
+
+### The plot is a bar graph that is grouped according to Genre & Distributor versus Profit_Ratio
+
+### According to the actual graph, I would say that Horror & Adventure genres are best to invest in.
+
+![Actual Graph](images/profits.png)
+
+### Under the gf_bar() command, using the '\|' symbol before the 'distributor' variable allows to separates charts by 'distributor'.
+
+### If the original dataset had Budgets & Costs in separate columns, you can create a new column for the ratio...
+
+```{r}
+
+#library(dplyr)
+
+
+#film_profits <- film %>%
+ # mutate(profits = 'Costs'/'Budgets' )
+
+```
+
+### ...like this. And then put that column (profits) on the X axis on the graph.
+
+### I am not surprised that Horror & Adventure are highest grossing genres. Although I prefer Action & Sci-Fi. All these big names in the industry have made diverse movies, some of which have been very popular. But nobody seems to remember the studio names when the movie is mentioned, unless it is among the titans (Disney/Dreamworks/Marvel/DC). They only remember the cast & the director.
+
+## ==========================================

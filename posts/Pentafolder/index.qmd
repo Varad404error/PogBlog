@@ -3,6 +3,8 @@ title: "School Scores"
 author: "Varad Akolkar"
 ---
 
+# School Scores
+
 ```{r}
 library(tidyverse)
 library(mosaic)
@@ -157,7 +159,7 @@ GGally::ggpairs(
 
 ## Inference
 
-### I actually did not expect music to show such a positive response in terms of boosting scores of other subjects. Most other graphs have 2 humps but we can see a sharp high density concentration in the music column. 
+### I actually did not expect music to show such a positive response in terms of boosting scores of other subjects. Most other graphs have 2 humps but we can see a sharp high density concentration in the music column.
 
 ## --------------------------------------------------------------------
 
@@ -165,7 +167,7 @@ GGally::ggpairs(
 
 ## Code
 
-#### Attempt 1 
+#### Attempt 1
 
 ```{r}
 

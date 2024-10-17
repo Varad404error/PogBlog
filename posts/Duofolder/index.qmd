@@ -80,7 +80,7 @@ mpg_modified %>% filter(manufacturer =='audi') %>%
 
 #The filter command filters out all rows with manufacturers as audi (common sense)
 
-#When you use the group_by function, it makes groups of each each year for each class for each manufacturer.
+#When you use the group_by function, it makes groups of each year for each class for each manufacturer.
 #E.g. Here it filtered out all the audis, then made a group for each class of an audi (compact & midsize) and then further made a separate row for each year for both the classes.
 
 # The summarize command takes 2 arguments (New_Column_Name ~ Function) 
