@@ -1,0 +1,99 @@
+---
+title: "Inference"
+author: "Varad"
+---
+
+```{r}
+#Setup
+library(tidyverse)
+library(mosaic)
+library(ggformula)
+library(infer)
+library(broom) # Clean test results in tibble form
+library(resampledata) # Datasets from Chihara and Hesterberg's book
+library(openintro) # More datasets
+```
+
+# Case Study 1: Toy Data
+
+```{r}
+set.seed(40)  # for replication
+# Data as individual vectors ( for t.tests etc)
+y <- rnorm(50, mean = 2, sd = 2)
+
+# And as tibble too
+mydata <- tibble(y = y)
+
+
+x <- rnorm(500, mean = 2, sd = 2)
+
+# And as tibble too
+mydata2 <- tibble(x = x)
+
+mydata
+mydata2
+```
+
+```{r}
+
+mydata %>%
+    gf_density(~y) %>%
+    gf_fitdistr(dist = "dnorm") %>%
+    gf_labs(title = "Densities of Original Data Variables", subtitle = "Compared with Normal Density")
+
+mydata2 %>%
+    gf_density(~x) %>%
+    gf_fitdistr(dist = "dnorm") %>%
+    gf_labs(title = "Densities of 500 Original Data Variables", subtitle = "Compared with Normal Density")
+```
+
+### We see that upon increasing the sample size from 50 to 500, the distribution approaches a Bell Curve.
+
+```{r}
+# t-test
+t1 <- mosaic::t_test(
+          y, # Name of variable
+          mu = 0, # belief of population mean
+          alternative = "two.sided") %>% # Check both sides
+  
+  broom::tidy() # Make results presentable, and plottable!!
+t1
+```
+
+# Case Study 2: Exam Data
+
+```{r}
+data("exam_grades")
+exam_grades
+```
+
+```{r}
+
+exam_grades %>%
+    gf_density(~course_grade) %>%
+    gf_fitdistr(dist = "dnorm") %>%
+    gf_labs(title = "Density of Course Grade", subtitle = "Compared with Normal Density")
+```
+
+```{r}
+stats::shapiro.test(x = exam_grades$course_grade) %>%
+    broom::tidy()
+
+```
+
+```{r}
+library(nortest)
+# Especially when we have >= 5000 observations
+nortest::ad.test(x = exam_grades$course_grade) %>%
+    broom::tidy()
+```
+
+```{r}
+# t-test
+t4 <- mosaic::t_test(
+          exam_grades$course_grade, # Name of variable
+          mu = 80, # belief
+          alternative = "two.sided") %>% # Check both sides
+broom::tidy()
+t4
+```

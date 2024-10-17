@@ -1,0 +1,17 @@
+---
+title: "Movie"
+author: "Varad"
+---
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(skimr)
+library(ggformula)
+```
+
+```{r}
+film <- read_delim(file = '../../../datasets/movie_profit.csv', delim = ';')
+
+(film)
+```

@@ -1,5 +1,6 @@
 ---
 title: "School Scores"
+author: "Varad Akolkar"
 ---
 
 ```{r}
@@ -18,13 +19,13 @@ library(ggplot2)
 
 score<- read.csv(file = '../../datasets/school-scores-data.csv')
 
-(score)
+head(score)
 ```
 
 ```{r}
-inspect(score)
-glimpse(score)
-skim(score)
+head(inspect(score))
+head(glimpse(score))
+head(skim(score))
 ```
 
 ## Data Dictionary
@@ -39,7 +40,7 @@ skim(score)
 
 ## -------
 
-### Quantitative Variables: 
+### Quantitative Variables:
 
 ### Literally all other rows
 
@@ -47,13 +48,13 @@ skim(score)
 
 ## Observations
 
-### It has a LOT of variables. Mostly quantitative variables that are scores of (along with number of) candidates in various tests & subjects. 
+### It has a LOT of variables. Mostly quantitative variables that are scores of (along with number of) candidates in various tests & subjects.
 
 ## ------------------------------------
 
 ## Research & Hypothesis
 
-### Target Variables could be Total.Math, Total.Verbal because they give a summary of marks of students in that field. 
+### Target Variables could be Total.Math, Total.Verbal because they give a summary of marks of students in that field.
 
 ### Predictor Variables could be the Family.Income.More.Than.000 as they may influence test scores. Also variables such as Academic.Subjects.Average.GPA could be the predictors. (All subjects)
 
@@ -92,11 +93,71 @@ head(compact_score)
 
 # Chart 1
 
-### It is like an Uncertainty Line Graph
+### It is a scatterplot
+
+## -------------------------------
 
 ## Questions:
 
-### What is the correlation between students' GPA in a subject & the number of years for that subject?
+### What is the correlation between students' GPA in a subject & GPA in other subjects?
+
+### If a student is good at a subject, how likely are they to be good at other subjects as well?
+
+## --------------------------------------------------------------------
+
+## Code
+
+```{r}
+
+
+GGally::ggpairs(
+  compact_score %>% drop_na(),
+
+  columns = c(
+    "Music", "English", "Foreign Languages", "Mathematics",
+    "NaturalSciences","SocialSciences"),
+  
+  switch = "both",
+
+title = "Subject Scores Correlations "
+)
+```
+
+#### We got the plots, but they seem a little shabby...
+
+```{r}
+
+GGally::ggpairs(
+  compact_score %>% drop_na(),
+
+  columns = c(
+    "Music", "English", "Foreign Languages", "Mathematics",
+    "NaturalSciences","SocialSciences"),
+  
+  switch = "both",
+
+
+  lower = list(continuous = wrap("smooth", alpha = 0.1, se = FALSE)),
+  title = "Subject Scores Correlations "
+  
+)
+```
+
+#### Seems a little better? Not sure how to make it even clearer. Probably will have to change the scale on each graph.
+
+## ------------------------------------------------------------------------
+
+## Insights
+
+### All the graphs show a strong, positive & linear trend in scores of different subjects. All correlation points are very high, (3 stars) with the lowest one being 0.94!
+
+### We can definitely conclude that students who do well in one subject do well in other subjects as well. (So it is not the subjects' fault if you are bad at it.)
+
+## ------------------------------------------------------------------
+
+## Inference
+
+### I actually did not expect music to show such a positive response in terms of boosting scores of other subjects. Most other graphs have 2 humps but we can see a sharp high density concentration in the music column. 
 
 ## --------------------------------------------------------------------
 
@@ -104,7 +165,7 @@ head(compact_score)
 
 ## Code
 
-#### Attempt 1
+#### Attempt 1 
 
 ```{r}
 
@@ -118,6 +179,8 @@ head(compact_score)
 
 #incomemath %>%  filter(State.Code=='AL')
 ```
+
+#### Well that does not give desired result.
 
 #### Attempt 2
 
@@ -147,6 +210,8 @@ head(compact_score)
 #print(result)
 
 ```
+
+#### Well that does not give desired result.
 
 #### Attempt 3
 
@@ -178,6 +243,10 @@ head(long_format)
 
 ```
 
+#### I admit that I took some assistance from AI for the pivot() function. :\\
+
+## -----------------------------------------------------------------------
+
 # Chart 2
 
 ### It is a Box-Plot
@@ -186,7 +255,7 @@ head(long_format)
 
 ## Questions
 
-### How is the distribution of students' marks in maths exam across all income levels? 
+### How is the distribution of students' marks in maths exam across all income levels?
 
 ### Does the family income predict a student's success rate in mathematics? Or are the differences in their scores insignificant?
 
@@ -223,7 +292,7 @@ head(long_format)
 
 ## Insights
 
-### There are trends in math scores according to the income. Almost everywhere, the math scores are directly proportional to the family income. 
+### There are trends in math scores according to the income. Almost everywhere, the math scores are directly proportional to the family income.
 
 ### Most of the students with 100k+ dollars at home have gotten \>500 Marks.
 
@@ -237,8 +306,8 @@ head(long_format)
 
 ## Inference
 
-### I had half-expected the income to directly influence the math scores, but not this visibly. Because not all rich kids are interested in studying.  I believe that it would be more intuitive if this graph was for college/grad students, as rich students (who like math) may have access to top colleges & hence resources to excel there. While a lot of poor students who like math may not have been able to afford college tuition. (Unless Scholarship) But that is also why the lower income categories have a wider distribution, so that only the very interested ones get good marks.
+### I had half-expected the income to directly influence the math scores, but not this visibly. Because not all rich kids are interested in studying. I believe that it would be more intuitive if this graph was for college/grad students, as rich students (who like math) may have access to top colleges & hence resources to excel there. While a lot of poor students who like math may not have been able to afford college tuition. (Unless Scholarship) But that is also why the lower income categories have a wider distribution, so that only the very interested ones get good marks.
 
-### Basically, the poorer you are, the more dedicated to math you have to be-compared to your classmates- in order to reach the top. \[The average student in the poor class gets poor marks.\] 
+### Basically, the poorer you are, the more dedicated to math you have to be-compared to your classmates- in order to reach the top. \[The average student in the poor class gets poor marks.\]
 
 ## \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
