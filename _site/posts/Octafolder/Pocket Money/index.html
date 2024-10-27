@@ -1,0 +1,5929 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Varad Akolkar">
+
+<title>PogBlog - Pocket Money</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../../../site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="../../../site_libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">PogBlog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pocket Money</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Varad Akolkar </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: Setup</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(crosstable)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ purrr::compact() masks crosstable::compact()
+✖ dplyr::filter()  masks stats::filter()
+✖ dplyr::lag()     masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'mosaic':
+  method                           from   
+  fortify.SpatialPolygonsDataFrame ggplot2
+
+The 'mosaic' package masks several functions from core packages in order to add 
+additional features.  The original behavior of these functions should not be affected by this.
+
+Attaching package: 'mosaic'
+
+The following object is masked from 'package:Matrix':
+
+    mean
+
+The following objects are masked from 'package:dplyr':
+
+    count, do, tally
+
+The following object is masked from 'package:purrr':
+
+    cross
+
+The following object is masked from 'package:ggplot2':
+
+    stat
+
+The following objects are masked from 'package:stats':
+
+    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,
+    quantile, sd, t.test, var
+
+The following objects are masked from 'package:base':
+
+    max, mean, min, prod, range, sample, sum</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="reading-data" class="level2">
+<h2 class="anchored" data-anchor-id="reading-data">Reading Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>spending<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">'../../../datasets/Pock.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+Rows: 82 Columns: 5
+── Column specification
+──────────────────────────────────────────────────────── Delimiter: "," chr
+(2): Name, Gender dbl (2): Sr no, Money_spent lgl (1): ...5
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -&gt; `...5`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>spending</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 82 × 5
+   `Sr no` Name     Gender Money_spent ...5 
+     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;        &lt;dbl&gt; &lt;lgl&gt;
+ 1       1 Aagam    Male           150 NA   
+ 2       2 Aakash   Male           240 NA   
+ 3       3 Aarushi  Female         382 NA   
+ 4       4 Abheeta  Female          60 NA   
+ 5       5 Adithya  Male            68 NA   
+ 6       6 Aditya   Male           300 NA   
+ 7       7 Akanksha Female         270 NA   
+ 8       8 Amruta   Female         190 NA   
+ 9       9 Anaaya   Female         300 NA   
+10      10 Anish    Male             0 NA   
+# ℹ 72 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(spending)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 82
+Columns: 5
+$ `Sr no`     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
+$ Name        &lt;chr&gt; "Aagam", "Aakash", "Aarushi", "Abheeta", "Adithya", "Adity…
+$ Gender      &lt;chr&gt; "Male", "Male", "Female", "Female", "Male", "Male", "Femal…
+$ Money_spent &lt;dbl&gt; 150, 240, 382, 60, 68, 300, 270, 190, 300, 0, 250, 85, 700…
+$ ...5        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>spending<span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_money =</span> <span class="fu">mean</span>(Money_spent),<span class="at">count =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  Gender avg_money count
+  &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;
+1 Female      693.    41
+2 Male        749.    41</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span>Money_spent, <span class="at">fill =</span> <span class="sc">~</span>Gender,<span class="at">data =</span> spending) <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Plot 1: Spending vs Gender"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="sc">~</span>Money_spent, <span class="at">fill =</span> <span class="sc">~</span>Gender, <span class="at">position =</span> <span class="st">'dodge'</span>,<span class="at">data =</span> spending) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Plot 1: Spending vs Gender"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>Money_spent, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">data =</span> spending) <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_facet_wrap</span>(<span class="sc">~</span>Gender, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="we-have-spending-by-gender-here.-which-graph-looks-more-convenient-you-decide." class="level4">
+<h4 class="anchored" data-anchor-id="we-have-spending-by-gender-here.-which-graph-looks-more-convenient-you-decide.">We have spending by gender here. Which graph looks more convenient? You decide.</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>spending <span class="sc">%&gt;%</span>  <span class="fu">crosstable</span>(Money_spent <span class="sc">~</span> Gender) <span class="sc">%&gt;%</span> <span class="fu">as_flextable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-8c6c9eb2{table-layout:auto;}.cl-8c640af4{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8c640b12{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8c672d6a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8c672d74{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8c67461a{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(0, 0, 0, 1.00);border-top: 1.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8c674624{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(0, 0, 0, 1.00);border-top: 1.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8c674625{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8c67462e{background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8c67462f{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-8c6c9eb2"><thead><tr style="overflow-wrap:break-word;"><th rowspan="2" class="cl-8c67461a"><p class="cl-8c672d6a"><span class="cl-8c640af4">label</span></p></th><th rowspan="2" class="cl-8c67461a"><p class="cl-8c672d6a"><span class="cl-8c640af4">variable</span></p></th><th colspan="2" class="cl-8c674624"><p class="cl-8c672d6a"><span class="cl-8c640af4">Gender</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-8c674625"><p class="cl-8c672d6a"><span class="cl-8c640af4">Female</span></p></th><th class="cl-8c674625"><p class="cl-8c672d6a"><span class="cl-8c640af4">Male</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td rowspan="4" class="cl-8c67462e"><p class="cl-8c672d74"><span class="cl-8c640b12">Money_spent</span></p></td><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">Min / Max</span></p></td><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">0 / 1.3e+04</span></p></td><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">0 / 1.0e+04</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">Med [IQR]</span></p></td><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">280.0 [85.0;500.0]</span></p></td><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">250.0 [150.0;842.0]</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">Mean (std)</span></p></td><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">693.3 (2035.8)</span></p></td><td class="cl-8c67462f"><p class="cl-8c672d74"><span class="cl-8c640b12">748.6 (1636.5)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8c67462e"><p class="cl-8c672d74"><span class="cl-8c640b12">N (NA)</span></p></td><td class="cl-8c67462e"><p class="cl-8c672d74"><span class="cl-8c640b12">41 (0)</span></p></td><td class="cl-8c67462e"><p class="cl-8c672d74"><span class="cl-8c640b12">41 (0)</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>spending <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_density</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span> Money_spent,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="sc">~</span> Gender,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Spending Score Densities"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Guys vs Gals"</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>spending <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_boxplot</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    Money_spent <span class="sc">~</span> Gender,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="sc">~</span> Gender,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Spendings by gender"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_refine</span>(<span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15000</span>, <span class="at">by =</span> <span class="dv">1000</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="also-now-we-have-to-check-for-normality." class="level4">
+<h4 class="anchored" data-anchor-id="also-now-we-have-to-check-for-normality.">Also, now we have to check for normality.</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>boy_sp <span class="ot">&lt;-</span> spending <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gender<span class="sc">==</span> <span class="st">"Male"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Money_spent)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>girl_sp <span class="ot">&lt;-</span> spending <span class="sc">%&gt;%</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gender<span class="sc">==</span> <span class="st">"Female"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Money_spent)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(boy_sp<span class="sc">$</span>Money_spent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  boy_sp$Money_spent
+W = 0.40726, p-value = 1.136e-11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(girl_sp<span class="sc">$</span>Money_spent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  girl_sp$Money_spent
+W = 0.29606, p-value = 8.961e-13</code></pre>
+</div>
+</div>
+</section>
+<section id="the-sample-size-is-too-small.-also-the-p_values-for-both-are-very-very-low.-it-is-not-a-normal-distribution." class="level4">
+<h4 class="anchored" data-anchor-id="the-sample-size-is-too-small.-also-the-p_values-for-both-are-very-very-low.-it-is-not-a-normal-distribution.">The sample size is too small. Also, the p_values for both are very very low. It is not a normal distribution.</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(Money_spent <span class="sc">~</span> Gender, <span class="at">data =</span> spending, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">conf.int =</span> <span class="cn">TRUE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Multiple parameters; naming those columns num.df, den.df</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 9
+  estimate num.df den.df statistic p.value conf.low conf.high method alternative
+     &lt;dbl&gt;  &lt;int&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      
+1     1.55     40     40      1.55   0.172    0.825      2.90 F tes… two.sided  </code></pre>
+</div>
+</div>
+</section>
+<section id="the-variance-is-also-low." class="level4">
+<h4 class="anchored" data-anchor-id="the-variance-is-also-low.">The variance is also low.</h4>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">—————————————————————–</h3>
+</section>
+</section>
+<section id="hypothesis" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis">Hypothesis</h2>
+<section id="hunch--boys-spend-more-money-than-girls.-students-only" class="level3">
+<h3 class="anchored" data-anchor-id="hunch--boys-spend-more-money-than-girls.-students-only">HUNCH- Boys spend more money than girls. (Students only)</h3>
+</section>
+<section id="to-prove-this-we-actually-start-by-arguing-that-their-spending-is-similar." class="level3">
+<h3 class="anchored" data-anchor-id="to-prove-this-we-actually-start-by-arguing-that-their-spending-is-similar.">To prove this, we actually start by arguing that their spending is similar.</h3>
+</section>
+<section id="null-hypothesis-the-difference-between-means-of-spending-of-guys-gals-is-zero.-hence-we-are-assuming-that-the-difference-of-their-means-lies-near-0." class="level3">
+<h3 class="anchored" data-anchor-id="null-hypothesis-the-difference-between-means-of-spending-of-guys-gals-is-zero.-hence-we-are-assuming-that-the-difference-of-their-means-lies-near-0.">Null Hypothesis: The difference between means of spending of guys &amp; gals is zero. Hence we are assuming that the difference of their means lies near 0.</h3>
+</section>
+<section id="now-if-the-hunch-is-true-then-the-distribution-of-means-of-both-should-be-far-from-0-we-should-not-be-able-to-reach-it-without-bias." class="level3">
+<h3 class="anchored" data-anchor-id="now-if-the-hunch-is-true-then-the-distribution-of-means-of-both-should-be-far-from-0-we-should-not-be-able-to-reach-it-without-bias.">Now if the hunch is true,&nbsp;then the distribution of means of both should be far from 0, &amp; we should not be able to reach it without bias.</h3>
+</section>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">————————————————————</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>diff_spent <span class="ot">&lt;-</span> <span class="fu">diffmean</span>(Money_spent <span class="sc">~</span> Gender, <span class="at">data =</span> spending) </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>diff_spent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>diffmean 
+55.29268 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="inference" class="level2">
+<h2 class="anchored" data-anchor-id="inference">Inference</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">t_test</span>(Money_spent <span class="sc">~</span> Gender,<span class="at">data =</span> spending) <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 10
+  estimate estimate1 estimate2 statistic p.value parameter conf.low conf.high
+     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1    -55.3      693.      749.    -0.136   0.893      76.5    -868.      757.
+# ℹ 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>spending_permute <span class="ot">&lt;-</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(<span class="dv">4999</span>) <span class="sc">*</span> <span class="fu">diffmean</span>(<span class="at">data=</span>spending, Money_spent<span class="sc">~</span><span class="fu">shuffle</span>(Gender))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>spending_permute</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          diffmean
+1     136.90243902
+2     556.21951220
+3    -487.58536585
+4     197.09756098
+5    -244.80487805
+6     753.39024390
+7     -76.46341463
+8       4.31707317
+9     432.12195122
+10    253.43902439
+11    589.63414634
+12     59.48780488
+13    -33.14634146
+14   -141.78048780
+15    -57.29268293
+16     88.17073171
+17    481.43902439
+18    -30.95121951
+19   -446.95121951
+20   -104.41463415
+21    -43.97560976
+22     96.56097561
+23   -220.46341463
+24    152.60975610
+25   -387.48780488
+26   -756.21951220
+27   -278.41463415
+28    560.02439024
+29    440.75609756
+30   -616.41463415
+31   -731.53658537
+32   -762.75609756
+33    204.51219512
+34     97.87804878
+35   -809.29268293
+36    411.78048780
+37    501.97560976
+38     94.80487805
+39    481.34146341
+40    225.09756098
+41   -587.14634146
+42    453.29268293
+43    722.26829268
+44   -143.39024390
+45   -161.24390244
+46   -597.39024390
+47    151.09756098
+48    -40.75609756
+49    -66.65853659
+50   -482.56097561
+51    381.00000000
+52   -126.02439024
+53    -41.00000000
+54    207.97560976
+55   -449.97560976
+56     66.07317073
+57    556.17073171
+58   -493.19512195
+59    292.60975610
+60    -24.51219512
+61     27.14634146
+62   -208.65853659
+63     36.90243902
+64   -381.87804878
+65    497.39024390
+66     59.82926829
+67   -341.24390244
+68    107.29268293
+69   -362.17073171
+70   -569.68292683
+71   -556.12195122
+72   -507.53658537
+73     66.56097561
+74    -16.85365854
+75    157.14634146
+76    562.07317073
+77   -149.87804878
+78    214.80487805
+79     20.90243902
+80    185.53658537
+81    933.87804878
+82   -361.82926829
+83     20.31707317
+84   -613.43902439
+85    132.12195122
+86    540.41463415
+87     48.80487805
+88    227.24390244
+89   -672.65853659
+90     90.12195122
+91   -399.39024390
+92   -151.19512195
+93    676.60975610
+94     -4.85365854
+95    -27.53658537
+96   -116.02439024
+97     54.85365854
+98   -171.29268293
+99     45.24390244
+100   432.60975610
+101  -537.58536585
+102  -115.87804878
+103  -831.82926829
+104   -96.46341463
+105    51.14634146
+106   487.68292683
+107  -230.60975610
+108    85.73170732
+109  -757.78048780
+110   152.60975610
+111   647.14634146
+112   615.04878049
+113    20.41463415
+114   151.68292683
+115    83.39024390
+116    79.04878049
+117   780.26829268
+118   671.14634146
+119   374.31707317
+120   -94.70731707
+121   533.19512195
+122  -202.65853659
+123  -668.21951220
+124   582.65853659
+125  -407.63414634
+126   206.80487805
+127    52.26829268
+128   -29.48780488
+129   668.12195122
+130  -495.29268293
+131   -35.73170732
+132   215.04878049
+133   -81.39024390
+134     1.24390244
+135   -25.34146341
+136  -691.82926829
+137  -308.75609756
+138  -373.43902439
+139  -496.51219512
+140    -9.14634146
+141  -758.07317073
+142  -219.34146341
+143   550.90243902
+144  -519.63414634
+145   127.53658537
+146    30.65853659
+147   723.92682927
+148   381.09756098
+149   490.56097561
+150  -468.17073171
+151   133.34146341
+152   449.73170732
+153   -63.82926829
+154  -422.80487805
+155  -257.24390244
+156  -233.24390244
+157   405.34146341
+158   546.90243902
+159   103.78048780
+160  -254.46341463
+161  -609.82926829
+162   -53.78048780
+163   292.90243902
+164  -516.85365854
+165   -56.17073171
+166  -140.65853659
+167   198.75609756
+168   259.24390244
+169  -620.02439024
+170  -360.31707317
+171   171.87804878
+172    30.17073171
+173   -96.56097561
+174   368.75609756
+175   126.12195122
+176   321.97560976
+177  -625.09756098
+178   215.87804878
+179  -255.63414634
+180    27.19512195
+181   654.21951220
+182   522.75609756
+183   598.95121951
+184   584.80487805
+185   -65.87804878
+186  -212.75609756
+187  -397.92682927
+188   458.07317073
+189   -12.12195122
+190  -625.34146341
+191   505.29268293
+192  -445.09756098
+193  -345.48780488
+194   -65.24390244
+195    70.41463415
+196   -71.04878049
+197   447.97560976
+198   685.48780488
+199   -60.51219512
+200  -450.51219512
+201   -18.80487805
+202  -118.12195122
+203   565.43902439
+204   249.29268293
+205   150.80487805
+206  -158.65853659
+207  -720.51219512
+208   570.95121951
+209  -249.58536585
+210   723.82926829
+211   115.68292683
+212  -462.17073171
+213   757.24390244
+214   809.34146341
+215   100.60975610
+216    75.92682927
+217   188.70731707
+218   469.09756098
+219  -601.82926829
+220   204.51219512
+221    83.04878049
+222    30.26829268
+223   -68.02439024
+224   -99.53658537
+225    -5.19512195
+226   454.26829268
+227   -29.63414634
+228  -116.31707317
+229  -161.29268293
+230  -344.90243902
+231  -553.39024390
+232   436.90243902
+233    92.21951220
+234  -172.02439024
+235  -323.48780488
+236   -54.12195122
+237   320.95121951
+238  -685.48780488
+239   521.39024390
+240  -533.19512195
+241   688.80487805
+242   376.75609756
+243  -528.31707317
+244   307.24390244
+245  -604.85365854
+246  -110.17073171
+247   152.07317073
+248  -746.41463415
+249  -426.56097561
+250   642.65853659
+251    72.56097561
+252   172.80487805
+253   -37.24390244
+254   106.02439024
+255   -28.07317073
+256  -152.17073171
+257   -87.48780488
+258    81.09756098
+259    33.00000000
+260  -502.56097561
+261   -29.48780488
+262    36.17073171
+263   570.17073171
+264  -387.34146341
+265  -208.95121951
+266   429.00000000
+267  -465.39024390
+268   661.87804878
+269  -502.12195122
+270   -61.97560976
+271    72.46341463
+272   645.39024390
+273  -153.87804878
+274   539.43902439
+275  -166.36585366
+276   -82.65853659
+277  -469.34146341
+278   244.31707317
+279   447.63414634
+280  -267.14634146
+281  -200.70731707
+282  -686.17073171
+283  -102.41463415
+284  -145.39024390
+285   617.34146341
+286   -33.04878049
+287   125.78048780
+288   792.12195122
+289   -89.82926829
+290    64.65853659
+291    73.73170732
+292  -630.51219512
+293  -446.31707317
+294  -105.39024390
+295  -123.78048780
+296  -171.00000000
+297   567.39024390
+298  -183.63414634
+299  -473.73170732
+300   798.46341463
+301  -627.09756098
+302  -348.07317073
+303   -17.78048780
+304  -154.26829268
+305    93.04878049
+306  -487.14634146
+307   128.95121951
+308  -157.63414634
+309  -507.00000000
+310  -472.60975610
+311   617.92682927
+312   128.46341463
+313   610.56097561
+314     8.17073171
+315   440.02439024
+316   721.92682927
+317  -412.21951220
+318   -92.36585366
+319   -96.85365854
+320   141.53658537
+321   604.75609756
+322    75.92682927
+323  -704.21951220
+324  -296.85365854
+325    83.29268293
+326   209.00000000
+327  -299.87804878
+328  -297.29268293
+329   198.31707317
+330   783.87804878
+331  -627.53658537
+332   185.19512195
+333     4.51219512
+334  -488.02439024
+335   -60.46341463
+336    92.31707317
+337   -37.29268293
+338  -713.92682927
+339  -522.36585366
+340   452.36585366
+341   719.43902439
+342  -247.82926829
+343   -39.48780488
+344   306.80487805
+345  -152.21951220
+346  -160.21951220
+347   695.24390244
+348  -661.58536585
+349  -167.87804878
+350   499.63414634
+351    15.68292683
+352   289.68292683
+353   -15.00000000
+354   711.19512195
+355   583.58536585
+356   382.60975610
+357   -80.51219512
+358   328.46341463
+359   320.36585366
+360   436.12195122
+361   -16.41463415
+362    47.58536585
+363   221.19512195
+364    94.21951220
+365  -450.60975610
+366  -486.70731707
+367  -301.63414634
+368    10.41463415
+369   689.82926829
+370   178.21951220
+371    87.73170732
+372    79.68292683
+373   400.60975610
+374   128.51219512
+375   -38.36585366
+376   712.17073171
+377  -467.04878049
+378  -328.90243902
+379  -171.29268293
+380   499.09756098
+381  -211.00000000
+382  -337.04878049
+383   103.34146341
+384   482.90243902
+385   669.97560976
+386   -21.04878049
+387   279.39024390
+388   528.70731707
+389  -425.39024390
+390   319.97560976
+391   414.70731707
+392  -391.19512195
+393   -43.43902439
+394   -67.29268293
+395   139.43902439
+396   -97.73170732
+397   481.00000000
+398    58.02439024
+399  -111.39024390
+400  -153.78048780
+401  -271.19512195
+402  -182.12195122
+403    93.78048780
+404   425.34146341
+405    -0.60975610
+406  -501.39024390
+407  -379.04878049
+408  -620.02439024
+409  -502.17073171
+410   462.65853659
+411   150.70731707
+412  -594.41463415
+413   -88.80487805
+414   150.70731707
+415  -503.00000000
+416  -456.65853659
+417  -359.82926829
+418    83.82926829
+419  -100.12195122
+420   157.97560976
+421  -154.56097561
+422  -446.46341463
+423    71.92682927
+424  -624.02439024
+425  -232.75609756
+426   316.46341463
+427   436.51219512
+428  -250.12195122
+429  -704.65853659
+430     2.07317073
+431    15.19512195
+432  -121.92682927
+433    67.24390244
+434  -376.46341463
+435   122.46341463
+436    80.26829268
+437   -57.63414634
+438   -16.56097561
+439  -545.53658537
+440   -81.87804878
+441   224.65853659
+442  -135.82926829
+443  -292.21951220
+444  -172.70731707
+445   650.95121951
+446  -150.90243902
+447   453.82926829
+448  -424.95121951
+449  -562.17073171
+450   228.02439024
+451     6.85365854
+452    97.14634146
+453  -534.12195122
+454  -489.58536585
+455   799.24390244
+456  -495.92682927
+457   -37.68292683
+458   277.19512195
+459    15.48780488
+460   -64.36585366
+461   147.14634146
+462   538.95121951
+463   515.97560976
+464    61.63414634
+465   526.12195122
+466  -224.02439024
+467  -467.39024390
+468   526.36585366
+469   513.19512195
+470   459.87804878
+471   712.95121951
+472   472.56097561
+473   138.65853659
+474   561.09756098
+475   157.00000000
+476    11.14634146
+477    59.09756098
+478   130.75609756
+479  -142.65853659
+480  -514.46341463
+481  -695.87804878
+482   544.75609756
+483   -63.34146341
+484  -564.60975610
+485   560.80487805
+486   -75.04878049
+487   178.80487805
+488   341.14634146
+489   680.75609756
+490  -347.78048780
+491  -405.39024390
+492   -28.51219512
+493  -664.36585366
+494    13.39024390
+495   116.31707317
+496    94.85365854
+497    36.80487805
+498    -8.51219512
+499     6.85365854
+500  -712.02439024
+501   585.14634146
+502  -641.43902439
+503   424.46341463
+504   -87.87804878
+505     4.07317073
+506  -157.19512195
+507  -733.29268293
+508  -461.53658537
+509  -239.82926829
+510   -28.12195122
+511   -64.90243902
+512   492.17073171
+513  -135.92682927
+514  -391.09756098
+515    47.73170732
+516   445.34146341
+517   134.65853659
+518   333.63414634
+519  -570.60975610
+520  -525.39024390
+521   -63.63414634
+522   186.95121951
+523   397.48780488
+524  -312.02439024
+525    46.41463415
+526   596.26829268
+527   764.65853659
+528  -325.68292683
+529   175.92682927
+530  -479.19512195
+531  -495.82926829
+532  -181.14634146
+533   -32.21951220
+534  -649.97560976
+535  -675.29268293
+536   552.17073171
+537  -591.24390244
+538   453.82926829
+539   550.41463415
+540  -350.21951220
+541  -212.41463415
+542  -429.43902439
+543  -143.39024390
+544  -388.26829268
+545  -511.14634146
+546   155.14634146
+547    51.19512195
+548     1.43902439
+549  -626.65853659
+550   386.17073171
+551  -344.12195122
+552   704.07317073
+553    78.80487805
+554   396.36585366
+555   198.60975610
+556   -73.82926829
+557   643.14634146
+558  -199.14634146
+559   568.36585366
+560    52.31707317
+561  -415.48780488
+562   439.92682927
+563  -479.04878049
+564   835.19512195
+565  -167.43902439
+566   648.17073171
+567  -132.21951220
+568   584.02439024
+569    14.90243902
+570  -155.48780488
+571  -391.73170732
+572  -652.80487805
+573    44.65853659
+574   433.09756098
+575   480.46341463
+576   -39.19512195
+577   215.19512195
+578  -354.46341463
+579   459.43902439
+580   -20.60975610
+581  -388.51219512
+582   471.43902439
+583  -535.92682927
+584  -362.60975610
+585   277.24390244
+586   701.39024390
+587   472.85365854
+588   739.87804878
+589   -19.97560976
+590  -505.53658537
+591   632.02439024
+592   172.90243902
+593  -168.85365854
+594   133.14634146
+595  -664.21951220
+596   624.26829268
+597   -40.02439024
+598  -464.85365854
+599     1.24390244
+600   101.04878049
+601   677.34146341
+602    52.02439024
+603    85.24390244
+604  -445.39024390
+605   809.68292683
+606    -1.63414634
+607  -538.02439024
+608   -85.78048780
+609   538.21951220
+610   153.73170732
+611   -18.56097561
+612  -499.43902439
+613   532.65853659
+614  -503.00000000
+615   -26.17073171
+616   -23.39024390
+617  -314.80487805
+618  -663.92682927
+619   481.04878049
+620  -259.14634146
+621   265.14634146
+622    23.78048780
+623  -488.75609756
+624     5.04878049
+625  -525.97560976
+626   131.14634146
+627  -613.09756098
+628  -191.68292683
+629   205.19512195
+630   572.51219512
+631  -727.68292683
+632  -635.09756098
+633   417.24390244
+634   547.43902439
+635   539.97560976
+636   290.70731707
+637   187.78048780
+638   579.97560976
+639  -605.68292683
+640   174.95121951
+641   148.85365854
+642  -629.04878049
+643   338.90243902
+644   106.75609756
+645  -127.00000000
+646    68.70731707
+647  -569.09756098
+648   452.41463415
+649   542.85365854
+650    74.07317073
+651   105.34146341
+652  -487.92682927
+653    80.70731707
+654    28.36585366
+655  -235.78048780
+656   550.65853659
+657  -118.95121951
+658   596.41463415
+659  -204.70731707
+660   377.68292683
+661   143.24390244
+662   152.60975610
+663   504.17073171
+664   867.78048780
+665   385.29268293
+666  -278.60975610
+667  -102.17073171
+668  -610.21951220
+669   139.39024390
+670  -128.02439024
+671  -134.75609756
+672  -706.85365854
+673   132.60975610
+674  -771.19512195
+675    43.04878049
+676   476.95121951
+677  -391.97560976
+678  -161.19512195
+679   -32.65853659
+680  -403.04878049
+681   331.87804878
+682  -680.56097561
+683  -488.51219512
+684   130.26829268
+685   435.58536585
+686    54.65853659
+687   635.00000000
+688   707.82926829
+689   -40.12195122
+690   370.07317073
+691  -128.65853659
+692  -641.53658537
+693  -329.97560976
+694   629.34146341
+695  -599.43902439
+696   -89.09756098
+697   366.56097561
+698   -32.02439024
+699  -373.24390244
+700  -126.31707317
+701  -388.46341463
+702  -510.75609756
+703   435.68292683
+704   161.24390244
+705   -88.26829268
+706    -7.73170732
+707   187.48780488
+708    45.00000000
+709   184.80487805
+710   551.73170732
+711  -471.63414634
+712   172.41463415
+713  -122.56097561
+714  -483.97560976
+715   -42.95121951
+716   140.75609756
+717  -517.29268293
+718   120.21951220
+719  -189.19512195
+720     2.90243902
+721    37.58536585
+722  -289.39024390
+723    28.95121951
+724  -413.43902439
+725   451.09756098
+726  -107.78048780
+727   232.70731707
+728  -128.95121951
+729  -454.90243902
+730   581.19512195
+731   325.04878049
+732   347.24390244
+733  -241.48780488
+734  -639.39024390
+735  -610.26829268
+736  -314.02439024
+737   -24.90243902
+738  -468.51219512
+739   -41.82926829
+740   161.82926829
+741    60.51219512
+742  -791.09756098
+743  -161.29268293
+744   585.78048780
+745   -55.39024390
+746   317.24390244
+747    45.63414634
+748    59.68292683
+749  -347.78048780
+750  -196.02439024
+751   -95.82926829
+752  -261.92682927
+753   171.73170732
+754   478.60975610
+755  -650.51219512
+756  -672.90243902
+757   188.80487805
+758  -298.21951220
+759    10.75609756
+760   -96.51219512
+761  -476.85365854
+762   638.36585366
+763  -396.21951220
+764   493.63414634
+765   411.09756098
+766    14.51219512
+767  -720.75609756
+768   -72.12195122
+769   421.14634146
+770   -27.48780488
+771  -236.31707317
+772  -311.68292683
+773   171.53658537
+774   387.63414634
+775   -32.41463415
+776  -592.41463415
+777  -605.53658537
+778  -219.39024390
+779   -68.36585366
+780  -427.24390244
+781  -187.63414634
+782   373.34146341
+783  -452.75609756
+784   437.00000000
+785  -414.02439024
+786  -477.63414634
+787    -3.82926829
+788   215.00000000
+789  -573.73170732
+790   539.00000000
+791   -74.85365854
+792  -516.80487805
+793  -380.95121951
+794   700.31707317
+795   448.26829268
+796   104.41463415
+797   700.51219512
+798   106.70731707
+799  -166.85365854
+800  -547.63414634
+801   494.31707317
+802   621.43902439
+803    73.09756098
+804  -615.19512195
+805   137.00000000
+806   -36.90243902
+807    68.51219512
+808   216.07317073
+809   699.63414634
+810  -897.14634146
+811    83.82926829
+812   -35.87804878
+813   257.78048780
+814   560.31707317
+815  -671.19512195
+816   425.97560976
+817   341.29268293
+818  -161.68292683
+819  -632.56097561
+820   720.51219512
+821   501.68292683
+822    71.63414634
+823  -629.34146341
+824   375.39024390
+825   133.09756098
+826  -119.04878049
+827    53.34146341
+828  -399.73170732
+829   589.82926829
+830  -121.39024390
+831    28.26829268
+832  -130.41463415
+833  -121.19512195
+834   514.26829268
+835   268.51219512
+836   -77.24390244
+837   216.31707317
+838     0.12195122
+839   -12.07317073
+840  -249.53658537
+841  -299.29268293
+842   625.09756098
+843   -48.02439024
+844   564.65853659
+845  -633.09756098
+846    -1.29268293
+847  -248.12195122
+848   441.29268293
+849  -542.41463415
+850   660.51219512
+851   731.68292683
+852  -776.60975610
+853   636.95121951
+854   440.07317073
+855   618.46341463
+856    40.65853659
+857   -57.24390244
+858  -290.70731707
+859  -687.87804878
+860  -217.87804878
+861    42.85365854
+862  -730.17073171
+863    92.80487805
+864   102.26829268
+865  -243.48780488
+866  -159.48780488
+867   469.92682927
+868   443.29268293
+869   560.17073171
+870  -588.85365854
+871   231.24390244
+872    78.65853659
+873   639.19512195
+874   295.82926829
+875  -396.95121951
+876   185.73170732
+877  -545.78048780
+878   214.21951220
+879   454.95121951
+880   361.73170732
+881   -17.00000000
+882  -125.82926829
+883    81.43902439
+884   643.53658537
+885   261.82926829
+886  -211.92682927
+887    38.51219512
+888   -22.60975610
+889    12.95121951
+890   132.70731707
+891   147.34146341
+892  -303.19512195
+893   -86.65853659
+894   108.51219512
+895    46.60975610
+896  -546.56097561
+897  -404.31707317
+898   229.19512195
+899   309.68292683
+900   691.09756098
+901    31.39024390
+902   510.07317073
+903   339.34146341
+904  -715.34146341
+905   490.95121951
+906   120.95121951
+907   -61.39024390
+908  -537.58536585
+909  -588.51219512
+910   262.31707317
+911   446.17073171
+912  -685.53658537
+913  -546.17073171
+914   270.07317073
+915  -242.31707317
+916  -150.65853659
+917  -557.39024390
+918   506.07317073
+919   254.26829268
+920   -95.00000000
+921    26.85365854
+922   -86.51219512
+923   -92.85365854
+924  -197.43902439
+925   -97.24390244
+926  -100.70731707
+927   603.82926829
+928  -370.75609756
+929   606.07317073
+930   545.29268293
+931  -560.36585366
+932    21.24390244
+933   119.34146341
+934   159.00000000
+935  -436.26829268
+936   313.39024390
+937  -353.78048780
+938   140.07317073
+939    -0.70731707
+940   723.92682927
+941    32.41463415
+942  -729.58536585
+943   318.07317073
+944  -577.29268293
+945  -581.73170732
+946  -180.60975610
+947  -462.60975610
+948   159.73170732
+949   459.19512195
+950  -563.43902439
+951   -87.58536585
+952   467.14634146
+953     9.00000000
+954    15.63414634
+955   205.82926829
+956  -487.09756098
+957   543.48780488
+958  -426.36585366
+959   393.34146341
+960  -263.78048780
+961   645.82926829
+962   293.34146341
+963   -20.46341463
+964   -73.73170732
+965    64.85365854
+966    12.26829268
+967  -678.36585366
+968    89.53658537
+969  -180.95121951
+970    76.07317073
+971  -420.41463415
+972   597.87804878
+973  -317.24390244
+974  -128.46341463
+975   401.87804878
+976  -625.82926829
+977   164.95121951
+978   -23.48780488
+979   648.60975610
+980   313.43902439
+981   212.31707317
+982  -602.21951220
+983    64.70731707
+984   491.53658537
+985    -4.21951220
+986    91.63414634
+987  -641.09756098
+988   254.26829268
+989    75.87804878
+990   285.73170732
+991  -631.63414634
+992  -819.04878049
+993   -13.19512195
+994  -495.58536585
+995  -665.29268293
+996   652.46341463
+997  -411.19512195
+998  -612.12195122
+999  -475.24390244
+1000 -149.58536585
+1001 -566.51219512
+1002  177.14634146
+1003 -309.29268293
+1004  -42.75609756
+1005    4.02439024
+1006 -423.04878049
+1007  477.04878049
+1008  -29.09756098
+1009 -435.48780488
+1010 -562.26829268
+1011  509.92682927
+1012 -622.65853659
+1013 -603.58536585
+1014  620.65853659
+1015  105.48780488
+1016 -308.65853659
+1017  152.51219512
+1018   83.24390244
+1019 -295.97560976
+1020  -54.70731707
+1021  -92.60975610
+1022 -561.58536585
+1023 -173.14634146
+1024   10.80487805
+1025  -51.43902439
+1026   34.51219512
+1027 -529.24390244
+1028  305.73170732
+1029 -505.87804878
+1030 -615.04878049
+1031  165.53658537
+1032   71.97560976
+1033  276.65853659
+1034  127.39024390
+1035  194.56097561
+1036  223.43902439
+1037 -621.58536585
+1038 -444.65853659
+1039 -147.04878049
+1040  124.46341463
+1041  424.80487805
+1042   91.43902439
+1043  649.78048780
+1044 -718.12195122
+1045 -110.51219512
+1046   51.43902439
+1047   82.21951220
+1048  -18.60975610
+1049 -486.80487805
+1050  595.82926829
+1051 -694.31707317
+1052 -484.17073171
+1053 -204.36585366
+1054 -102.95121951
+1055  211.04878049
+1056   82.21951220
+1057  -99.00000000
+1058   51.09756098
+1059  -95.97560976
+1060 -440.21951220
+1061  -99.73170732
+1062  774.51219512
+1063 -106.26829268
+1064  -60.21951220
+1065 -197.04878049
+1066 -200.17073171
+1067  -65.87804878
+1068  632.65853659
+1069 -547.63414634
+1070 -101.92682927
+1071  237.48780488
+1072 -247.39024390
+1073 -615.53658537
+1074 -578.95121951
+1075 -663.09756098
+1076 -114.75609756
+1077  582.21951220
+1078 -560.85365854
+1079  -86.26829268
+1080   23.04878049
+1081  140.02439024
+1082 -461.04878049
+1083 -347.82926829
+1084  -36.95121951
+1085  481.48780488
+1086  620.65853659
+1087  339.87804878
+1088   92.65853659
+1089 -102.85365854
+1090  137.63414634
+1091  -66.21951220
+1092 -171.24390244
+1093  258.02439024
+1094  -89.39024390
+1095 -122.75609756
+1096   64.41463415
+1097  370.56097561
+1098    7.82926829
+1099   93.34146341
+1100  -68.02439024
+1101 -408.51219512
+1102  452.21951220
+1103   84.41463415
+1104   -1.39024390
+1105  756.90243902
+1106  579.82926829
+1107  728.31707317
+1108  116.95121951
+1109   35.78048780
+1110  548.56097561
+1111 -502.56097561
+1112 -543.39024390
+1113 -366.36585366
+1114 -641.82926829
+1115 -843.73170732
+1116   70.21951220
+1117   86.26829268
+1118  353.58536585
+1119 -598.17073171
+1120  393.09756098
+1121 -558.41463415
+1122  638.75609756
+1123 -652.51219512
+1124  606.56097561
+1125  361.97560976
+1126 -254.65853659
+1127 -406.12195122
+1128  -16.31707317
+1129   80.31707317
+1130  469.00000000
+1131 -279.53658537
+1132  -51.53658537
+1133  439.92682927
+1134  -80.90243902
+1135 -529.34146341
+1136   62.60975610
+1137 -218.75609756
+1138 -713.53658537
+1139  560.60975610
+1140  322.31707317
+1141  -11.48780488
+1142 -476.36585366
+1143  279.29268293
+1144  -42.07317073
+1145  416.95121951
+1146 -149.39024390
+1147  371.92682927
+1148 -184.17073171
+1149 -604.26829268
+1150  705.53658537
+1151 -201.97560976
+1152 -104.02439024
+1153 -477.87804878
+1154  467.82926829
+1155   45.58536585
+1156   37.68292683
+1157  374.51219512
+1158   54.70731707
+1159  102.65853659
+1160 -611.29268293
+1161  756.60975610
+1162  465.00000000
+1163  357.92682927
+1164  611.68292683
+1165  136.31707317
+1166  496.56097561
+1167  488.51219512
+1168  286.60975610
+1169  -62.65853659
+1170 -184.60975610
+1171 -696.31707317
+1172  381.24390244
+1173  743.14634146
+1174  -81.58536585
+1175  141.53658537
+1176 -358.65853659
+1177  364.31707317
+1178 -719.82926829
+1179 -533.63414634
+1180  -78.41463415
+1181 -129.48780488
+1182   19.29268293
+1183 -721.34146341
+1184  334.95121951
+1185  173.29268293
+1186 -785.04878049
+1187  714.46341463
+1188 -417.87804878
+1189 -545.43902439
+1190  707.78048780
+1191 -744.90243902
+1192 -608.26829268
+1193   59.92682927
+1194 -428.70731707
+1195 -440.36585366
+1196 -114.07317073
+1197   56.60975610
+1198  593.34146341
+1199  324.41463415
+1200  637.53658537
+1201  472.85365854
+1202  674.41463415
+1203 -605.97560976
+1204 -824.17073171
+1205  423.09756098
+1206  -57.34146341
+1207  224.75609756
+1208 -102.36585366
+1209  504.46341463
+1210    3.87804878
+1211   66.90243902
+1212  584.36585366
+1213   -9.97560976
+1214 -270.12195122
+1215   47.39024390
+1216  510.12195122
+1217  660.60975610
+1218  -73.00000000
+1219  -58.21951220
+1220 -711.97560976
+1221  525.87804878
+1222  125.97560976
+1223  759.39024390
+1224  108.26829268
+1225 -157.43902439
+1226   54.41463415
+1227   -1.78048780
+1228   76.21951220
+1229  124.85365854
+1230  -83.48780488
+1231 -192.07317073
+1232 -665.53658537
+1233   60.41463415
+1234  646.12195122
+1235 -347.78048780
+1236 -484.70731707
+1237  107.87804878
+1238 -182.31707317
+1239  179.43902439
+1240  506.51219512
+1241  -48.80487805
+1242 -517.53658537
+1243  217.87804878
+1244 -462.56097561
+1245  320.12195122
+1246 -169.00000000
+1247  614.95121951
+1248 -713.39024390
+1249  309.39024390
+1250 -688.46341463
+1251  688.31707317
+1252  116.56097561
+1253 -147.09756098
+1254  492.90243902
+1255 -509.78048780
+1256  721.53658537
+1257 -128.21951220
+1258 -139.14634146
+1259  -36.07317073
+1260 -190.17073171
+1261   62.90243902
+1262  -34.70731707
+1263 -289.09756098
+1264 -624.70731707
+1265  -84.02439024
+1266   76.80487805
+1267 -610.26829268
+1268 -536.60975610
+1269 -134.95121951
+1270  624.12195122
+1271  324.07317073
+1272  -32.07317073
+1273 -267.53658537
+1274  692.65853659
+1275  699.82926829
+1276  166.90243902
+1277   38.95121951
+1278 -152.26829268
+1279   38.12195122
+1280  588.51219512
+1281   -2.51219512
+1282  -84.36585366
+1283 -185.14634146
+1284   74.17073171
+1285 -212.21951220
+1286 -617.04878049
+1287  -33.53658537
+1288   38.80487805
+1289 -539.92682927
+1290  297.63414634
+1291   69.43902439
+1292  486.90243902
+1293  317.68292683
+1294  -24.17073171
+1295 -222.70731707
+1296 -176.02439024
+1297  328.41463415
+1298 -452.90243902
+1299 -459.39024390
+1300   80.26829268
+1301  -68.75609756
+1302   22.75609756
+1303  202.75609756
+1304  -81.48780488
+1305 -131.82926829
+1306 -658.56097561
+1307  -10.36585366
+1308  -41.19512195
+1309 -611.34146341
+1310 -143.73170732
+1311  144.85365854
+1312  183.87804878
+1313   65.68292683
+1314 -562.51219512
+1315  353.39024390
+1316  484.80487805
+1317 -251.53658537
+1318 -482.65853659
+1319   82.95121951
+1320 -705.04878049
+1321   69.87804878
+1322   60.31707317
+1323  279.14634146
+1324 -353.48780488
+1325  310.17073171
+1326  749.09756098
+1327 -128.36585366
+1328 -145.73170732
+1329  -65.19512195
+1330 -677.09756098
+1331  199.19512195
+1332 -477.63414634
+1333  113.73170732
+1334  581.92682927
+1335 -586.60975610
+1336  579.00000000
+1337  -10.60975610
+1338 -102.12195122
+1339  -98.31707317
+1340 -270.02439024
+1341  553.09756098
+1342  353.68292683
+1343   -8.85365854
+1344  102.60975610
+1345  442.60975610
+1346  318.12195122
+1347  634.80487805
+1348   51.82926829
+1349  444.21951220
+1350  143.34146341
+1351  740.41463415
+1352  -90.36585366
+1353  252.56097561
+1354 -568.07317073
+1355  128.80487805
+1356 -342.51219512
+1357  111.39024390
+1358  522.26829268
+1359 -350.51219512
+1360  220.65853659
+1361  130.85365854
+1362 -532.95121951
+1363  -51.97560976
+1364  548.60975610
+1365  666.65853659
+1366  -61.68292683
+1367 -212.41463415
+1368   92.95121951
+1369  648.60975610
+1370   79.00000000
+1371 -781.24390244
+1372  190.56097561
+1373 -165.63414634
+1374 -354.80487805
+1375 -446.56097561
+1376 -170.31707317
+1377    1.00000000
+1378 -420.02439024
+1379  -26.26829268
+1380  577.73170732
+1381 -516.65853659
+1382  614.80487805
+1383  516.21951220
+1384   32.21951220
+1385 -720.90243902
+1386  122.12195122
+1387 -330.75609756
+1388   78.17073171
+1389  707.19512195
+1390  281.43902439
+1391   56.60975610
+1392 -134.31707317
+1393 -606.51219512
+1394  176.95121951
+1395   73.48780488
+1396  542.56097561
+1397   37.09756098
+1398 -745.87804878
+1399   41.82926829
+1400  830.85365854
+1401  -79.73170732
+1402  -33.34146341
+1403 -741.29268293
+1404 -200.46341463
+1405  437.39024390
+1406  695.87804878
+1407  181.29268293
+1408  530.31707317
+1409 -624.70731707
+1410 -273.87804878
+1411 -494.26829268
+1412  184.02439024
+1413  210.80487805
+1414  -77.53658537
+1415  124.51219512
+1416  149.09756098
+1417 -497.34146341
+1418  -65.29268293
+1419  -53.29268293
+1420  156.65853659
+1421 -207.39024390
+1422  263.14634146
+1423  -52.26829268
+1424 -575.58536585
+1425 -171.04878049
+1426   13.19512195
+1427 -362.65853659
+1428   18.56097561
+1429 -516.56097561
+1430 -743.19512195
+1431  312.90243902
+1432 -672.60975610
+1433   -4.17073171
+1434   80.36585366
+1435    1.82926829
+1436 -601.24390244
+1437  369.78048780
+1438  -42.70731707
+1439 -487.78048780
+1440 -390.02439024
+1441 -582.90243902
+1442 -656.26829268
+1443  552.12195122
+1444 -685.92682927
+1445  715.43902439
+1446 -707.82926829
+1447 -344.17073171
+1448  553.97560976
+1449 -114.31707317
+1450  161.78048780
+1451  151.04878049
+1452 -256.51219512
+1453  -68.75609756
+1454  214.17073171
+1455 -692.51219512
+1456 -548.75609756
+1457 -284.07317073
+1458  178.90243902
+1459   98.85365854
+1460 -261.53658537
+1461  -29.63414634
+1462  -60.75609756
+1463 -494.70731707
+1464  -71.78048780
+1465 -129.92682927
+1466  200.41463415
+1467  -98.80487805
+1468 -534.70731707
+1469  230.36585366
+1470 -303.58536585
+1471 -591.78048780
+1472  581.09756098
+1473 -677.97560976
+1474  622.26829268
+1475  257.63414634
+1476  -19.97560976
+1477 -773.39024390
+1478 -682.56097561
+1479  -17.09756098
+1480   45.19512195
+1481  570.21951220
+1482  -91.00000000
+1483  128.41463415
+1484  530.46341463
+1485  111.04878049
+1486 -536.75609756
+1487  -47.43902439
+1488 -145.00000000
+1489  214.46341463
+1490  662.46341463
+1491 -526.70731707
+1492 -537.92682927
+1493   48.46341463
+1494  569.58536585
+1495   49.09756098
+1496  -32.26829268
+1497  -27.14634146
+1498  137.34146341
+1499 -540.12195122
+1500  344.90243902
+1501 -509.73170732
+1502 -677.43902439
+1503  413.92682927
+1504  727.53658537
+1505  573.39024390
+1506 -721.53658537
+1507  458.46341463
+1508  480.65853659
+1509 -631.14634146
+1510  177.87804878
+1511 -621.04878049
+1512  -69.14634146
+1513  -41.87804878
+1514  140.75609756
+1515 -501.34146341
+1516  -33.63414634
+1517  -55.73170732
+1518  185.97560976
+1519  218.85365854
+1520   85.92682927
+1521 -177.87804878
+1522  -52.56097561
+1523 -489.39024390
+1524  -42.65853659
+1525    3.48780488
+1526 -475.14634146
+1527  642.75609756
+1528  -10.75609756
+1529 -407.97560976
+1530   35.39024390
+1531 -191.73170732
+1532 -275.63414634
+1533    2.31707317
+1534   36.56097561
+1535 -537.19512195
+1536 -799.73170732
+1537    8.41463415
+1538   37.24390244
+1539  598.51219512
+1540 -426.90243902
+1541   24.12195122
+1542 -454.90243902
+1543  459.24390244
+1544 -270.36585366
+1545 -676.46341463
+1546   99.53658537
+1547 -163.82926829
+1548  729.92682927
+1549  409.34146341
+1550 -396.31707317
+1551  -92.02439024
+1552   93.09756098
+1553    3.87804878
+1554 -616.31707317
+1555  131.04878049
+1556   24.70731707
+1557   55.73170732
+1558   73.53658537
+1559 -482.26829268
+1560   13.53658537
+1561 -349.14634146
+1562  123.43902439
+1563  520.02439024
+1564  391.09756098
+1565 -292.12195122
+1566  378.26829268
+1567  157.97560976
+1568   16.90243902
+1569  136.70731707
+1570 -151.24390244
+1571  137.09756098
+1572 -437.19512195
+1573  585.00000000
+1574  469.92682927
+1575  -12.70731707
+1576  548.31707317
+1577  -64.95121951
+1578 -520.36585366
+1579  100.65853659
+1580 -297.78048780
+1581 -135.29268293
+1582 -673.63414634
+1583  174.21951220
+1584  116.36585366
+1585  558.95121951
+1586 -539.92682927
+1587  -86.56097561
+1588   42.51219512
+1589  491.73170732
+1590 -779.19512195
+1591 -564.17073171
+1592  -74.56097561
+1593  511.92682927
+1594   -9.58536585
+1595   -5.29268293
+1596  379.29268293
+1597 -481.39024390
+1598    3.29268293
+1599   24.95121951
+1600  119.73170732
+1601   95.24390244
+1602   71.34146341
+1603 -148.02439024
+1604  -76.60975610
+1605  563.29268293
+1606  200.60975610
+1607  623.14634146
+1608 -391.09756098
+1609  306.02439024
+1610 -520.31707317
+1611 -734.07317073
+1612  526.65853659
+1613 -671.73170732
+1614    2.90243902
+1615  422.90243902
+1616  662.21951220
+1617  276.90243902
+1618  -21.29268293
+1619  211.09756098
+1620 -537.00000000
+1621  664.51219512
+1622 -116.56097561
+1623 -623.63414634
+1624  361.00000000
+1625 -392.31707317
+1626  -87.29268293
+1627  503.58536585
+1628 -622.95121951
+1629   83.43902439
+1630  -66.85365854
+1631  144.70731707
+1632 -737.53658537
+1633  316.12195122
+1634   70.56097561
+1635  193.58536585
+1636  369.43902439
+1637   -2.21951220
+1638  610.85365854
+1639 -202.51219512
+1640 -491.14634146
+1641  122.51219512
+1642   -1.29268293
+1643  455.34146341
+1644  104.51219512
+1645  -19.24390244
+1646 -505.09756098
+1647 -259.97560976
+1648 -665.09756098
+1649  758.07317073
+1650 -773.04878049
+1651  674.56097561
+1652  -71.09756098
+1653 -196.60975610
+1654 -384.56097561
+1655  609.00000000
+1656 -149.48780488
+1657  165.24390244
+1658 -508.95121951
+1659  -55.43902439
+1660  266.95121951
+1661 -694.75609756
+1662 -583.48780488
+1663 -645.24390244
+1664  381.53658537
+1665 -816.02439024
+1666 -639.58536585
+1667  857.09756098
+1668  -19.78048780
+1669   23.73170732
+1670  214.90243902
+1671  348.41463415
+1672   83.63414634
+1673 -142.95121951
+1674  -66.70731707
+1675    5.73170732
+1676   21.58536585
+1677   92.85365854
+1678  571.48780488
+1679  532.70731707
+1680  582.07317073
+1681  507.00000000
+1682  305.53658537
+1683  803.78048780
+1684  727.09756098
+1685 -713.73170732
+1686  -70.21951220
+1687  -33.48780488
+1688 -320.17073171
+1689  458.31707317
+1690   64.95121951
+1691  241.58536585
+1692  356.80487805
+1693 -161.43902439
+1694 -613.73170732
+1695  105.92682927
+1696  243.14634146
+1697   79.53658537
+1698 -360.31707317
+1699 -551.63414634
+1700 -141.34146341
+1701 -606.95121951
+1702 -457.34146341
+1703  -99.39024390
+1704  156.46341463
+1705   98.46341463
+1706 -800.75609756
+1707   18.60975610
+1708  127.97560976
+1709  680.26829268
+1710 -633.68292683
+1711 -453.63414634
+1712  399.04878049
+1713 -403.82926829
+1714 -555.53658537
+1715  507.14634146
+1716  473.29268293
+1717 -338.31707317
+1718  528.07317073
+1719 -355.09756098
+1720  -71.24390244
+1721  601.53658537
+1722 -725.73170732
+1723  138.26829268
+1724  590.36585366
+1725 -488.65853659
+1726  344.51219512
+1727 -160.17073171
+1728 -748.12195122
+1729 -655.34146341
+1730 -573.39024390
+1731  649.43902439
+1732  135.29268293
+1733 -723.58536585
+1734 -119.09756098
+1735 -358.21951220
+1736    3.29268293
+1737  -29.04878049
+1738  -40.36585366
+1739  341.82926829
+1740  294.65853659
+1741 -139.04878049
+1742   22.36585366
+1743  -20.26829268
+1744   94.36585366
+1745 -737.29268293
+1746 -610.21951220
+1747   40.60975610
+1748 -596.65853659
+1749 -585.29268293
+1750 -130.90243902
+1751  134.31707317
+1752  174.90243902
+1753  470.12195122
+1754 -463.78048780
+1755  127.92682927
+1756  -28.12195122
+1757  199.53658537
+1758 -418.51219512
+1759 -367.53658537
+1760 -460.07317073
+1761  197.29268293
+1762  -45.82926829
+1763 -304.21951220
+1764  410.60975610
+1765   31.63414634
+1766   17.24390244
+1767 -169.68292683
+1768 -195.24390244
+1769  680.80487805
+1770 -110.75609756
+1771   69.73170732
+1772  544.60975610
+1773   76.36585366
+1774  211.19512195
+1775  100.70731707
+1776    2.70731707
+1777 -444.41463415
+1778 -296.60975610
+1779 -591.63414634
+1780   33.48780488
+1781  106.21951220
+1782  342.36585366
+1783 -542.07317073
+1784   79.14634146
+1785 -350.80487805
+1786  477.58536585
+1787  505.34146341
+1788  182.31707317
+1789  -62.26829268
+1790 -416.31707317
+1791  485.82926829
+1792   39.24390244
+1793   56.31707317
+1794 -189.43902439
+1795   92.60975610
+1796  648.60975610
+1797  -68.56097561
+1798  496.51219512
+1799  462.65853659
+1800   96.07317073
+1801  447.00000000
+1802 -136.41463415
+1803 -583.78048780
+1804  -94.51219512
+1805 -112.90243902
+1806  716.21951220
+1807 -490.95121951
+1808  565.09756098
+1809  130.65853659
+1810  430.36585366
+1811    7.78048780
+1812  705.19512195
+1813  419.68292683
+1814  -54.21951220
+1815 -569.73170732
+1816  -97.68292683
+1817  -43.48780488
+1818  610.60975610
+1819  566.36585366
+1820 -544.36585366
+1821 -414.95121951
+1822 -179.97560976
+1823  585.58536585
+1824 -520.12195122
+1825 -629.48780488
+1826  194.95121951
+1827  -86.26829268
+1828 -368.41463415
+1829 -590.56097561
+1830 -668.60975610
+1831 -119.39024390
+1832 -689.53658537
+1833 -865.92682927
+1834  764.75609756
+1835   -6.70731707
+1836   63.68292683
+1837 -710.41463415
+1838  641.73170732
+1839    3.48780488
+1840 -742.75609756
+1841  517.04878049
+1842 -238.46341463
+1843  524.51219512
+1844 -469.58536585
+1845  671.00000000
+1846 -615.92682927
+1847  515.29268293
+1848 -431.63414634
+1849 -495.97560976
+1850  565.53658537
+1851  159.92682927
+1852 -530.31707317
+1853 -607.82926829
+1854   62.75609756
+1855  476.51219512
+1856  263.92682927
+1857  707.09756098
+1858  -74.75609756
+1859 -611.48780488
+1860 -737.92682927
+1861 -578.02439024
+1862  627.09756098
+1863  381.97560976
+1864  310.17073171
+1865  489.97560976
+1866 -871.78048780
+1867  337.19512195
+1868  517.48780488
+1869  411.78048780
+1870  -70.85365854
+1871 -157.73170732
+1872 -255.82926829
+1873  234.51219512
+1874 -125.00000000
+1875  487.87804878
+1876  -12.41463415
+1877 -117.19512195
+1878  175.73170732
+1879  145.68292683
+1880 -379.34146341
+1881 -687.00000000
+1882 -656.17073171
+1883 -172.41463415
+1884 -659.24390244
+1885 -204.46341463
+1886 -139.34146341
+1887 -816.51219512
+1888 -219.78048780
+1889  638.95121951
+1890   80.46341463
+1891   -1.43902439
+1892 -507.68292683
+1893 -685.39024390
+1894 -226.75609756
+1895  481.53658537
+1896  687.82926829
+1897  -51.14634146
+1898  489.87804878
+1899  673.78048780
+1900 -507.63414634
+1901   70.26829268
+1902  129.00000000
+1903 -633.82926829
+1904 -733.68292683
+1905 -440.26829268
+1906  220.51219512
+1907 -100.02439024
+1908  271.39024390
+1909  -23.39024390
+1910 -653.14634146
+1911 -698.51219512
+1912  -95.78048780
+1913  -81.78048780
+1914 -710.85365854
+1915   37.43902439
+1916 -492.95121951
+1917  580.56097561
+1918  158.95121951
+1919  422.41463415
+1920 -482.02439024
+1921  471.00000000
+1922  -83.04878049
+1923  697.29268293
+1924  243.04878049
+1925  469.00000000
+1926  501.34146341
+1927 -229.43902439
+1928 -772.17073171
+1929 -416.80487805
+1930  227.63414634
+1931  463.82926829
+1932  517.92682927
+1933  438.17073171
+1934 -134.95121951
+1935  794.51219512
+1936 -579.09756098
+1937  112.56097561
+1938 -625.78048780
+1939 -120.60975610
+1940   35.48780488
+1941 -599.14634146
+1942  -60.65853659
+1943  185.87804878
+1944  -91.00000000
+1945 -543.68292683
+1946 -504.07317073
+1947  406.21951220
+1948  510.70731707
+1949 -267.53658537
+1950  -60.07317073
+1951 -390.60975610
+1952 -215.48780488
+1953    4.12195122
+1954  -39.58536585
+1955 -685.14634146
+1956  -67.63414634
+1957   82.90243902
+1958   75.14634146
+1959  341.14634146
+1960  111.04878049
+1961  305.00000000
+1962 -224.41463415
+1963  -56.07317073
+1964   32.60975610
+1965  728.07317073
+1966 -794.41463415
+1967 -266.75609756
+1968  155.09756098
+1969  772.36585366
+1970  496.36585366
+1971 -283.58536585
+1972  122.31707317
+1973   31.19512195
+1974  677.97560976
+1975  551.14634146
+1976  206.26829268
+1977  168.07317073
+1978   63.04878049
+1979 -451.97560976
+1980  522.51219512
+1981    7.39024390
+1982 -107.63414634
+1983 -472.26829268
+1984 -130.12195122
+1985  371.58536585
+1986  522.60975610
+1987 -369.00000000
+1988  578.02439024
+1989 -504.07317073
+1990  858.21951220
+1991  638.80487805
+1992 -142.21951220
+1993  262.95121951
+1994  549.58536585
+1995  632.90243902
+1996 -411.97560976
+1997  129.82926829
+1998  648.75609756
+1999 -159.29268293
+2000 -574.41463415
+2001 -720.80487805
+2002  503.48780488
+2003 -432.60975610
+2004 -242.46341463
+2005 -592.02439024
+2006  -65.48780488
+2007 -521.24390244
+2008  215.82926829
+2009  605.87804878
+2010  340.21951220
+2011 -594.41463415
+2012  131.87804878
+2013  439.19512195
+2014 -582.80487805
+2015 -325.09756098
+2016   54.21951220
+2017  -15.24390244
+2018 -358.31707317
+2019 -575.78048780
+2020 -111.78048780
+2021 -570.90243902
+2022  119.14634146
+2023   24.70731707
+2024  -11.43902439
+2025 -311.82926829
+2026  477.53658537
+2027  601.09756098
+2028  522.80487805
+2029   75.09756098
+2030 -647.19512195
+2031 -107.19512195
+2032  806.80487805
+2033  -16.31707317
+2034  694.31707317
+2035  -42.46341463
+2036  522.90243902
+2037  793.63414634
+2038  116.36585366
+2039  166.41463415
+2040   68.51219512
+2041   57.04878049
+2042 -538.17073171
+2043  -69.14634146
+2044  -10.90243902
+2045   66.17073171
+2046  -27.14634146
+2047  -96.80487805
+2048 -389.09756098
+2049 -143.24390244
+2050  -34.21951220
+2051  115.39024390
+2052 -193.14634146
+2053  113.82926829
+2054  162.21951220
+2055  -31.14634146
+2056   39.34146341
+2057 -478.70731707
+2058  595.58536585
+2059  -72.07317073
+2060 -702.60975610
+2061 -124.60975610
+2062 -447.09756098
+2063  161.04878049
+2064 -395.29268293
+2065 -409.34146341
+2066  273.34146341
+2067  172.36585366
+2068 -500.17073171
+2069 -300.65853659
+2070 -615.73170732
+2071  781.78048780
+2072  148.07317073
+2073 -112.80487805
+2074   49.48780488
+2075 -364.07317073
+2076 -150.07317073
+2077 -105.29268293
+2078 -143.19512195
+2079 -257.00000000
+2080  280.85365854
+2081 -561.14634146
+2082 -494.90243902
+2083 -210.07317073
+2084  774.12195122
+2085  575.82926829
+2086   68.31707317
+2087  628.21951220
+2088 -576.31707317
+2089  516.90243902
+2090  -97.14634146
+2091   45.14634146
+2092  272.56097561
+2093   66.95121951
+2094  203.24390244
+2095 -641.09756098
+2096  216.80487805
+2097  -44.31707317
+2098  585.58536585
+2099  117.39024390
+2100  471.53658537
+2101  529.78048780
+2102 -384.51219512
+2103  313.34146341
+2104  735.53658537
+2105  137.34146341
+2106 -603.87804878
+2107   65.34146341
+2108 -231.92682927
+2109   35.92682927
+2110  261.43902439
+2111  771.63414634
+2112 -683.39024390
+2113  -65.43902439
+2114  556.31707317
+2115  625.97560976
+2116  379.09756098
+2117  429.29268293
+2118 -620.90243902
+2119 -539.19512195
+2120  425.82926829
+2121 -621.82926829
+2122 -712.02439024
+2123 -777.58536585
+2124 -487.92682927
+2125 -558.02439024
+2126  -12.17073171
+2127  421.87804878
+2128  694.80487805
+2129   73.00000000
+2130 -466.85365854
+2131 -556.90243902
+2132  -76.80487805
+2133  688.12195122
+2134   72.51219512
+2135 -415.58536585
+2136  654.95121951
+2137  360.90243902
+2138  -93.48780488
+2139  567.09756098
+2140  -30.56097561
+2141 -618.02439024
+2142 -427.63414634
+2143 -122.65853659
+2144   22.26829268
+2145 -207.34146341
+2146 -516.12195122
+2147  425.58536585
+2148 -139.00000000
+2149 -628.90243902
+2150 -236.95121951
+2151   -3.19512195
+2152  212.60975610
+2153 -705.34146341
+2154 -369.97560976
+2155   33.48780488
+2156  -22.70731707
+2157   -3.87804878
+2158  446.07317073
+2159  455.53658537
+2160   43.97560976
+2161 -433.14634146
+2162  -34.60975610
+2163 -414.31707317
+2164  480.90243902
+2165   67.34146341
+2166   59.24390244
+2167  313.78048780
+2168  -80.21951220
+2169   55.09756098
+2170  -82.31707317
+2171  -26.90243902
+2172  170.60975610
+2173 -213.92682927
+2174 -571.24390244
+2175  398.41463415
+2176  186.70731707
+2177 -238.21951220
+2178  -68.07317073
+2179  -12.65853659
+2180  447.53658537
+2181   73.14634146
+2182 -186.56097561
+2183  142.36585366
+2184 -132.85365854
+2185  -72.21951220
+2186  721.24390244
+2187   94.60975610
+2188 -267.34146341
+2189 -531.87804878
+2190 -160.31707317
+2191  290.02439024
+2192 -553.58536585
+2193 -375.00000000
+2194  489.29268293
+2195 -139.34146341
+2196  -17.04878049
+2197  301.68292683
+2198  333.73170732
+2199  537.19512195
+2200 -636.51219512
+2201 -269.68292683
+2202  240.21951220
+2203 -532.70731707
+2204  509.48780488
+2205  567.24390244
+2206  180.31707317
+2207 -573.87804878
+2208  322.17073171
+2209 -439.34146341
+2210 -270.75609756
+2211  -31.09756098
+2212 -765.19512195
+2213 -180.12195122
+2214 -523.82926829
+2215  531.43902439
+2216  -62.85365854
+2217  -46.21951220
+2218  595.34146341
+2219  133.24390244
+2220 -739.00000000
+2221  -47.19512195
+2222 -201.53658537
+2223  197.14634146
+2224 -127.68292683
+2225  553.53658537
+2226  372.80487805
+2227  263.19512195
+2228  356.21951220
+2229 -246.75609756
+2230 -652.80487805
+2231 -724.51219512
+2232  116.60975610
+2233 -354.21951220
+2234  574.56097561
+2235  -38.12195122
+2236  -29.24390244
+2237  -89.53658537
+2238 -639.04878049
+2239  -97.34146341
+2240 -450.21951220
+2241 -538.75609756
+2242 -131.39024390
+2243  -41.78048780
+2244  476.60975610
+2245 -155.92682927
+2246  688.36585366
+2247   59.19512195
+2248   -5.24390244
+2249  -70.65853659
+2250   36.21951220
+2251  531.34146341
+2252  392.95121951
+2253  -37.92682927
+2254 -122.60975610
+2255   77.68292683
+2256  637.39024390
+2257  293.63414634
+2258  489.97560976
+2259 -188.90243902
+2260  555.34146341
+2261   69.92682927
+2262  334.31707317
+2263 -505.14634146
+2264   19.14634146
+2265 -150.75609756
+2266  109.53658537
+2267  228.36585366
+2268 -786.75609756
+2269 -202.41463415
+2270  556.07317073
+2271   94.51219512
+2272 -178.60975610
+2273   60.17073171
+2274 -641.53658537
+2275   74.56097561
+2276 -106.21951220
+2277 -568.80487805
+2278 -115.04878049
+2279  494.31707317
+2280 -157.00000000
+2281  -52.75609756
+2282  439.34146341
+2283 -209.39024390
+2284  -34.51219512
+2285  729.68292683
+2286 -660.26829268
+2287  502.70731707
+2288 -629.68292683
+2289  641.04878049
+2290   66.36585366
+2291  -71.78048780
+2292  668.02439024
+2293 -282.26829268
+2294  594.90243902
+2295   93.78048780
+2296  618.07317073
+2297   -0.90243902
+2298 -475.63414634
+2299 -128.36585366
+2300 -358.51219512
+2301  476.31707317
+2302  -63.48780488
+2303  459.04878049
+2304  161.87804878
+2305  -70.26829268
+2306 -559.92682927
+2307   23.04878049
+2308   97.43902439
+2309  461.43902439
+2310  311.97560976
+2311  404.65853659
+2312  755.48780488
+2313   -7.14634146
+2314   70.21951220
+2315  640.02439024
+2316  -71.24390244
+2317 -711.29268293
+2318  417.82926829
+2319 -568.36585366
+2320 -130.36585366
+2321  -12.51219512
+2322  647.53658537
+2323  -90.07317073
+2324  473.04878049
+2325  -92.51219512
+2326   89.14634146
+2327 -619.09756098
+2328 -651.09756098
+2329 -671.87804878
+2330  -41.04878049
+2331  658.21951220
+2332  531.58536585
+2333  -43.82926829
+2334  542.36585366
+2335 -270.70731707
+2336  523.63414634
+2337 -592.21951220
+2338 -275.29268293
+2339 -602.80487805
+2340 -554.95121951
+2341 -437.87804878
+2342  -95.00000000
+2343  231.14634146
+2344   42.02439024
+2345  580.56097561
+2346  457.19512195
+2347  196.46341463
+2348 -210.17073171
+2349  230.21951220
+2350  -57.97560976
+2351  532.95121951
+2352   13.34146341
+2353 -151.97560976
+2354  284.36585366
+2355 -601.53658537
+2356 -365.58536585
+2357  128.95121951
+2358   -9.58536585
+2359 -171.78048780
+2360  605.34146341
+2361 -445.58536585
+2362 -638.90243902
+2363 -647.87804878
+2364 -339.43902439
+2365   60.07317073
+2366  440.56097561
+2367 -667.29268293
+2368  387.73170732
+2369  469.09756098
+2370   30.41463415
+2371 -510.41463415
+2372   74.85365854
+2373  622.02439024
+2374 -527.68292683
+2375  -13.87804878
+2376  638.80487805
+2377 -204.41463415
+2378   78.07317073
+2379  -76.17073171
+2380  515.63414634
+2381   85.78048780
+2382 -457.48780488
+2383  371.43902439
+2384   75.00000000
+2385  128.56097561
+2386  685.87804878
+2387  523.73170732
+2388  -56.31707317
+2389  646.21951220
+2390 -448.31707317
+2391  616.95121951
+2392  445.24390244
+2393 -676.17073171
+2394 -711.34146341
+2395 -680.60975610
+2396  805.43902439
+2397  -29.58536585
+2398 -446.36585366
+2399 -165.24390244
+2400 -138.90243902
+2401  538.46341463
+2402  641.14634146
+2403  183.63414634
+2404  125.78048780
+2405 -368.12195122
+2406 -691.78048780
+2407 -615.29268293
+2408  409.04878049
+2409 -257.97560976
+2410   18.75609756
+2411  151.00000000
+2412  -26.02439024
+2413   25.82926829
+2414  389.82926829
+2415  -87.24390244
+2416 -582.56097561
+2417  701.68292683
+2418 -703.29268293
+2419  779.48780488
+2420  170.80487805
+2421 -768.65853659
+2422 -113.29268293
+2423 -607.97560976
+2424  671.87804878
+2425 -104.07317073
+2426  -18.51219512
+2427  298.02439024
+2428  -22.12195122
+2429  145.53658537
+2430 -605.19512195
+2431  665.78048780
+2432 -507.68292683
+2433  -63.73170732
+2434  564.90243902
+2435 -513.04878049
+2436 -463.53658537
+2437 -238.56097561
+2438  540.21951220
+2439   47.73170732
+2440 -130.80487805
+2441  615.00000000
+2442 -126.65853659
+2443  109.43902439
+2444   35.24390244
+2445 -657.29268293
+2446  667.92682927
+2447 -293.34146341
+2448  285.24390244
+2449  545.63414634
+2450 -764.12195122
+2451   19.04878049
+2452  260.07317073
+2453  453.19512195
+2454  -30.85365854
+2455  -18.90243902
+2456 -155.19512195
+2457 -503.58536585
+2458   -4.95121951
+2459 -479.39024390
+2460 -303.82926829
+2461 -348.41463415
+2462  787.73170732
+2463 -762.02439024
+2464  -52.65853659
+2465  -44.75609756
+2466 -506.46341463
+2467  104.85365854
+2468 -104.41463415
+2469 -215.97560976
+2470  191.78048780
+2471   48.02439024
+2472   43.73170732
+2473  158.70731707
+2474  135.29268293
+2475 -375.92682927
+2476 -389.63414634
+2477 -667.87804878
+2478   78.95121951
+2479 -723.58536585
+2480  183.04878049
+2481 -512.26829268
+2482  -68.21951220
+2483  490.60975610
+2484 -826.90243902
+2485  101.24390244
+2486  654.46341463
+2487 -180.70731707
+2488   27.48780488
+2489  -56.90243902
+2490  415.97560976
+2491 -395.43902439
+2492  272.41463415
+2493  328.21951220
+2494  -82.41463415
+2495 -397.43902439
+2496 -520.51219512
+2497  337.00000000
+2498  203.19512195
+2499 -100.70731707
+2500 -173.53658537
+2501 -536.21951220
+2502  443.73170732
+2503   21.63414634
+2504  142.70731707
+2505  239.73170732
+2506   79.34146341
+2507 -226.41463415
+2508 -741.39024390
+2509  427.19512195
+2510  -47.53658537
+2511  -88.41463415
+2512 -696.51219512
+2513 -521.82926829
+2514  -15.63414634
+2515 -414.26829268
+2516   66.31707317
+2517  212.21951220
+2518  386.65853659
+2519 -454.56097561
+2520   63.04878049
+2521  543.58536585
+2522   62.65853659
+2523 -156.21951220
+2524  327.53658537
+2525  403.09756098
+2526  495.00000000
+2527  274.80487805
+2528 -302.85365854
+2529  -38.70731707
+2530   46.31707317
+2531  186.46341463
+2532 -522.70731707
+2533  512.46341463
+2534  188.60975610
+2535 -355.87804878
+2536  447.97560976
+2537 -455.58536585
+2538  477.39024390
+2539 -575.19512195
+2540 -157.39024390
+2541  796.75609756
+2542  -30.46341463
+2543   33.48780488
+2544  -74.07317073
+2545  282.85365854
+2546 -193.87804878
+2547  -12.07317073
+2548 -673.68292683
+2549 -170.60975610
+2550  -77.78048780
+2551 -253.34146341
+2552 -197.97560976
+2553  172.70731707
+2554 -227.48780488
+2555 -490.95121951
+2556  732.75609756
+2557  -35.63414634
+2558 -482.95121951
+2559  700.65853659
+2560 -522.90243902
+2561  502.70731707
+2562 -505.48780488
+2563   25.04878049
+2564  649.58536585
+2565  443.34146341
+2566   92.95121951
+2567  576.80487805
+2568  347.04878049
+2569 -534.17073171
+2570 -737.58536585
+2571   77.87804878
+2572   26.26829268
+2573 -563.58536585
+2574  573.73170732
+2575 -595.68292683
+2576 -142.85365854
+2577 -352.21951220
+2578  183.00000000
+2579   15.29268293
+2580  303.34146341
+2581  715.78048780
+2582  383.39024390
+2583 -472.31707317
+2584 -803.14634146
+2585 -560.80487805
+2586 -370.90243902
+2587   44.17073171
+2588 -457.78048780
+2589  492.65853659
+2590 -685.29268293
+2591  219.48780488
+2592  113.92682927
+2593  558.85365854
+2594  480.17073171
+2595  506.36585366
+2596  271.92682927
+2597 -103.24390244
+2598   10.65853659
+2599   23.24390244
+2600  -31.24390244
+2601 -599.00000000
+2602 -438.60975610
+2603  448.17073171
+2604 -513.68292683
+2605  467.87804878
+2606  -97.24390244
+2607 -324.70731707
+2608  333.73170732
+2609 -557.63414634
+2610 -112.41463415
+2611  348.07317073
+2612  381.19512195
+2613 -757.58536585
+2614  767.34146341
+2615  179.09756098
+2616  -65.97560976
+2617 -461.97560976
+2618 -121.97560976
+2619 -435.14634146
+2620  293.92682927
+2621 -463.43902439
+2622  448.46341463
+2623  318.17073171
+2624 -659.73170732
+2625  702.07317073
+2626 -691.78048780
+2627 -347.97560976
+2628 -167.43902439
+2629  127.19512195
+2630  -52.90243902
+2631  579.63414634
+2632  217.78048780
+2633  651.48780488
+2634 -567.43902439
+2635  159.24390244
+2636  529.34146341
+2637  176.85365854
+2638   -9.39024390
+2639   33.14634146
+2640  560.36585366
+2641  -37.34146341
+2642  489.24390244
+2643  -46.41463415
+2644  406.36585366
+2645  671.78048780
+2646 -653.97560976
+2647 -503.68292683
+2648 -425.43902439
+2649  -15.00000000
+2650  609.82926829
+2651 -499.39024390
+2652 -298.31707317
+2653  682.65853659
+2654  507.09756098
+2655 -317.87804878
+2656 -368.95121951
+2657  253.39024390
+2658   78.56097561
+2659 -798.80487805
+2660 -467.53658537
+2661 -123.39024390
+2662  182.41463415
+2663 -454.85365854
+2664  -36.21951220
+2665 -502.70731707
+2666   80.80487805
+2667  -90.56097561
+2668  -74.80487805
+2669 -787.92682927
+2670  415.53658537
+2671  349.68292683
+2672  374.80487805
+2673 -123.78048780
+2674 -317.73170732
+2675  802.75609756
+2676 -712.70731707
+2677 -117.87804878
+2678  521.34146341
+2679 -583.68292683
+2680  559.04878049
+2681 -301.87804878
+2682  539.19512195
+2683  205.39024390
+2684  356.07317073
+2685 -162.60975610
+2686   45.92682927
+2687   58.12195122
+2688  -77.43902439
+2689 -509.78048780
+2690 -658.07317073
+2691 -601.68292683
+2692  361.87804878
+2693  106.65853659
+2694 -277.39024390
+2695  322.65853659
+2696  192.51219512
+2697   99.82926829
+2698  328.56097561
+2699 -394.02439024
+2700  -31.73170732
+2701  647.14634146
+2702   18.80487805
+2703  439.04878049
+2704   51.82926829
+2705   82.07317073
+2706  -50.46341463
+2707  671.29268293
+2708 -276.12195122
+2709  -18.31707317
+2710 -517.92682927
+2711 -377.04878049
+2712  235.73170732
+2713 -636.07317073
+2714  136.65853659
+2715  116.21951220
+2716   23.48780488
+2717  492.51219512
+2718  402.07317073
+2719    4.41463415
+2720   87.58536585
+2721   53.34146341
+2722 -197.34146341
+2723  204.56097561
+2724  -58.21951220
+2725  128.31707317
+2726 -353.19512195
+2727  130.95121951
+2728  -34.60975610
+2729   86.31707317
+2730 -227.78048780
+2731   32.26829268
+2732  582.85365854
+2733  313.00000000
+2734   -7.82926829
+2735    2.90243902
+2736   58.95121951
+2737  -38.26829268
+2738  -12.95121951
+2739 -529.78048780
+2740  386.95121951
+2741  686.46341463
+2742  167.63414634
+2743 -192.95121951
+2744  268.46341463
+2745 -419.53658537
+2746  193.78048780
+2747  356.60975610
+2748 -741.04878049
+2749 -726.17073171
+2750  596.95121951
+2751   67.43902439
+2752  527.63414634
+2753 -585.48780488
+2754  508.56097561
+2755   -0.60975610
+2756  -87.04878049
+2757  228.12195122
+2758  804.26829268
+2759   67.68292683
+2760   82.36585366
+2761 -557.00000000
+2762   28.02439024
+2763  -21.29268293
+2764 -103.29268293
+2765  132.36585366
+2766  -24.70731707
+2767  191.04878049
+2768 -592.41463415
+2769   22.17073171
+2770  568.70731707
+2771 -752.80487805
+2772  243.43902439
+2773 -523.53658537
+2774  516.36585366
+2775   41.24390244
+2776 -450.80487805
+2777  407.78048780
+2778 -463.78048780
+2779   34.95121951
+2780 -628.46341463
+2781 -446.46341463
+2782  779.43902439
+2783  149.14634146
+2784  486.51219512
+2785   91.97560976
+2786 -573.78048780
+2787  566.65853659
+2788   69.29268293
+2789 -105.34146341
+2790 -463.43902439
+2791  656.31707317
+2792 -536.41463415
+2793  628.07317073
+2794 -269.19512195
+2795  185.24390244
+2796  355.97560976
+2797 -577.53658537
+2798  -45.29268293
+2799 -625.24390244
+2800  316.70731707
+2801   31.97560976
+2802  -33.43902439
+2803  135.29268293
+2804 -727.73170732
+2805 -579.78048780
+2806  -28.21951220
+2807   19.43902439
+2808  -32.21951220
+2809  645.39024390
+2810  145.48780488
+2811  -53.09756098
+2812  650.60975610
+2813  401.14634146
+2814 -358.36585366
+2815 -437.34146341
+2816   57.24390244
+2817 -466.75609756
+2818  198.95121951
+2819  -96.95121951
+2820  272.90243902
+2821  -98.70731707
+2822  -33.87804878
+2823  474.75609756
+2824  -85.34146341
+2825  542.07317073
+2826 -568.56097561
+2827 -497.68292683
+2828  -19.97560976
+2829  341.19512195
+2830 -225.53658537
+2831   58.36585366
+2832  101.04878049
+2833  103.09756098
+2834  668.21951220
+2835 -751.39024390
+2836 -387.43902439
+2837 -621.53658537
+2838  -17.00000000
+2839  -59.39024390
+2840  504.90243902
+2841  684.75609756
+2842    1.53658537
+2843  740.07317073
+2844  400.12195122
+2845  -90.31707317
+2846 -463.97560976
+2847  657.87804878
+2848  784.31707317
+2849 -184.90243902
+2850  -98.51219512
+2851    6.90243902
+2852  299.92682927
+2853 -330.90243902
+2854   38.75609756
+2855  -38.80487805
+2856  -70.31707317
+2857 -427.14634146
+2858  443.43902439
+2859   11.39024390
+2860 -605.87804878
+2861  524.12195122
+2862  706.07317073
+2863  -91.82926829
+2864 -236.31707317
+2865  101.19512195
+2866  612.65853659
+2867  312.65853659
+2868   86.95121951
+2869 -661.00000000
+2870  514.75609756
+2871  221.82926829
+2872 -254.31707317
+2873  288.02439024
+2874  -44.41463415
+2875  101.58536585
+2876  -73.39024390
+2877  560.46341463
+2878  692.51219512
+2879  139.97560976
+2880 -436.36585366
+2881  131.48780488
+2882 -537.97560976
+2883 -172.07317073
+2884 -145.24390244
+2885 -224.02439024
+2886 -148.80487805
+2887 -686.31707317
+2888  743.34146341
+2889 -171.48780488
+2890  -87.58536585
+2891  165.24390244
+2892  139.09756098
+2893   -8.26829268
+2894  468.12195122
+2895   78.26829268
+2896  -55.92682927
+2897  492.07317073
+2898  105.34146341
+2899 -209.29268293
+2900 -183.04878049
+2901  206.17073171
+2902  -49.24390244
+2903  126.31707317
+2904  718.95121951
+2905 -272.41463415
+2906  154.56097561
+2907  182.90243902
+2908  218.51219512
+2909  -53.14634146
+2910 -847.29268293
+2911 -122.56097561
+2912   83.58536585
+2913  633.78048780
+2914  -19.78048780
+2915 -103.97560976
+2916 -541.53658537
+2917   45.00000000
+2918 -580.26829268
+2919  177.39024390
+2920 -138.26829268
+2921  704.75609756
+2922  120.31707317
+2923  274.12195122
+2924  738.85365854
+2925  358.56097561
+2926 -277.39024390
+2927 -354.07317073
+2928  647.68292683
+2929  -93.19512195
+2930  691.82926829
+2931  674.21951220
+2932 -772.21951220
+2933  735.92682927
+2934  268.31707317
+2935  -24.36585366
+2936  219.04878049
+2937  -13.97560976
+2938   47.78048780
+2939   97.14634146
+2940 -116.21951220
+2941  330.90243902
+2942   64.65853659
+2943  523.00000000
+2944  811.29268293
+2945  587.68292683
+2946  143.24390244
+2947   42.85365854
+2948 -116.95121951
+2949  669.43902439
+2950  685.29268293
+2951   43.87804878
+2952  198.26829268
+2953 -129.29268293
+2954  814.41463415
+2955 -661.00000000
+2956  501.04878049
+2957 -121.58536585
+2958 -472.80487805
+2959 -514.70731707
+2960  522.75609756
+2961  498.12195122
+2962   28.75609756
+2963  378.02439024
+2964  -11.63414634
+2965  703.39024390
+2966  -70.65853659
+2967 -456.36585366
+2968  -24.17073171
+2969  185.73170732
+2970  -71.19512195
+2971  141.48780488
+2972  775.00000000
+2973 -372.26829268
+2974 -375.58536585
+2975  693.68292683
+2976 -131.82926829
+2977  186.07317073
+2978 -173.82926829
+2979 -651.24390244
+2980  245.48780488
+2981  666.21951220
+2982  110.70731707
+2983  -83.97560976
+2984  457.34146341
+2985  -80.26829268
+2986   69.24390244
+2987 -594.56097561
+2988 -520.31707317
+2989 -332.26829268
+2990    9.43902439
+2991 -850.70731707
+2992 -147.04878049
+2993 -232.51219512
+2994  791.43902439
+2995  652.51219512
+2996 -268.17073171
+2997 -670.41463415
+2998   30.36585366
+2999 -533.34146341
+3000 -628.26829268
+3001  449.00000000
+3002  176.36585366
+3003  170.02439024
+3004  126.65853659
+3005 -546.95121951
+3006 -229.58536585
+3007  127.00000000
+3008 -722.95121951
+3009   -5.34146341
+3010 -604.75609756
+3011  568.56097561
+3012  -79.92682927
+3013  771.82926829
+3014   61.34146341
+3015  305.19512195
+3016 -142.85365854
+3017 -275.24390244
+3018  -27.68292683
+3019  258.36585366
+3020 -490.60975610
+3021  -88.26829268
+3022 -104.51219512
+3023  -22.26829268
+3024  -70.95121951
+3025   84.80487805
+3026 -332.07317073
+3027  -57.58536585
+3028 -791.87804878
+3029  -86.26829268
+3030 -661.14634146
+3031  167.34146341
+3032  290.70731707
+3033 -390.90243902
+3034 -645.92682927
+3035  474.70731707
+3036  632.60975610
+3037  219.63414634
+3038   50.90243902
+3039   93.14634146
+3040  465.09756098
+3041  580.75609756
+3042   81.04878049
+3043  614.65853659
+3044  583.87804878
+3045  -72.36585366
+3046    9.78048780
+3047  522.31707317
+3048  680.26829268
+3049 -851.58536585
+3050 -637.09756098
+3051  -92.56097561
+3052  157.48780488
+3053  201.24390244
+3054   63.04878049
+3055   98.31707317
+3056 -241.24390244
+3057   98.36585366
+3058   86.26829268
+3059  -23.14634146
+3060 -368.51219512
+3061 -196.65853659
+3062 -125.24390244
+3063   90.21951220
+3064  591.04878049
+3065  212.95121951
+3066 -748.17073171
+3067  556.60975610
+3068 -569.19512195
+3069 -506.65853659
+3070 -643.24390244
+3071 -630.95121951
+3072  -39.24390244
+3073  -36.60975610
+3074 -356.56097561
+3075    7.63414634
+3076 -112.65853659
+3077  228.31707317
+3078 -539.58536585
+3079  699.00000000
+3080  663.43902439
+3081  571.63414634
+3082  402.17073171
+3083  297.73170732
+3084   87.68292683
+3085  -72.21951220
+3086    5.48780488
+3087 -200.46341463
+3088  906.95121951
+3089  437.48780488
+3090  240.26829268
+3091  105.43902439
+3092  315.24390244
+3093  552.41463415
+3094  155.14634146
+3095   58.02439024
+3096  676.85365854
+3097  525.04878049
+3098 -291.78048780
+3099  233.73170732
+3100  100.31707317
+3101  764.60975610
+3102  537.48780488
+3103  544.41463415
+3104 -338.07317073
+3105  482.41463415
+3106  204.02439024
+3107 -659.19512195
+3108  -55.97560976
+3109   20.85365854
+3110 -174.60975610
+3111 -679.87804878
+3112  388.21951220
+3113 -139.29268293
+3114 -694.26829268
+3115 -577.34146341
+3116  136.60975610
+3117  401.53658537
+3118  414.56097561
+3119 -345.78048780
+3120   -4.56097561
+3121 -552.51219512
+3122 -659.78048780
+3123 -165.09756098
+3124 -297.82926829
+3125 -525.04878049
+3126 -217.68292683
+3127   71.82926829
+3128 -253.63414634
+3129 -654.95121951
+3130  634.80487805
+3131 -416.31707317
+3132 -207.92682927
+3133 -522.65853659
+3134    5.97560976
+3135 -189.87804878
+3136 -236.36585366
+3137  680.60975610
+3138   22.36585366
+3139 -472.65853659
+3140  411.97560976
+3141   53.48780488
+3142   36.70731707
+3143 -585.24390244
+3144  -38.75609756
+3145  636.80487805
+3146  -41.39024390
+3147  583.78048780
+3148   48.80487805
+3149  258.65853659
+3150  588.17073171
+3151 -109.04878049
+3152   89.19512195
+3153  686.95121951
+3154  187.58536585
+3155   47.24390244
+3156 -128.41463415
+3157  528.56097561
+3158   48.26829268
+3159 -142.85365854
+3160 -124.07317073
+3161 -449.39024390
+3162  652.12195122
+3163  582.70731707
+3164  628.70731707
+3165 -470.95121951
+3166  357.48780488
+3167 -585.48780488
+3168  273.39024390
+3169  534.46341463
+3170  455.92682927
+3171 -605.58536585
+3172 -170.90243902
+3173   96.17073171
+3174  206.95121951
+3175   -3.14634146
+3176  571.78048780
+3177  -51.48780488
+3178 -260.26829268
+3179  -70.17073171
+3180  -17.09756098
+3181  -13.63414634
+3182 -315.87804878
+3183 -414.56097561
+3184   83.43902439
+3185  237.87804878
+3186 -740.65853659
+3187  751.00000000
+3188  -39.97560976
+3189  409.29268293
+3190   -5.92682927
+3191   83.68292683
+3192  -14.95121951
+3193 -239.73170732
+3194  120.02439024
+3195  267.97560976
+3196 -206.12195122
+3197  -31.29268293
+3198  641.04878049
+3199  -27.58536585
+3200  139.19512195
+3201  616.21951220
+3202 -454.85365854
+3203 -679.92682927
+3204 -785.29268293
+3205    7.19512195
+3206   90.02439024
+3207  724.17073171
+3208   38.46341463
+3209 -500.36585366
+3210 -198.65853659
+3211 -504.41463415
+3212 -483.97560976
+3213  168.46341463
+3214  763.39024390
+3215  253.29268293
+3216  753.63414634
+3217  -98.17073171
+3218  536.85365854
+3219  286.46341463
+3220  269.53658537
+3221  119.68292683
+3222 -148.12195122
+3223   -6.17073171
+3224  180.31707317
+3225  423.63414634
+3226   50.75609756
+3227  -59.48780488
+3228 -584.12195122
+3229  661.63414634
+3230 -146.31707317
+3231 -104.75609756
+3232   30.46341463
+3233   75.29268293
+3234 -565.39024390
+3235 -547.39024390
+3236 -590.41463415
+3237 -319.34146341
+3238 -677.73170732
+3239  849.14634146
+3240  666.31707317
+3241 -629.53658537
+3242 -789.92682927
+3243 -208.31707317
+3244   31.34146341
+3245   53.43902439
+3246  195.00000000
+3247 -123.58536585
+3248  465.04878049
+3249  -29.24390244
+3250 -113.29268293
+3251   22.02439024
+3252   53.68292683
+3253   95.78048780
+3254  452.90243902
+3255 -766.80487805
+3256  592.46341463
+3257 -659.87804878
+3258 -607.78048780
+3259 -398.65853659
+3260 -181.00000000
+3261  487.09756098
+3262  558.95121951
+3263  256.12195122
+3264  690.56097561
+3265  -10.70731707
+3266 -682.46341463
+3267  582.65853659
+3268   -6.65853659
+3269  379.58536585
+3270  712.12195122
+3271  159.24390244
+3272  -71.82926829
+3273  -62.12195122
+3274 -725.92682927
+3275   78.12195122
+3276 -378.80487805
+3277 -356.85365854
+3278   41.19512195
+3279 -154.65853659
+3280  170.75609756
+3281  164.60975610
+3282 -356.12195122
+3283 -661.78048780
+3284 -610.12195122
+3285  230.41463415
+3286  686.17073171
+3287 -401.97560976
+3288   39.97560976
+3289 -603.34146341
+3290  108.36585366
+3291  371.34146341
+3292   22.31707317
+3293   22.85365854
+3294  503.63414634
+3295   57.68292683
+3296 -768.36585366
+3297 -191.92682927
+3298  124.75609756
+3299  137.19512195
+3300 -372.90243902
+3301 -251.09756098
+3302  553.14634146
+3303 -263.68292683
+3304 -639.58536585
+3305 -530.65853659
+3306 -148.51219512
+3307   32.51219512
+3308 -334.70731707
+3309  415.04878049
+3310  348.21951220
+3311   -7.43902439
+3312  248.07317073
+3313  -35.09756098
+3314 -149.00000000
+3315  559.34146341
+3316  159.87804878
+3317  108.12195122
+3318 -626.02439024
+3319   33.68292683
+3320   86.90243902
+3321  -91.29268293
+3322  549.92682927
+3323  -32.56097561
+3324  114.12195122
+3325  525.29268293
+3326 -101.63414634
+3327  527.14634146
+3328  590.80487805
+3329  142.51219512
+3330   32.02439024
+3331  546.65853659
+3332  -16.56097561
+3333   -1.39024390
+3334 -469.53658537
+3335   70.90243902
+3336  253.78048780
+3337  724.75609756
+3338 -467.92682927
+3339  185.24390244
+3340 -231.00000000
+3341  107.19512195
+3342  117.14634146
+3343  694.36585366
+3344  255.73170732
+3345 -156.31707317
+3346   -3.24390244
+3347 -433.14634146
+3348  -35.78048780
+3349 -212.41463415
+3350 -783.82926829
+3351  737.68292683
+3352  123.58536585
+3353 -337.34146341
+3354 -351.14634146
+3355 -463.43902439
+3356 -109.58536585
+3357   -8.46341463
+3358 -465.43902439
+3359  -25.97560976
+3360 -666.46341463
+3361  150.21951220
+3362  617.09756098
+3363 -124.75609756
+3364  239.68292683
+3365  553.43902439
+3366 -417.39024390
+3367 -769.14634146
+3368  537.39024390
+3369  274.51219512
+3370  368.90243902
+3371   75.24390244
+3372 -122.31707317
+3373  -16.90243902
+3374  464.17073171
+3375 -400.31707317
+3376 -267.39024390
+3377  -28.51219512
+3378 -603.78048780
+3379  848.12195122
+3380  -95.82926829
+3381  -18.95121951
+3382  423.24390244
+3383 -130.85365854
+3384   88.17073171
+3385  415.29268293
+3386  -49.63414634
+3387 -190.85365854
+3388 -105.29268293
+3389  -77.43902439
+3390 -177.34146341
+3391  127.29268293
+3392  -37.19512195
+3393  260.60975610
+3394   64.26829268
+3395 -105.39024390
+3396 -162.17073171
+3397 -319.58536585
+3398   62.85365854
+3399 -185.04878049
+3400 -468.85365854
+3401  273.97560976
+3402  100.02439024
+3403 -284.17073171
+3404 -189.09756098
+3405 -455.19512195
+3406  130.85365854
+3407  326.85365854
+3408 -766.07317073
+3409  -98.17073171
+3410  -45.29268293
+3411 -261.78048780
+3412  576.17073171
+3413  -13.29268293
+3414 -761.48780488
+3415  680.02439024
+3416  -56.36585366
+3417  682.56097561
+3418  428.80487805
+3419  -13.92682927
+3420  468.26829268
+3421 -494.36585366
+3422 -376.56097561
+3423 -281.48780488
+3424 -226.36585366
+3425 -128.17073171
+3426  592.51219512
+3427   34.85365854
+3428 -615.19512195
+3429 -515.68292683
+3430   22.65853659
+3431  550.26829268
+3432 -167.58536585
+3433   15.97560976
+3434 -468.02439024
+3435  676.80487805
+3436 -448.41463415
+3437  -46.21951220
+3438  341.14634146
+3439 -502.41463415
+3440  120.41463415
+3441  437.97560976
+3442 -185.68292683
+3443   99.97560976
+3444 -498.70731707
+3445 -641.34146341
+3446  688.07317073
+3447  -35.92682927
+3448 -233.34146341
+3449 -425.34146341
+3450  455.48780488
+3451  -54.85365854
+3452 -135.58536585
+3453 -613.34146341
+3454 -186.51219512
+3455 -360.60975610
+3456 -767.58536585
+3457 -123.82926829
+3458  526.31707317
+3459  676.51219512
+3460 -282.95121951
+3461   83.82926829
+3462  648.02439024
+3463  714.51219512
+3464 -473.87804878
+3465 -753.04878049
+3466 -572.41463415
+3467  734.95121951
+3468  119.73170732
+3469  174.12195122
+3470  589.68292683
+3471  118.31707317
+3472  -92.95121951
+3473  598.17073171
+3474  145.48780488
+3475  122.26829268
+3476  -89.00000000
+3477  178.80487805
+3478  -46.21951220
+3479 -130.75609756
+3480 -445.09756098
+3481 -367.78048780
+3482 -546.07317073
+3483  415.68292683
+3484   18.60975610
+3485   82.95121951
+3486 -677.00000000
+3487 -518.31707317
+3488   88.95121951
+3489  -24.75609756
+3490 -458.85365854
+3491  552.21951220
+3492 -471.58536585
+3493  667.00000000
+3494 -266.46341463
+3495  166.85365854
+3496  -94.07317073
+3497  -79.29268293
+3498   68.51219512
+3499  398.60975610
+3500  124.02439024
+3501 -132.26829268
+3502 -818.07317073
+3503 -188.51219512
+3504 -658.07317073
+3505 -506.65853659
+3506 -354.07317073
+3507  153.78048780
+3508 -611.92682927
+3509  517.19512195
+3510  229.09756098
+3511   29.19512195
+3512 -741.53658537
+3513   13.29268293
+3514 -503.63414634
+3515  -17.48780488
+3516  126.31707317
+3517  -58.80487805
+3518  556.80487805
+3519  443.92682927
+3520   99.73170732
+3521  -88.90243902
+3522  -86.36585366
+3523 -557.24390244
+3524  119.82926829
+3525  518.46341463
+3526  738.80487805
+3527  310.65853659
+3528 -487.39024390
+3529  410.07317073
+3530  627.82926829
+3531  -86.12195122
+3532 -500.80487805
+3533 -428.02439024
+3534  843.43902439
+3535   91.82926829
+3536  443.78048780
+3537 -127.97560976
+3538  -63.63414634
+3539   59.19512195
+3540  145.43902439
+3541  161.73170732
+3542  -67.14634146
+3543 -154.80487805
+3544  -83.92682927
+3545  -49.43902439
+3546  538.60975610
+3547  269.24390244
+3548  -70.75609756
+3549   99.09756098
+3550 -187.04878049
+3551 -639.82926829
+3552 -562.31707317
+3553 -324.31707317
+3554 -676.95121951
+3555  -68.80487805
+3556   61.48780488
+3557 -427.73170732
+3558 -313.09756098
+3559   45.00000000
+3560  362.17073171
+3561 -611.24390244
+3562 -755.39024390
+3563 -590.90243902
+3564  557.39024390
+3565 -469.58536585
+3566  671.87804878
+3567 -316.65853659
+3568 -105.14634146
+3569 -566.36585366
+3570 -468.21951220
+3571 -304.56097561
+3572  139.29268293
+3573  -51.53658537
+3574  -68.95121951
+3575  141.39024390
+3576  133.48780488
+3577 -477.63414634
+3578  374.85365854
+3579   46.85365854
+3580  526.65853659
+3581  -62.56097561
+3582 -627.19512195
+3583 -600.07317073
+3584  156.56097561
+3585  187.19512195
+3586  578.70731707
+3587 -534.60975610
+3588 -124.80487805
+3589  330.26829268
+3590   89.09756098
+3591  301.78048780
+3592  469.63414634
+3593  157.87804878
+3594 -500.07317073
+3595  433.29268293
+3596 -672.70731707
+3597 -120.41463415
+3598  476.12195122
+3599  687.97560976
+3600 -399.87804878
+3601  -86.41463415
+3602  169.04878049
+3603  -27.63414634
+3604  650.21951220
+3605  290.95121951
+3606  107.00000000
+3607  541.09756098
+3608   11.19512195
+3609 -104.12195122
+3610  -83.63414634
+3611   72.85365854
+3612  571.92682927
+3613 -633.43902439
+3614  352.02439024
+3615 -156.21951220
+3616  396.60975610
+3617 -164.56097561
+3618  -17.29268293
+3619   -8.02439024
+3620   97.68292683
+3621  806.36585366
+3622   27.78048780
+3623  730.75609756
+3624  669.14634146
+3625 -116.36585366
+3626 -474.65853659
+3627 -221.87804878
+3628 -133.19512195
+3629 -738.80487805
+3630 -182.65853659
+3631  173.97560976
+3632  506.26829268
+3633  256.12195122
+3634 -125.53658537
+3635  231.48780488
+3636  294.21951220
+3637  -82.21951220
+3638 -463.58536585
+3639 -782.21951220
+3640 -244.70731707
+3641 -219.04878049
+3642  468.75609756
+3643  320.90243902
+3644  233.73170732
+3645 -514.12195122
+3646   57.78048780
+3647  145.48780488
+3648  -84.80487805
+3649 -488.02439024
+3650  -46.60975610
+3651  617.29268293
+3652 -727.43902439
+3653  260.07317073
+3654 -437.09756098
+3655  121.09756098
+3656   53.04878049
+3657 -161.82926829
+3658 -281.53658537
+3659   44.51219512
+3660 -117.34146341
+3661 -298.70731707
+3662   80.75609756
+3663  229.00000000
+3664 -311.63414634
+3665 -752.36585366
+3666 -578.75609756
+3667 -690.56097561
+3668    6.90243902
+3669  -97.63414634
+3670 -196.80487805
+3671   91.68292683
+3672   -1.63414634
+3673  -30.65853659
+3674   91.58536585
+3675  671.34146341
+3676  237.19512195
+3677  111.53658537
+3678  -28.12195122
+3679 -145.43902439
+3680  214.75609756
+3681 -533.82926829
+3682   48.12195122
+3683  178.90243902
+3684  608.21951220
+3685  115.97560976
+3686 -457.87804878
+3687 -455.78048780
+3688  226.95121951
+3689  624.07317073
+3690  -49.68292683
+3691   63.48780488
+3692   29.97560976
+3693 -385.78048780
+3694 -539.00000000
+3695  569.73170732
+3696 -641.19512195
+3697 -381.14634146
+3698  463.68292683
+3699  575.39024390
+3700  274.65853659
+3701 -435.00000000
+3702   -4.17073171
+3703  247.58536585
+3704   56.75609756
+3705 -675.53658537
+3706   19.63414634
+3707  -42.41463415
+3708  653.97560976
+3709 -238.85365854
+3710  186.12195122
+3711  444.90243902
+3712 -523.43902439
+3713  -64.07317073
+3714 -653.00000000
+3715   13.53658537
+3716  679.39024390
+3717   -1.73170732
+3718 -287.82926829
+3719 -624.36585366
+3720  116.46341463
+3721 -447.73170732
+3722 -211.97560976
+3723  694.70731707
+3724  508.90243902
+3725  795.87804878
+3726   79.87804878
+3727   16.70731707
+3728 -843.00000000
+3729  525.97560976
+3730  576.80487805
+3731  255.53658537
+3732 -610.41463415
+3733 -264.80487805
+3734 -390.60975610
+3735  719.09756098
+3736  -40.21951220
+3737  679.43902439
+3738  612.65853659
+3739  601.29268293
+3740  -65.24390244
+3741  -58.65853659
+3742  -42.12195122
+3743 -139.43902439
+3744  550.70731707
+3745  -72.60975610
+3746 -432.70731707
+3747  232.31707317
+3748  664.85365854
+3749 -111.58536585
+3750  372.36585366
+3751 -560.75609756
+3752   59.87804878
+3753  164.17073171
+3754  606.31707317
+3755 -140.12195122
+3756  212.41463415
+3757 -126.41463415
+3758 -572.07317073
+3759 -144.17073171
+3760  338.21951220
+3761  583.24390244
+3762   16.60975610
+3763  326.75609756
+3764 -507.43902439
+3765  136.02439024
+3766    2.60975610
+3767 -489.48780488
+3768 -158.21951220
+3769  725.58536585
+3770 -122.90243902
+3771  107.34146341
+3772   59.43902439
+3773   18.07317073
+3774 -189.87804878
+3775  581.73170732
+3776   74.12195122
+3777  702.85365854
+3778 -254.26829268
+3779   24.85365854
+3780 -455.24390244
+3781  -29.63414634
+3782  413.78048780
+3783  231.34146341
+3784  496.07317073
+3785   36.07317073
+3786  238.41463415
+3787   18.41463415
+3788 -274.41463415
+3789  105.97560976
+3790  166.60975610
+3791  162.75609756
+3792  450.75609756
+3793 -123.14634146
+3794 -817.53658537
+3795   78.85365854
+3796   88.21951220
+3797   28.21951220
+3798  482.60975610
+3799  154.51219512
+3800  -50.85365854
+3801   17.09756098
+3802  -36.65853659
+3803   83.82926829
+3804  112.12195122
+3805  230.75609756
+3806  187.58536585
+3807 -177.29268293
+3808  130.17073171
+3809  209.92682927
+3810 -582.17073171
+3811  756.17073171
+3812 -199.63414634
+3813  -37.53658537
+3814  857.39024390
+3815  900.17073171
+3816  140.70731707
+3817  -10.07317073
+3818  274.51219512
+3819 -457.04878049
+3820  -32.95121951
+3821  507.97560976
+3822  -86.85365854
+3823 -550.70731707
+3824 -607.29268293
+3825 -154.36585366
+3826  509.00000000
+3827  765.19512195
+3828 -304.90243902
+3829  193.82926829
+3830 -628.26829268
+3831   60.12195122
+3832 -468.95121951
+3833  527.68292683
+3834  800.41463415
+3835  170.51219512
+3836 -598.51219512
+3837 -141.24390244
+3838  -55.82926829
+3839  -60.26829268
+3840  -57.24390244
+3841 -167.04878049
+3842 -501.63414634
+3843 -200.80487805
+3844  -19.73170732
+3845 -434.02439024
+3846  277.19512195
+3847 -103.53658537
+3848 -120.17073171
+3849  -83.19512195
+3850   54.07317073
+3851 -510.56097561
+3852  -42.26829268
+3853   77.14634146
+3854 -384.70731707
+3855  367.73170732
+3856  510.46341463
+3857 -590.12195122
+3858 -566.26829268
+3859  409.63414634
+3860  168.36585366
+3861  226.41463415
+3862 -341.68292683
+3863 -249.97560976
+3864  306.17073171
+3865 -279.78048780
+3866 -523.97560976
+3867 -101.58536585
+3868  689.82926829
+3869  -99.04878049
+3870 -177.53658537
+3871  313.82926829
+3872  -45.34146341
+3873  111.68292683
+3874 -414.80487805
+3875  623.92682927
+3876   61.29268293
+3877  214.75609756
+3878   87.82926829
+3879  225.82926829
+3880   43.24390244
+3881 -664.95121951
+3882 -705.78048780
+3883  429.53658537
+3884  -56.51219512
+3885   50.21951220
+3886  209.09756098
+3887 -146.17073171
+3888  386.65853659
+3889   -7.43902439
+3890  743.58536585
+3891  -48.85365854
+3892  196.56097561
+3893    6.95121951
+3894   50.17073171
+3895  544.02439024
+3896 -485.14634146
+3897   71.53658537
+3898    2.17073171
+3899 -503.73170732
+3900  598.31707317
+3901 -121.43902439
+3902  188.02439024
+3903  -15.63414634
+3904  -56.41463415
+3905  107.53658537
+3906  273.87804878
+3907   -3.00000000
+3908  273.87804878
+3909 -313.39024390
+3910  -62.51219512
+3911  557.87804878
+3912   47.00000000
+3913 -306.26829268
+3914  509.82926829
+3915 -535.09756098
+3916 -692.80487805
+3917  669.04878049
+3918  -34.31707317
+3919 -651.48780488
+3920  576.31707317
+3921 -765.63414634
+3922 -141.48780488
+3923  -22.02439024
+3924  159.43902439
+3925 -524.65853659
+3926  608.41463415
+3927 -105.68292683
+3928 -579.24390244
+3929  734.31707317
+3930  120.46341463
+3931   -4.46341463
+3932  182.26829268
+3933 -543.68292683
+3934  679.63414634
+3935  -55.34146341
+3936  103.34146341
+3937  474.07317073
+3938   52.51219512
+3939 -503.87804878
+3940 -533.00000000
+3941  561.48780488
+3942 -455.82926829
+3943   57.04878049
+3944 -547.09756098
+3945 -556.75609756
+3946 -709.73170732
+3947  -51.92682927
+3948 -273.00000000
+3949  255.48780488
+3950 -377.43902439
+3951 -285.63414634
+3952  484.70731707
+3953 -501.58536585
+3954  190.12195122
+3955  628.51219512
+3956 -240.80487805
+3957  112.51219512
+3958   23.68292683
+3959 -694.46341463
+3960  357.48780488
+3961  383.73170732
+3962 -102.56097561
+3963  -41.82926829
+3964   93.00000000
+3965   59.97560976
+3966  111.48780488
+3967 -351.29268293
+3968  670.95121951
+3969  124.31707317
+3970 -378.95121951
+3971  323.48780488
+3972  -15.43902439
+3973 -831.73170732
+3974  569.53658537
+3975 -413.68292683
+3976 -126.12195122
+3977  449.34146341
+3978  567.87804878
+3979  -99.34146341
+3980  -76.70731707
+3981  738.21951220
+3982  397.92682927
+3983  161.63414634
+3984   48.36585366
+3985 -704.02439024
+3986   36.75609756
+3987 -515.82926829
+3988   62.21951220
+3989   45.24390244
+3990  770.75609756
+3991  174.31707317
+3992   13.19512195
+3993  557.43902439
+3994 -490.36585366
+3995  435.43902439
+3996  233.97560976
+3997 -407.58536585
+3998  340.60975610
+3999  -96.56097561
+4000  765.92682927
+4001 -406.80487805
+4002  -67.14634146
+4003  590.80487805
+4004 -575.14634146
+4005  611.19512195
+4006  252.46341463
+4007 -424.51219512
+4008  502.85365854
+4009 -116.41463415
+4010  -33.39024390
+4011  278.75609756
+4012 -123.34146341
+4013 -267.92682927
+4014   80.02439024
+4015   80.51219512
+4016  226.80487805
+4017  457.73170732
+4018   96.80487805
+4019 -232.17073171
+4020   69.63414634
+4021 -666.31707317
+4022  473.97560976
+4023   35.48780488
+4024 -714.51219512
+4025 -639.78048780
+4026  -25.24390244
+4027    9.58536585
+4028 -511.97560976
+4029 -293.48780488
+4030  406.26829268
+4031 -463.78048780
+4032  700.56097561
+4033   29.58536585
+4034 -288.95121951
+4035  376.80487805
+4036 -522.56097561
+4037 -140.80487805
+4038 -537.00000000
+4039  789.39024390
+4040  442.80487805
+4041 -629.58536585
+4042 -207.24390244
+4043 -469.09756098
+4044  219.29268293
+4045  201.14634146
+4046  618.65853659
+4047  480.51219512
+4048  -88.75609756
+4049  358.90243902
+4050  657.04878049
+4051  122.21951220
+4052  -90.02439024
+4053 -631.73170732
+4054 -581.68292683
+4055 -612.60975610
+4056 -179.19512195
+4057  -34.95121951
+4058 -637.24390244
+4059  243.43902439
+4060  -33.48780488
+4061   81.53658537
+4062  276.36585366
+4063 -736.75609756
+4064 -623.43902439
+4065  -22.21951220
+4066  -60.90243902
+4067   25.48780488
+4068   22.85365854
+4069  -36.90243902
+4070 -591.87804878
+4071 -447.24390244
+4072 -350.56097561
+4073 -178.95121951
+4074 -308.02439024
+4075  -72.65853659
+4076  -31.39024390
+4077   60.07317073
+4078  343.00000000
+4079  109.29268293
+4080  105.04878049
+4081  428.31707317
+4082 -393.58536585
+4083 -143.04878049
+4084  610.95121951
+4085  533.00000000
+4086  100.36585366
+4087 -745.48780488
+4088  -21.19512195
+4089 -327.24390244
+4090  432.80487805
+4091 -251.58536585
+4092 -772.21951220
+4093 -670.31707317
+4094 -693.48780488
+4095  456.12195122
+4096  343.87804878
+4097 -623.73170732
+4098  -31.39024390
+4099   14.21951220
+4100  374.90243902
+4101 -609.73170732
+4102   58.51219512
+4103 -637.87804878
+4104 -254.36585366
+4105  -63.04878049
+4106   19.78048780
+4107 -105.58536585
+4108   65.92682927
+4109  -35.82926829
+4110  687.00000000
+4111 -465.68292683
+4112  -24.56097561
+4113  189.68292683
+4114  337.87804878
+4115 -220.80487805
+4116  742.36585366
+4117  741.48780488
+4118  527.68292683
+4119 -579.97560976
+4120  131.58536585
+4121 -587.73170732
+4122  758.02439024
+4123 -138.80487805
+4124 -521.19512195
+4125   33.87804878
+4126  168.36585366
+4127  -22.26829268
+4128  512.80487805
+4129  274.80487805
+4130  518.17073171
+4131  169.68292683
+4132  562.65853659
+4133 -655.43902439
+4134  778.95121951
+4135   -0.07317073
+4136  -96.02439024
+4137 -637.29268293
+4138 -471.39024390
+4139  400.46341463
+4140  -46.46341463
+4141  696.12195122
+4142 -511.87804878
+4143 -122.36585366
+4144  445.19512195
+4145 -317.43902439
+4146  180.51219512
+4147 -548.26829268
+4148 -416.17073171
+4149 -175.43902439
+4150  421.97560976
+4151 -441.78048780
+4152  392.36585366
+4153  564.36585366
+4154  306.17073171
+4155 -324.02439024
+4156  -94.75609756
+4157 -398.75609756
+4158 -466.02439024
+4159  281.48780488
+4160  -53.00000000
+4161  437.04878049
+4162  521.97560976
+4163 -160.75609756
+4164 -160.02439024
+4165  345.09756098
+4166  780.17073171
+4167 -155.29268293
+4168  632.31707317
+4169  728.07317073
+4170 -527.73170732
+4171 -394.31707317
+4172  145.00000000
+4173 -413.14634146
+4174  488.60975610
+4175   28.07317073
+4176  -80.51219512
+4177  -80.70731707
+4178 -629.14634146
+4179 -135.04878049
+4180  -24.07317073
+4181  142.12195122
+4182 -119.92682927
+4183  370.31707317
+4184 -498.85365854
+4185  599.09756098
+4186 -634.65853659
+4187 -589.09756098
+4188 -556.36585366
+4189 -667.43902439
+4190   31.39024390
+4191   -6.60975610
+4192 -520.17073171
+4193 -528.36585366
+4194  848.90243902
+4195   88.51219512
+4196  620.85365854
+4197 -711.73170732
+4198  -82.95121951
+4199  698.56097561
+4200  615.43902439
+4201 -234.17073171
+4202  -21.09756098
+4203   70.65853659
+4204  103.24390244
+4205 -689.29268293
+4206 -133.24390244
+4207 -275.87804878
+4208  284.36585366
+4209 -166.56097561
+4210 -474.41463415
+4211  369.58536585
+4212  265.48780488
+4213  768.70731707
+4214  515.24390244
+4215 -391.78048780
+4216 -392.65853659
+4217  -96.46341463
+4218  183.68292683
+4219 -378.70731707
+4220  704.80487805
+4221 -472.70731707
+4222 -360.60975610
+4223  548.75609756
+4224 -507.19512195
+4225 -131.97560976
+4226  342.31707317
+4227 -779.87804878
+4228  521.73170732
+4229   17.19512195
+4230  511.78048780
+4231 -240.41463415
+4232 -401.04878049
+4233  215.78048780
+4234 -656.75609756
+4235  -44.12195122
+4236   31.63414634
+4237  218.02439024
+4238   42.17073171
+4239  512.17073171
+4240 -148.60975610
+4241  286.46341463
+4242  472.36585366
+4243  505.00000000
+4244 -169.58536585
+4245 -667.29268293
+4246  276.51219512
+4247 -507.14634146
+4248  205.14634146
+4249  577.24390244
+4250  103.00000000
+4251 -772.12195122
+4252   50.17073171
+4253   40.56097561
+4254  253.97560976
+4255  226.75609756
+4256 -116.41463415
+4257 -173.19512195
+4258 -621.68292683
+4259 -562.75609756
+4260  135.00000000
+4261 -382.31707317
+4262 -289.78048780
+4263 -486.17073171
+4264   79.53658537
+4265   84.75609756
+4266  590.31707317
+4267  632.07317073
+4268  -20.85365854
+4269  -61.48780488
+4270  346.80487805
+4271   72.17073171
+4272  107.09756098
+4273  118.26829268
+4274  137.43902439
+4275  147.09756098
+4276 -119.68292683
+4277 -175.24390244
+4278  616.31707317
+4279  114.90243902
+4280  -76.46341463
+4281  501.04878049
+4282  188.26829268
+4283   87.73170732
+4284  -62.36585366
+4285  583.39024390
+4286 -405.48780488
+4287 -194.02439024
+4288 -495.53658537
+4289  226.31707317
+4290  179.19512195
+4291   -4.80487805
+4292 -429.39024390
+4293  396.70731707
+4294  185.24390244
+4295 -172.75609756
+4296 -700.70731707
+4297 -696.02439024
+4298   59.29268293
+4299  134.85365854
+4300   58.46341463
+4301  316.51219512
+4302 -612.75609756
+4303  161.14634146
+4304  425.34146341
+4305 -244.75609756
+4306  287.53658537
+4307   -7.97560976
+4308 -101.92682927
+4309  -50.65853659
+4310  -93.00000000
+4311  -30.12195122
+4312 -510.56097561
+4313   95.09756098
+4314  347.29268293
+4315  684.26829268
+4316  730.80487805
+4317   -5.63414634
+4318  214.36585366
+4319 -759.82926829
+4320  115.87804878
+4321 -300.56097561
+4322 -320.17073171
+4323 -267.34146341
+4324   54.02439024
+4325   77.78048780
+4326  -70.36585366
+4327 -410.17073171
+4328  145.48780488
+4329 -139.63414634
+4330  434.31707317
+4331  377.19512195
+4332 -651.82926829
+4333    3.24390244
+4334 -184.75609756
+4335  593.58536585
+4336 -425.73170732
+4337  179.87804878
+4338  -93.24390244
+4339 -589.63414634
+4340  815.78048780
+4341 -489.14634146
+4342  591.29268293
+4343 -608.17073171
+4344   48.02439024
+4345 -673.39024390
+4346  332.60975610
+4347  555.53658537
+4348  159.04878049
+4349 -588.26829268
+4350  563.53658537
+4351   49.19512195
+4352  -31.34146341
+4353  416.80487805
+4354 -358.60975610
+4355  595.39024390
+4356  539.39024390
+4357 -318.41463415
+4358  349.39024390
+4359   -8.07317073
+4360 -432.75609756
+4361  133.14634146
+4362  553.97560976
+4363  114.17073171
+4364 -617.48780488
+4365 -125.39024390
+4366 -112.65853659
+4367 -441.09756098
+4368  -20.80487805
+4369 -590.02439024
+4370 -239.14634146
+4371  752.60975610
+4372 -113.39024390
+4373 -544.26829268
+4374   50.31707317
+4375 -286.75609756
+4376 -352.60975610
+4377 -147.63414634
+4378 -381.63414634
+4379  742.70731707
+4380 -232.65853659
+4381 -453.39024390
+4382  729.78048780
+4383   35.39024390
+4384  206.65853659
+4385 -434.26829268
+4386  156.46341463
+4387 -398.36585366
+4388   85.92682927
+4389  416.21951220
+4390   -3.04878049
+4391 -553.97560976
+4392   12.21951220
+4393  512.85365854
+4394  102.41463415
+4395  563.14634146
+4396 -124.21951220
+4397 -683.87804878
+4398  510.41463415
+4399  181.78048780
+4400 -583.53658537
+4401  123.73170732
+4402  779.48780488
+4403  -88.60975610
+4404 -120.56097561
+4405  723.48780488
+4406  123.92682927
+4407  306.17073171
+4408  101.97560976
+4409  259.78048780
+4410  153.14634146
+4411  258.36585366
+4412   24.21951220
+4413 -437.68292683
+4414 -666.56097561
+4415  123.53658537
+4416  695.19512195
+4417  572.70731707
+4418 -113.53658537
+4419 -242.26829268
+4420 -609.34146341
+4421 -812.85365854
+4422   -7.78048780
+4423 -575.29268293
+4424  136.31707317
+4425  726.07317073
+4426  733.58536585
+4427 -892.21951220
+4428  334.75609756
+4429  353.19512195
+4430  698.75609756
+4431 -397.14634146
+4432  494.85365854
+4433    9.78048780
+4434 -226.95121951
+4435  112.12195122
+4436   98.90243902
+4437 -331.63414634
+4438  675.00000000
+4439 -530.46341463
+4440  453.09756098
+4441  -10.26829268
+4442 -194.36585366
+4443  -90.31707317
+4444 -494.95121951
+4445  387.00000000
+4446   29.87804878
+4447 -203.63414634
+4448  642.41463415
+4449 -149.58536585
+4450  116.07317073
+4451  637.48780488
+4452 -792.90243902
+4453 -640.36585366
+4454 -630.46341463
+4455  201.97560976
+4456 -561.97560976
+4457  309.39024390
+4458  115.19512195
+4459  560.56097561
+4460 -291.39024390
+4461 -384.95121951
+4462 -127.19512195
+4463  649.24390244
+4464 -470.90243902
+4465  591.78048780
+4466  717.19512195
+4467  569.73170732
+4468  509.39024390
+4469 -246.41463415
+4470  300.56097561
+4471 -205.63414634
+4472  518.21951220
+4473  466.95121951
+4474 -126.90243902
+4475  355.24390244
+4476  -78.90243902
+4477   53.68292683
+4478 -611.14634146
+4479  531.19512195
+4480 -541.48780488
+4481 -756.07317073
+4482  -74.07317073
+4483  478.85365854
+4484 -352.21951220
+4485  711.73170732
+4486  -31.73170732
+4487  617.24390244
+4488  -14.70731707
+4489 -167.14634146
+4490  464.21951220
+4491  324.12195122
+4492  662.75609756
+4493  424.95121951
+4494  475.19512195
+4495  651.78048780
+4496  124.12195122
+4497 -733.48780488
+4498   25.04878049
+4499 -536.75609756
+4500 -528.07317073
+4501  503.92682927
+4502 -207.29268293
+4503   16.17073171
+4504  -65.87804878
+4505 -760.56097561
+4506  294.17073171
+4507  291.82926829
+4508 -127.00000000
+4509   32.90243902
+4510  636.41463415
+4511 -501.87804878
+4512 -604.65853659
+4513 -429.68292683
+4514  -81.00000000
+4515 -433.63414634
+4516  185.97560976
+4517  540.26829268
+4518 -625.78048780
+4519  155.04878049
+4520 -217.73170732
+4521  147.68292683
+4522 -570.12195122
+4523  127.87804878
+4524  234.17073171
+4525 -688.80487805
+4526  105.68292683
+4527  639.39024390
+4528 -229.97560976
+4529  413.58536585
+4530  109.04878049
+4531  667.92682927
+4532  718.41463415
+4533 -735.04878049
+4534  172.51219512
+4535   13.53658537
+4536  -34.80487805
+4537  -63.58536585
+4538  531.53658537
+4539   82.26829268
+4540   36.51219512
+4541 -549.09756098
+4542  707.00000000
+4543   -6.80487805
+4544 -352.21951220
+4545 -450.95121951
+4546 -191.48780488
+4547  -92.70731707
+4548 -352.95121951
+4549 -664.75609756
+4550   41.87804878
+4551  137.14634146
+4552 -358.70731707
+4553  202.56097561
+4554  664.12195122
+4555  188.75609756
+4556 -577.48780488
+4557  158.26829268
+4558 -165.29268293
+4559 -627.87804878
+4560  569.58536585
+4561   41.63414634
+4562 -305.63414634
+4563 -205.53658537
+4564 -634.12195122
+4565  596.56097561
+4566 -220.12195122
+4567 -530.85365854
+4568  419.04878049
+4569  212.46341463
+4570  751.92682927
+4571 -105.24390244
+4572 -640.41463415
+4573  -91.04878049
+4574 -698.65853659
+4575 -157.97560976
+4576 -139.63414634
+4577   27.53658537
+4578  299.34146341
+4579 -229.97560976
+4580   62.70731707
+4581  101.73170732
+4582    3.58536585
+4583   -9.09756098
+4584  863.68292683
+4585 -379.48780488
+4586  -23.82926829
+4587  105.48780488
+4588   75.00000000
+4589 -378.12195122
+4590  123.00000000
+4591  371.97560976
+4592 -234.65853659
+4593  469.82926829
+4594 -163.78048780
+4595    8.41463415
+4596  -45.78048780
+4597  126.65853659
+4598 -126.46341463
+4599  627.68292683
+4600  366.70731707
+4601   36.51219512
+4602  275.04878049
+4603 -523.39024390
+4604  -71.09756098
+4605   50.90243902
+4606 -584.12195122
+4607   59.58536585
+4608  -52.31707317
+4609  372.70731707
+4610 -169.19512195
+4611  133.87804878
+4612 -619.82926829
+4613   25.68292683
+4614  185.24390244
+4615  542.65853659
+4616  377.19512195
+4617  126.80487805
+4618 -733.09756098
+4619  448.85365854
+4620  -84.07317073
+4621 -765.34146341
+4622  673.14634146
+4623  157.04878049
+4624 -255.43902439
+4625 -305.87804878
+4626  559.34146341
+4627  -54.12195122
+4628  634.51219512
+4629  400.56097561
+4630 -134.80487805
+4631   43.39024390
+4632   17.82926829
+4633  108.60975610
+4634  517.73170732
+4635 -182.12195122
+4636  218.75609756
+4637 -730.51219512
+4638 -144.70731707
+4639  -21.68292683
+4640  -29.78048780
+4641 -667.04878049
+4642 -625.58536585
+4643 -156.17073171
+4644  135.04878049
+4645  608.56097561
+4646 -548.21951220
+4647  241.19512195
+4648  146.02439024
+4649 -285.48780488
+4650  684.17073171
+4651  399.29268293
+4652  -64.21951220
+4653 -623.92682927
+4654  100.56097561
+4655 -408.90243902
+4656  707.97560976
+4657   65.00000000
+4658 -738.65853659
+4659  -95.39024390
+4660  -28.12195122
+4661  -52.95121951
+4662 -751.97560976
+4663  116.95121951
+4664  -37.09756098
+4665  585.34146341
+4666 -357.24390244
+4667  601.24390244
+4668  788.17073171
+4669 -739.00000000
+4670   39.78048780
+4671  747.63414634
+4672  717.87804878
+4673  -21.82926829
+4674   41.92682927
+4675 -415.73170732
+4676  662.90243902
+4677 -601.92682927
+4678 -442.60975610
+4679  101.53658537
+4680 -191.78048780
+4681 -725.63414634
+4682  404.85365854
+4683 -450.26829268
+4684  837.34146341
+4685  187.09756098
+4686    0.51219512
+4687  588.65853659
+4688  163.87804878
+4689  336.65853659
+4690 -585.34146341
+4691 -548.90243902
+4692  372.17073171
+4693 -607.34146341
+4694  271.97560976
+4695 -519.29268293
+4696 -609.97560976
+4697  737.92682927
+4698    6.21951220
+4699 -123.78048780
+4700  420.46341463
+4701    2.31707317
+4702 -656.07317073
+4703 -356.65853659
+4704 -663.73170732
+4705   94.07317073
+4706   79.19512195
+4707 -624.90243902
+4708  506.90243902
+4709 -277.97560976
+4710 -656.95121951
+4711 -153.09756098
+4712  634.46341463
+4713 -221.97560976
+4714 -675.97560976
+4715   73.29268293
+4716 -457.19512195
+4717 -459.78048780
+4718 -448.07317073
+4719 -501.92682927
+4720  -65.43902439
+4721   33.48780488
+4722   77.97560976
+4723   30.65853659
+4724  -20.80487805
+4725  434.46341463
+4726  782.90243902
+4727  618.12195122
+4728  133.78048780
+4729   -3.19512195
+4730  173.53658537
+4731 -275.00000000
+4732  104.80487805
+4733  515.09756098
+4734  667.04878049
+4735  117.92682927
+4736  383.04878049
+4737 -564.85365854
+4738  332.56097561
+4739  400.21951220
+4740  369.39024390
+4741   78.12195122
+4742   27.73170732
+4743  573.48780488
+4744   70.90243902
+4745  314.85365854
+4746   -6.26829268
+4747  -76.41463415
+4748  510.12195122
+4749  293.34146341
+4750  609.19512195
+4751   38.75609756
+4752 -297.63414634
+4753 -487.58536585
+4754   55.04878049
+4755 -769.48780488
+4756  280.41463415
+4757  141.19512195
+4758  164.80487805
+4759  458.80487805
+4760  554.31707317
+4761 -103.68292683
+4762  -79.09756098
+4763  637.63414634
+4764 -261.73170732
+4765 -229.14634146
+4766 -200.41463415
+4767 -104.65853659
+4768 -583.19512195
+4769 -528.65853659
+4770 -825.68292683
+4771   57.29268293
+4772  256.85365854
+4773   96.80487805
+4774   68.07317073
+4775 -401.39024390
+4776   -6.75609756
+4777 -143.04878049
+4778 -569.73170732
+4779   10.75609756
+4780  154.95121951
+4781   11.00000000
+4782  -15.73170732
+4783 -288.90243902
+4784  283.92682927
+4785   44.70731707
+4786 -779.43902439
+4787  -27.63414634
+4788  -42.12195122
+4789  -70.70731707
+4790  423.78048780
+4791 -609.48780488
+4792 -463.39024390
+4793 -118.36585366
+4794 -296.60975610
+4795  468.75609756
+4796  453.24390244
+4797   52.36585366
+4798 -455.19512195
+4799  587.04878049
+4800  -93.53658537
+4801  130.21951220
+4802    1.78048780
+4803  228.85365854
+4804  475.68292683
+4805 -608.12195122
+4806 -578.02439024
+4807 -367.24390244
+4808  531.34146341
+4809  674.12195122
+4810   92.75609756
+4811  -82.85365854
+4812  259.09756098
+4813  375.34146341
+4814  662.12195122
+4815  213.78048780
+4816  549.14634146
+4817  211.24390244
+4818 -117.68292683
+4819 -299.34146341
+4820  185.29268293
+4821  625.48780488
+4822  326.80487805
+4823  206.17073171
+4824 -722.41463415
+4825  488.85365854
+4826 -218.70731707
+4827   82.41463415
+4828 -698.56097561
+4829 -588.02439024
+4830 -500.51219512
+4831  445.63414634
+4832  491.68292683
+4833  196.36585366
+4834 -661.87804878
+4835  328.85365854
+4836  605.14634146
+4837  121.09756098
+4838  812.26829268
+4839 -714.90243902
+4840 -327.73170732
+4841 -468.46341463
+4842 -275.43902439
+4843  153.97560976
+4844  515.58536585
+4845 -757.29268293
+4846  -48.51219512
+4847  -21.48780488
+4848   95.04878049
+4849  645.24390244
+4850 -375.48780488
+4851  542.26829268
+4852 -703.73170732
+4853 -632.31707317
+4854 -707.63414634
+4855 -508.95121951
+4856  520.41463415
+4857  494.12195122
+4858   51.78048780
+4859 -421.29268293
+4860  352.31707317
+4861  393.63414634
+4862  -59.92682927
+4863  628.41463415
+4864 -719.82926829
+4865 -499.82926829
+4866  621.48780488
+4867  364.31707317
+4868   71.63414634
+4869  614.07317073
+4870 -374.65853659
+4871  454.12195122
+4872  434.80487805
+4873 -218.02439024
+4874 -407.19512195
+4875  798.60975610
+4876 -360.12195122
+4877  158.31707317
+4878  641.04878049
+4879  278.95121951
+4880   11.92682927
+4881  201.53658537
+4882  -45.29268293
+4883  688.80487805
+4884  127.48780488
+4885 -111.39024390
+4886  489.63414634
+4887  130.65853659
+4888 -535.09756098
+4889  588.12195122
+4890 -616.07317073
+4891  418.31707317
+4892  -26.90243902
+4893  458.36585366
+4894 -498.41463415
+4895 -490.17073171
+4896  223.87804878
+4897  184.75609756
+4898 -208.07317073
+4899 -286.36585366
+4900 -617.43902439
+4901  123.43902439
+4902 -231.34146341
+4903 -196.26829268
+4904 -462.02439024
+4905  612.70731707
+4906  -69.19512195
+4907   33.39024390
+4908 -616.90243902
+4909  532.70731707
+4910  427.97560976
+4911 -496.56097561
+4912  -83.53658537
+4913  648.26829268
+4914  606.95121951
+4915   18.12195122
+4916  117.09756098
+4917  -20.26829268
+4918 -625.97560976
+4919  162.17073171
+4920  784.80487805
+4921  195.68292683
+4922 -476.36585366
+4923  -77.04878049
+4924  656.07317073
+4925  -22.41463415
+4926 -702.60975610
+4927  249.68292683
+4928 -498.65853659
+4929 -136.90243902
+4930  179.53658537
+4931  577.92682927
+4932  573.53658537
+4933   31.34146341
+4934  203.53658537
+4935  509.43902439
+4936   58.46341463
+4937   52.36585366
+4938 -660.12195122
+4939   64.80487805
+4940  635.29268293
+4941 -623.68292683
+4942  375.87804878
+4943   36.21951220
+4944  106.51219512
+4945 -103.09756098
+4946 -155.78048780
+4947  559.97560976
+4948 -733.87804878
+4949   66.12195122
+4950  192.85365854
+4951   66.12195122
+4952  410.46341463
+4953 -502.80487805
+4954   -8.51219512
+4955  694.90243902
+4956 -614.75609756
+4957  -83.97560976
+4958  406.95121951
+4959 -328.31707317
+4960 -137.00000000
+4961 -688.70731707
+4962  404.21951220
+4963   16.90243902
+4964   11.53658537
+4965 -568.31707317
+4966  727.48780488
+4967  671.58536585
+4968 -136.65853659
+4969 -421.34146341
+4970  592.70731707
+4971 -431.68292683
+4972   24.21951220
+4973 -134.75609756
+4974 -411.78048780
+4975  -78.65853659
+4976 -640.07317073
+4977   73.97560976
+4978 -372.65853659
+4979  688.17073171
+4980 -584.56097561
+4981  354.17073171
+4982  287.58536585
+4983 -606.12195122
+4984  578.85365854
+4985  191.97560976
+4986  553.58536585
+4987 -146.90243902
+4988  545.78048780
+4989   20.80487805
+4990  105.87804878
+4991   -6.12195122
+4992 -159.19512195
+4993  685.73170732
+4994   33.09756098
+4995 -610.90243902
+4996  -50.46341463
+4997 -592.02439024
+4998 -158.70731707
+4999  141.09756098</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_histogram</span>(<span class="at">data =</span>spending_permute, <span class="sc">~</span> diffmean, <span class="at">bins =</span> <span class="dv">25</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> diff_spent, </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">"Null Distribution by Permutation"</span>, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">subtitle =</span> <span class="st">"Histogram"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Difference in Means"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_ecdf</span>(<span class="at">data =</span> spending_permute, <span class="sc">~</span> diffmean, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> diff_spent, </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">"Null Distribution by Permutation"</span>, </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">subtitle =</span> <span class="st">"Cumulative Density"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Difference in Means"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="here-the-difference-in-the-averages-of-spending-by-both-genders-is-55.-we-can-see-that-the-actual-mean-difference-is-something-that-could-easily-be-generated-randomly.-which-means-that-we-can-achieve-this-distribution-without-a-bias-i.e.-guys-spending-more.-the-null-hypothesis-is-not-disproved." class="level3">
+<h3 class="anchored" data-anchor-id="here-the-difference-in-the-averages-of-spending-by-both-genders-is-55.-we-can-see-that-the-actual-mean-difference-is-something-that-could-easily-be-generated-randomly.-which-means-that-we-can-achieve-this-distribution-without-a-bias-i.e.-guys-spending-more.-the-null-hypothesis-is-not-disproved.">Here, the difference in the averages of spending by both genders is 55. We can see that the actual mean difference is something that could easily be generated randomly. Which means that we can achieve this distribution without a bias, i.e.&nbsp;guys spending more. The null hypothesis is not disproved.</h3>
+</section>
+<section id="so-we-cannot-say-that-the-hunch-is-true." class="level3">
+<h3 class="anchored" data-anchor-id="so-we-cannot-say-that-the-hunch-is-true.">So we CANNOT say that the hunch is true.</h3>
+</section>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">—————————————————————————-</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

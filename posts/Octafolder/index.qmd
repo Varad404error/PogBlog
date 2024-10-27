@@ -1,0 +1,189 @@
+---
+title: "Tips by Food"
+author: "Varad"
+---
+
+```{r}
+#| label: Setup
+library(crosstable)
+library(tidyverse)
+library(mosaic)
+library(ggformula)
+library(dplyr)
+```
+
+## Reading Data
+
+### Tips given by Vegetarians & Non-Vegetarians while ordering food online.
+
+```{r}
+tips<- read_csv(file = '../../datasets/tip.csv') %>% 
+  dplyr::mutate(
+    Tip = as.integer(Tip),
+  )
+
+  
+  
+tips
+glimpse(tips)
+
+```
+
+### Taking average tips of each food preference
+
+```{r}
+tips%>%
+  group_by(Preferance) %>% 
+  summarize(average_tip = mean(Tip),count = n())
+  
+
+```
+
+### Taking average tips of each gender
+
+```{r}
+
+tips%>%
+  group_by(Gender) %>% 
+  summarize(average_tip = mean(Tip),count = n())
+  
+```
+
+```{r}
+
+tips %>% filter(Tip== 0) 
+```
+
+#### Lot of non-tippers huh.
+
+```{r}
+
+
+
+gf_histogram(~Tip, fill = ~Preferance, data = tips) %>%
+  gf_labs(
+    title = "Plot 1: Tips vs food preference",
+  )
+
+```
+
+```{r}
+
+gf_histogram(~Tip, fill = ~Gender, data = tips) %>%
+  gf_labs(
+    title = "Plot 2: Tips vs Gender",
+  )
+
+```
+
+#### This distribution is not normal. Since we have a miserly sample size of \~30 per gender & food preference. We will try to confirm this by the shapiro.test.
+
+```{r}
+tips %>%  crosstable(Tip ~ Preferance) %>% as_flextable()
+```
+
+```{r}
+
+tips %>%
+  gf_density(
+    ~ Tip,
+    fill = ~ Preferance,
+    alpha = 0.5,
+    title = "Food Tip Score Densities",
+    subtitle = "Veg vs Non-Veg"
+  )
+
+
+tips %>%
+  gf_boxplot(
+    Tip ~ Preferance,
+    fill = ~ Gender,
+    alpha = 0.5,
+    title = "Tip scores by food",
+    subtitle = "Boys vs Girls"
+  ) 
+```
+
+#### The word 'preference' is misspelled I know.
+
+```{r}
+
+veg_tips <- tips %>% 
+  filter(Preferance== "Veg") %>% 
+  select(Tip)
+
+non_veg_tips <- tips %>% 
+  filter(Preferance== "non-veg") %>% 
+  select(Tip)
+
+shapiro.test(veg_tips$Tip)
+#shapiro.test(non_veg_tips$Tip)
+```
+
+#### "Error in shapiro.test(non_veg_tips&Tip): sample size must be between 3 & 5000"
+
+#### Yeah it shows that error if you try to run it. As I said, the sample size is too small. Also, the p_value for veg is very very low. So it is not a normal distribution.
+
+```{r}
+
+var.test(Tip ~ Preferance, data = tips, 
+         conf.int = TRUE, conf.level = 0.95) %>% 
+  broom::tidy()
+```
+
+#### The variance is also very low.
+
+## Hypothesis
+
+### HUNCH- Non-Vegetarians are more generous with tips than Vegetarians.
+
+### To prove this, we actually start by arguing that they are actually not more generous.
+
+### Null Hypothesis: The difference between means of both veg & non-veg people is zero. Hence we are assuming that the difference of their means lies near 0.
+
+### Now if the hunch is true, then the distribution of means of both should be far from 0, & we should not be able to reach it without bias.
+
+```{r}
+diff_tip <- diffmean(Tip ~ Preferance, data = tips) 
+diff_tip
+```
+
+#### We kinda knew that already. The mean is pretty low.
+
+## Inference
+
+```{r}
+
+mosaic::t_test(Tip ~ Preferance,data = tips) %>% broom::tidy()
+```
+
+```{r}
+
+tips_permute <-
+  do(4999) * diffmean(data=tips, Tip~shuffle(Preferance))
+tips_permute
+```
+
+```{r}
+
+gf_histogram(data =tips_permute, ~ diffmean, bins = 25) %>%
+  gf_vline(xintercept = diff_tip, 
+           colour = "red", linewidth = 1,
+           title = "Null Distribution by Permutation", 
+           subtitle = "Histogram") %>% 
+  gf_labs(x = "Difference in Means")
+###
+gf_ecdf(data = tips_permute, ~ diffmean, 
+        linewidth = 1) %>%
+  gf_vline(xintercept = diff_tip, 
+           colour = "red", linewidth = 1,
+           title = "Null Distribution by Permutation", 
+           subtitle = "Cumulative Density") %>% 
+  gf_labs(x = "Difference in Means")
+```
+
+### Here, the difference in the averages of tips by both food preferences is 2.33. (We knew that.) We can see that the actual mean difference is something that could easily be generated randomly. Which means that we can achieve this distribution without a bias, i.e. without non-vegetarians being more generous. The null hypothesis is not disproved.
+
+### So we CANNOT say that the hunch is true.
+
+## -------------------------------------------------------------------------

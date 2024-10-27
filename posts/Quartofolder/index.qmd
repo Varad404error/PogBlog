@@ -438,3 +438,18 @@ race_start_factor %>%
 
 
 ```
+
+```{r}
+
+diamonds %>%
+  gf_histogram(~price, fill = ~cut, color = "black", alpha = 0.3) %>%
+  gf_facet_wrap(~cut, scales = "free_y", nrow = 2) %>%
+  #nrow basically changes the distance between points on Y axis (Scale on Y axis)
+  #free_y basically keeps the same scale on Y axis for all graphs
+  
+  gf_labs(
+    title = "Plot 3D: Prices Filled and Facetted by Cut",
+    subtitle = "Free y-scale",
+    caption = "ggformula"
+  )
+```

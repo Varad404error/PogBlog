@@ -1,0 +1,380 @@
+---
+title: "Cartoon Samples"
+author: "Varad Akolkar"
+---
+
+```{r}
+#| label: Setup
+library(tidyverse) # Tidy data processing
+library(ggformula) # Formula based plots
+library(mosaic) # Data inspection and Statistical Inference
+library(broom) # Tidy outputs from Statistical Analyses
+library(infer) # Statistical Inference, Permutation/Bootstrap
+library(patchwork) # Arranging Plots
+library(ggprism) # Interesting Categorical Axes
+library(supernova) # Beginner-Friendly ANOVA Tables
+library(dplyr)
+library(DescTools)
+```
+
+## Reading Data
+
+```{r}
+toon<- read_csv(file = '../../../datasets/cartoon.csv')
+toon
+glimpse(toon)
+```
+
+### We do not need to pivot this table since the cartoons are already in a single column.
+
+```{r}
+toon %>%  count(Cartoon)
+toon %>%
+    summarize(overall_mean = mean(Rating),count = n())
+```
+
+#### There is roughly 30 of each type which is enough data. Overall mean rating is 7.06.
+
+## Data Analysis
+
+```{r}
+
+gf_histogram(~Rating,
+  fill = ~Cartoon,
+  data = toon, alpha = 1
+) %>%  gf_vline(xintercept = ~ mean(Rating)) %>%
+  
+  
+  gf_labs(
+    title = "Histograms of Cartoon vs respective Rating. (0-10)",
+    x = "Rating", y = "Count"
+  ) %>%
+  
+  
+  gf_text(16 ~ (mean(Rating)),
+    label = "Overall Mean",
+  ) %>%
+  
+  
+  gf_refine(guides(fill = guide_legend(title = "Cartoon Name")))
+```
+
+### Looks like Doraemon ratings are all over the chart. Chota Bheem belongs in 6-8 range according to most people.
+
+```{r}
+
+gf_boxplot(
+  data = toon,
+  Rating ~ Cartoon,
+  fill = ~Cartoon,
+  alpha = 0.5
+) %>% gf_vline(xintercept = ~ mean(Rating)) %>%
+  
+  gf_labs(
+    title = "Boxplots of Rating Distributions vs Cartoons",
+    x = "Cartoon", y = "Rating",
+  ) %>%
+  
+  gf_refine(
+    scale_x_discrete(guide = "prism_bracket"),
+    guides(fill = guide_legend(title = "Cartoon"))
+  )
+```
+
+## ANNOVA Test
+
+```{r}
+
+toon_anova <- aov(Rating ~ Cartoon, data = toon)
+
+supernova::supernova(toon_anova)
+```
+
+```{r}
+
+supernova::pairwise(toon_anova,
+  correction = "Bonferroni", # Try "Tukey"
+  alpha = 0.05, # 95% CI calculation
+  var_equal = TRUE, # We'll see
+  plot = TRUE
+)
+```
+
+```{r}
+# Calculate overall sum squares SST
+toon_overall <- toon %>%
+  summarise(
+    overall_mean_rating = mean(Rating),
+    # Overall mean across all readings
+    # The Black Line
+
+    SST = sum((Rating - overall_mean_rating)^2),
+    n = n()
+  ) 
+toon_overall
+
+SST <- toon_overall$SST
+SST
+```
+
+```{r}
+# Calculate sums of square errors *within* each group
+# with respect to individual group means
+toon_within_groups <- toon %>%
+  group_by(Cartoon) %>%
+  summarise(
+    grouped_mean_rating = mean(Rating), 
+    grouped_variance_rating = var(Rating),
+    group_error_squares = sum((Rating - grouped_mean_rating)^2),
+    n = n()
+  )
+toon_within_groups
+
+
+toon_SSE <- toon_within_groups %>%
+  summarise(SSE = sum(group_error_squares))
+##
+SSE <- toon_SSE$SSE
+SSE
+```
+
+### The values here reflect what we saw in the histogram. D. Tales & Doraemon have a higher average rating than Chota Bheem. 
+
+### Remember we said that Doraemon has its ratings all over the chart? That is why its variance is highest.
+
+```{r}
+SST
+SSE
+SSA <- SST - SSE
+SSA
+```
+
+### Now we calculate degrees of freedom for all variances. The degrees of freedom is dependent on number of categories (3 Cartoons) & number of datapoints (30 for each).
+
+```{r}
+# Error Sum of Squares SSE
+df_SSE <- toon %>%
+  # Takes into account "unbalanced" situations
+  # Where groups are not equal in size
+  group_by(Cartoon) %>%
+  summarise(per_group_df_SSE = n() - 1) %>%
+  summarise(df_SSE = sum(per_group_df_SSE)) %>%
+  as.numeric()
+
+
+## Overall Sum of Squares SST
+df_SST <- toon %>%
+  summarise(df_SST = n() - 1) %>%
+  as.integer()
+
+
+# Treatment Sum of Squares SSA
+k <- length(unique(toon$Cartoon))
+df_SSA <- k - 1
+
+
+##Degrees of Freedom:
+
+df_SST
+df_SSE
+df_SSA
+```
+
+### The SST is one less than the total datapoints (91) as 1 degree of freedom goes into calculating the global mean.
+
+### The SSE is sum of all categories with one less in each. 3\[(n1-1)+(n2-1)+(n3-1)\]
+
+### The SSA is not the same as SSE-SST because we had an extra datapoint for Dragon Tales. Should have probably kept them equal. 
+
+### Now we calculate the F-Statistic.
+
+```{r}
+# Combine the sum-square_error for each level of the factor
+# Weighted by degrees of freedom **per level**
+
+MSE <- toon_within_groups %>%
+  summarise(mean_square_error = sum(group_error_squares / df_SSE)) %>%
+  as.numeric()
+MSE
+```
+
+```{r}
+##
+MSA <- SSA / df_SSA
+MSA
+```
+
+```{r}
+
+F_stat <- MSA / MSE
+F_stat
+```
+
+#### Now we calculate the critical value of F-statistic.
+
+```{r}
+F_crit <-
+  qf(
+    p = (1 - 0.05 / 3), # Significance level is 5% + Bonferroni Correction
+    df1 = df_SSA, # Numerator degrees of freedom
+    df2 = df_SSE # Denominator degrees of freedom
+  )
+F_crit
+F_stat
+```
+
+```{r}
+
+mosaic::xpf(
+  q = F_crit,
+  df1 = df_SSA, df2 = df_SSE, method = "gg",
+  log.p = FALSE, lower.tail = TRUE,
+  return = "plot"
+) %>%
+  gf_vline(xintercept = F_crit) %>%
+  gf_label(0.75 ~ 5,
+    label = "F_critical",
+    inherit = F, show.legend = F
+  ) %>%
+  gf_labs(
+    title = "F distribution for Cartoons Data",
+    subtitle = "F_critical = 4.290"
+  )
+```
+
+### Since our F-Statistic is very low, & lower than F-Critical, we CANNOT state with confidence that Cartoon name has a direct effect on the rating.
+
+### Which is obvious, since the rating is subjective by person, naturally a cartoon name does not guarantee a particular rating.
+
+```{r}
+supernova::equation(toon_anova)
+```
+
+## ANNOVA Assumptions
+
+### ANOVA makes 3 fundamental assumptions:
+
+#### 1. Data (and errors) are normally distributed.
+
+#### 2. Variances are equal.
+
+#### 3.Observations are independent.
+
+#### We can check these using checks and graphs.
+
+### Now we do the usual Shapiro Normality Test again to check the p.value.
+
+```{r}
+shapiro.test(x = toon$Rating)
+```
+
+### Since our p_value is much less than 0.05, we have to reject the NULL Hypothesis that the distribution is normal. 
+
+### We can try doing the normality test at each level of factor.
+
+```{r}
+toon %>%
+  group_by(Cartoon) %>%
+  group_modify(~ .x %>%
+    select(Rating) %>%
+    as_vector() %>%
+    shapiro.test() %>%
+    broom::tidy())
+```
+
+### This time, the p_values for Doraemon & D.Tales are less than 0.05, so we have to reject the NULL Hypothesis of normality. (Even if there are supposedly enough samples.)
+
+### We can check for residuals after model.
+
+```{r}
+
+toon_anova$residuals %>%
+  as_tibble() %>%
+  gf_dhistogram(~value, data = .) %>%
+  gf_fitdistr()
+##
+toon_anova$residuals %>%
+  as_tibble() %>%
+  gf_qq(~value, data = .) %>%
+  gf_qqstep() %>%
+  gf_qqline()
+##
+shapiro.test(toon_anova$residuals)
+```
+
+### The residuals are not normal either. (P_value=0.0003\<0.05)
+
+### We now check for similar Variance. To see if variances of each rating level across all cartoons are similar, we can use the Levenue Test or the Fligner-Killeen Test. (Since the data is not normally distributed)
+
+### NULL Hypothesis: Data have similar variance
+
+```{r}
+toon %>%
+  group_by(Cartoon) %>%
+  summarise(variance = var(Rating))
+
+DescTools::LeveneTest(Rating ~ Cartoon, data = toon)
+
+fligner.test(Rating ~ Cartoon, data = toon)
+```
+
+### Looks like we have very different variances. As I said earlier, personal opinions.
+
+## Effect Size
+
+### We look for the actual effect sizes in Annova using our earlier graph.
+
+```{r}
+
+toon_supernova <-
+  supernova::pairwise(toon_anova,
+    plot = TRUE,
+    alpha = 0.05,
+    correction = "Bonferroni"
+  )
+
+toon_supernova
+```
+
+## ANNOVA Permutation Tests
+
+### We use a permutation test to see the significance of effect size for all Cartoons & their normality.
+
+#### We shuffle the cartoons randomly between the Ratings and repeat the ANOVA test each time and calculate the F-statistic. The Null distribution is the distribution of the F-statistic over the many permutations and the p-value is given by the proportion of times the F-statistic equals or exceeds that observed.
+
+```{r}
+observed_infer <-
+  toon %>%
+  specify(Rating ~ Cartoon) %>%
+  hypothesise(null = "independence") %>%
+  calculate(stat = "F")
+observed_infer
+```
+
+### Now we use infer command to generate a NULL distribution using permutation of the Cartoon factor.
+
+```{r}
+null_dist_infer <- toon %>%
+  specify(Rating ~ Cartoon) %>%
+  hypothesise(null = "independence") %>%
+  generate(reps = 4999, type = "permute") %>%
+  calculate(stat = "F")
+##
+null_dist_infer
+```
+
+```{r}
+##
+null_dist_infer %>%
+  visualise(method = "simulation") +
+  shade_p_value(obs_stat = observed_infer$stat, direction = "right") +
+  scale_x_continuous(trans = "log10", expand = c(0, 0)) +
+  coord_cartesian(xlim = c(0.2, 500), clip = "off") +
+  annotation_logticks(outside = FALSE) 
+```
+
+### As seen, the infer based permutation test also shows that the permutationally generated F-statistics are close to which was observed. The effect of Cartoon barely registers.
+
+### Hence, we CANNOT confidently say that the cartoon name has direct effect on its rating. The NULL Hypothesis prevails!
+
+## ----------------------------------------------------------------------------

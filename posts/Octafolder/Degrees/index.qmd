@@ -1,0 +1,373 @@
+---
+title: "Student Degrees"
+author: "Varad Akolkar"
+---
+
+```{r}
+
+#| label: Setup
+library(tidyverse) # Tidy data processing
+library(ggformula) # Formula based plots
+library(mosaic) # Data inspection and Statistical Inference
+library(broom) # Tidy outputs from Statistical Analyses
+library(infer) # Statistical Inference, Permutation/Bootstrap
+library(patchwork) # Arranging Plots
+library(ggprism) # Interesting Categorical Axes
+library(supernova) # Beginner-Friendly ANOVA Tables
+library(dplyr)
+library(DescTools)
+```
+
+## Reading Data
+
+```{r}
+grad<- read_csv(file = '../../../datasets/degree.csv')
+grad
+glimpse(grad)
+```
+
+```{r}
+
+grad %>%  count(Degree)
+grad %>%
+    summarize(overall_mean = mean(Score),count = n())
+```
+
+#### There is roughly 30 of each type which is enough data. Overall mean rating is 8.06
+
+## Data Analysis
+
+```{r}
+gf_histogram(~Score,
+  fill = ~Degree,
+  data = grad, alpha = 1
+) %>%  gf_vline(xintercept = ~ mean(Score)) %>%
+  
+  
+  gf_labs(
+    title = "Histograms of Bachelor's Degrees vs class scores. (0-10)",
+    x = "Score", y = "Count"
+  ) %>%
+  
+  
+  gf_text(16 ~ (mean(Score)),
+    label = "Overall Mean",
+  ) %>%
+  
+  
+  gf_refine(guides(fill = guide_legend(title = "Degree Name")))
+```
+
+### Looks like most top scorers are from B.Des. But there is an extreme outlier.
+
+```{r}
+
+gf_boxplot(
+  data = grad,
+  Score ~ Degree,
+  fill = ~Degree,
+  alpha = 0.5
+) %>% gf_vline(xintercept = ~ mean(Score)) %>%
+  
+  gf_labs(
+    title = "Boxplots of Score Distributions vs Degrees",
+    x = "Degree", y = "Score",
+  ) %>%
+  
+  gf_refine(
+    scale_x_discrete(guide = "prism_bracket"),
+    guides(fill = guide_legend(title = "Degree"))
+  )
+```
+
+## ANNOVA Test
+
+```{r}
+grad_anova <- aov(Score ~ Degree, data = grad)
+
+supernova::supernova(grad_anova)
+```
+
+```{r}
+supernova::pairwise(grad_anova,
+  correction = "Bonferroni", # Try "Tukey"
+  alpha = 0.05, # 95% CI calculation
+  var_equal = TRUE, # We'll see
+  plot = TRUE
+)
+```
+
+```{r}
+# Calculate overall sum squares SST
+grad_overall <- grad %>%
+  summarise(
+    overall_mean_score = mean(Score),
+    # Overall mean across all readings
+    # The Black Line
+
+    SST = sum((Score - overall_mean_score)^2),
+    n = n()
+  ) 
+grad_overall
+
+SST <- grad_overall$SST
+SST
+```
+
+```{r}
+# Calculate sums of square errors *within* each group
+# with respect to individual group means
+grad_within_groups <- grad %>%
+  group_by(Degree) %>%
+  summarise(
+    grouped_mean_score = mean(Score), 
+    grouped_variance_score = var(Score),
+    group_error_squares = sum((Score - grouped_mean_score)^2),
+    n = n()
+  ) 
+grad_within_groups
+
+
+grad_SSE <- grad_within_groups %>%
+  summarise(SSE = sum(group_error_squares))
+##
+SSE <- grad_SSE$SSE
+SSE
+```
+
+### The values here reflect what we saw in the histogram. B.Des & B.Voc have a higher average score than B.FA. 
+
+### B.Des has highest variance. Must be because of the extremes in the data.
+
+```{r}
+SST
+SSE
+SSA <- SST - SSE
+SSA
+```
+
+### Now we calculate degrees of freedom for all variances. The degrees of freedom is dependent on number of categories (3 Degrees) & number of datapoints (30 for each).
+
+```{r}
+# Error Sum of Squares SSE
+df_SSE <- grad %>%
+  # Takes into account "unbalanced" situations
+  # Where groups are not equal in size
+  group_by(Degree) %>%
+  summarise(per_group_df_SSE = n() - 1) %>%
+  summarise(df_SSE = sum(per_group_df_SSE)) %>%
+  as.numeric()
+
+
+## Overall Sum of Squares SST
+df_SST <- grad %>%
+  summarise(df_SST = n() - 1) %>%
+  as.integer()
+
+
+# Treatment Sum of Squares SSA
+k <- length(unique(grad$Degree))
+df_SSA <- k - 1
+
+
+##Degrees of Freedom:
+
+df_SST
+df_SSE
+df_SSA
+```
+
+### The SST is one less than the total datapoints (90) as 1 degree of freedom goes into calculating the global mean.
+
+### The SSE is sum of all categories with one less in each. 3\[(n1-1)+(n2-1)+(n3-1)\]
+
+### Now we calculate the F-Statistic.
+
+```{r}
+# Combine the sum-square_error for each level of the factor
+# Weighted by degrees of freedom **per level**
+
+MSE <- grad_within_groups %>%
+  summarise(mean_square_error = sum(group_error_squares / df_SSE)) %>%
+  as.numeric()
+MSE
+```
+
+```{r}
+
+MSA <- SSA / df_SSA
+MSA
+```
+
+```{r}
+F_stat <- MSA / MSE
+F_stat
+```
+
+#### Now we calculate the critical value of F-statistic.
+
+```{r}
+F_crit <-
+  qf(
+    p = (1 - 0.05 / 3), # Significance level is 5% + Bonferroni Correction
+    df1 = df_SSA, # Numerator degrees of freedom
+    df2 = df_SSE # Denominator degrees of freedom
+  )
+F_crit
+F_stat
+```
+
+```{r}
+
+mosaic::xpf(
+  q = F_crit,
+  df1 = df_SSA, df2 = df_SSE, method = "gg",
+  log.p = FALSE, lower.tail = TRUE,
+  return = "plot"
+) %>%
+  gf_vline(xintercept = F_crit) %>%
+  gf_label(0.75 ~ 5,
+    label = "F_critical",
+    inherit = F, show.legend = F
+  ) %>%
+  gf_labs(
+    title = "F distribution for Cartoons Data",
+    subtitle = "F_critical = 4.290"
+  )
+```
+
+### Since our F-Statistic is very low, & lower than F-Critical, we CANNOT state with confidence that a student's Degree has a direct effect on their score.
+
+### Which is obvious, since the scoring is subjective by person. We do NOT have reason to believe that the grading is biased per the degree.
+
+```{r}
+supernova::equation(grad_anova)
+```
+
+## ANNOVA Assumptions
+
+### ANOVA makes 3 fundamental assumptions:
+
+#### 1. Data (and errors) are normally distributed.
+
+#### 2. Variances are equal.
+
+#### 3.Observations are independent.
+
+#### We can check these using checks and graphs.
+
+### Now we do the usual Shapiro Normality Test again to check the p.value.
+
+```{r}
+shapiro.test(x = grad$Score)
+```
+
+### Since our p_value is much less than 0.05, we have to reject the NULL Hypothesis that the distribution is normal. 
+
+### We can try doing the normality test at each level of factor.
+
+```{r}
+grad %>%
+  group_by(Degree) %>%
+  group_modify(~ .x %>%
+    select(Score) %>%
+    as_vector() %>%
+    shapiro.test() %>%
+    broom::tidy())
+```
+
+### The p_values for all degrees are less than 0.05, so we have to reject the NULL Hypothesis of normality. (Even if there are supposedly enough samples.)
+
+### We can check for residuals after model.
+
+```{r}
+grad_anova$residuals %>%
+  as_tibble() %>%
+  gf_dhistogram(~value, data = .) %>%
+  gf_fitdistr()
+##
+grad_anova$residuals %>%
+  as_tibble() %>%
+  gf_qq(~value, data = .) %>%
+  gf_qqstep() %>%
+  gf_qqline()
+##
+shapiro.test(grad_anova$residuals)
+```
+
+### The residuals are not normal either. (P_value=0.5 e-6 \<\< 0.05)
+
+### We now check for similar Variance. To see if variances of each rating level across all degrees are similar, we can use the Levenue Test or the Fligner-Killeen Test. (Since the data is not normally distributed)
+
+### NULL Hypothesis: Data have similar variance
+
+```{r}
+grad %>%
+  group_by(Degree) %>%
+  summarise(variance = var(Score))
+
+DescTools::LeveneTest(Score ~ Degree, data = grad)
+
+fligner.test(Score ~ Degree, data = grad)
+```
+
+### Looks like we have very different variances. As I said earlier, subjective grades.
+
+## Effect Size
+
+### We look for the actual effect sizes in Annova using our earlier graph.
+
+```{r}
+grad_supernova <-
+  supernova::pairwise(grad_anova,
+    plot = TRUE,
+    alpha = 0.05,
+    correction = "Bonferroni"
+  )
+
+grad_supernova
+```
+
+## ANNOVA Permutation Tests
+
+### We use a permutation test to see the significance of effect size for all Degrees & their normality.
+
+#### We shuffle the degrees randomly between the Scores and repeat the ANOVA test each time and calculate the F-statistic. The Null distribution is the distribution of the F-statistic over the many permutations and the p-value is given by the proportion of times the F-statistic equals or exceeds that observed.
+
+```{r}
+observed_infer <-
+  grad %>%
+  specify(Score ~ Degree) %>%
+  hypothesise(null = "independence") %>%
+  calculate(stat = "F")
+observed_infer
+```
+
+### We knew that the F-statistic is 3.90.
+
+### Now we use infer command to generate a NULL distribution using permutation of the Degree factor.
+
+```{r}
+null_dist_infer <- grad %>%
+  specify(Score ~ Degree) %>%
+  hypothesise(null = "independence") %>%
+  generate(reps = 4999, type = "permute") %>%
+  calculate(stat = "F")
+##
+null_dist_infer
+```
+
+```{r}
+null_dist_infer %>%
+  visualise(method = "simulation") +
+  shade_p_value(obs_stat = observed_infer$stat, direction = "right") +
+  scale_x_continuous(trans = "log10", expand = c(0, 0)) +
+  coord_cartesian(xlim = c(0.2, 500), clip = "off") +
+  annotation_logticks(outside = FALSE) 
+```
+
+### As we see the infer based permutation test also shows that the permutationally generated F-statistics are close to which was observed. The effect of Degree barely registers.
+
+### Hence, we CANNOT confidently say that the certain degrees grade differently than others. The NULL Hypothesis prevails again...
+
+## ----------------------------------------------------------------------------

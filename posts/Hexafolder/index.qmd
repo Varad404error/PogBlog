@@ -97,3 +97,389 @@ t4 <- mosaic::t_test(
 broom::tidy()
 t4
 ```
+
+# ---------------------------------------
+
+```{r}
+library(tidyverse) # Data Processing in R
+library(mosaic) # Our workhorse for stats, sampling
+library(skimr) # Good to Examine data
+library(ggformula) # Formula interface for graphs
+
+# load the NHANES data library
+library(NHANES)
+library(infer)
+```
+
+```{r}
+data("NHANES")
+glimpse(NHANES)
+```
+
+```{r}
+NHANES_adult <-
+  NHANES %>%
+  distinct(ID, .keep_all = TRUE) %>%
+  filter(Age >= 18) %>%
+  select(Height) %>%
+  drop_na(Height)
+NHANES_adult
+```
+
+```{r}
+# NHANES_adult is assumed population
+pop_mean <- mosaic::mean(~Height, data = NHANES_adult)
+
+pop_sd <- mosaic::sd(~Height, data = NHANES_adult)
+
+pop_mean
+
+pop_sd
+```
+
+```{r}
+
+
+sample_50 <- mosaic::sample(NHANES_adult, size = 50) %>%
+  select(Height)
+sample_50
+sample_mean_50 <- mean(~Height, data = sample_50)
+sample_mean_50
+# Plotting the histogram of this sample
+sample_50 %>%
+  gf_histogram(~Height, bins = 10) %>%
+  gf_vline(
+    xintercept = ~sample_mean_50,
+    color = "purple"
+  ) %>%
+  gf_vline(
+    xintercept = ~pop_mean,
+    colour = "black"
+  ) %>%
+  gf_label(7 ~ (pop_mean + 8),
+    label = "Population Mean",
+    color = "black"
+  ) %>%
+  gf_label(7 ~ (sample_mean_50 - 8),
+    label = "Sample Mean", color = "purple"
+  ) %>%
+  gf_labs(
+    title = "Distribution and Mean of a Single Sample",
+    subtitle = "Sample Size = 50"
+  )
+```
+
+```{r}
+sample_50_500 <- do(500) * {
+  sample(NHANES_adult, size = 50) %>%
+    select(Height) %>% # drop sampling related column "orig.id"
+    summarise(
+      sample_mean = mean(Height),
+      sample_sd = sd(Height),
+      sample_min = min(Height),
+      sample_max = max(Height)
+    )
+}
+sample_50_500
+dim(sample_50_500)
+```
+
+```{r}
+
+
+sample_50_500 %>%
+  gf_point(.index ~ sample_mean,
+    color = "purple",
+    title = "Sample Means are close to the Population Mean",
+    subtitle = "Sample Means are Random!",
+    caption = "Grey lines represent our 500 samples"
+  ) %>%
+  gf_segment(
+    .index + .index ~ sample_min + sample_max,
+    color = "grey",
+    linewidth = 0.3,
+    alpha = 0.3,
+    ylab = "Sample Index (1-500)",
+    xlab = "Sample Means"
+  ) %>%
+  gf_vline(
+    xintercept = ~pop_mean,
+    color = "black"
+  ) %>%
+  gf_label(-25 ~ pop_mean,
+    label = "Population Mean",
+    color = "black"
+  )
+##
+
+sample_50_500 %>%
+  gf_point(.index ~ sample_sd,
+    color = "purple",
+    title = "Sample SDs are close to the Population Sd",
+    subtitle = "Sample SDs are Random!",
+  ) %>%
+  gf_vline(
+    xintercept = ~pop_sd,
+    color = "black"
+  ) %>%
+  gf_label(-25 ~ pop_sd,
+    label = "Population SD",
+    color = "black"
+  ) %>%
+  gf_refine(lims(x = c(4, 16)))
+```
+
+```{r}
+
+sample_50_500 %>%
+  gf_dhistogram(~sample_mean, bins = 30, xlab = "Height") %>%
+  gf_vline(
+    xintercept = pop_mean,
+    color = "blue"
+  ) %>%
+  gf_label(0.01 ~ pop_mean,
+    label = "Population Mean",
+    color = "blue"
+  ) %>%
+  gf_labs(
+    title = "Sampling Mean Distribution",
+    subtitle = "500 means"
+  )
+
+
+# How does this **distribution of sample-means** compare with the
+# overall distribution of the population?
+#
+sample_50_500 %>%
+  gf_dhistogram(~sample_mean, bins = 30, xlab = "Height") %>%
+  gf_vline(
+    xintercept = pop_mean,
+    color = "blue"
+  ) %>%
+  gf_label(0.01 ~ pop_mean,
+    label = "Population Mean",
+    color = "blue"
+  ) %>%
+  ## Add the population histogram
+  gf_histogram(~Height,
+    data = NHANES_adult,
+    alpha = 0.2, fill = "blue",
+    bins = 30
+  ) %>%
+  gf_label(0.025 ~ (pop_mean + 20),
+    label = "Population Distribution", color = "blue"
+  ) %>%
+  gf_labs(title = "Sampling Mean Distribution", subtitle = "Original Population overlay")
+```
+
+```{r}
+# set.seed(12345)
+
+samples_08_1000 <- do(1000) * mean(resample(NHANES_adult$Height, size = 08))
+
+samples_16_1000 <- do(1000) * mean(resample(NHANES_adult$Height, size = 16))
+
+samples_32_1000 <- do(1000) * mean(resample(NHANES_adult$Height, size = 32))
+
+samples_64_1000 <- do(1000) * mean(resample(NHANES_adult$Height, size = 64))
+
+# samples_128_1000 <- do(1000) * mean(resample(NHANES_adult$Height, size = 128))
+
+# Quick Check
+head(samples_08_1000)
+```
+
+```{r}
+
+
+# Let us overlay their individual histograms to compare them:
+p5 <- gf_dhistogram(~mean,
+  data = samples_08_1000,
+  color = "grey",
+  fill = "dodgerblue", title = "N = 8"
+) %>%
+  gf_fitdistr(linewidth = 1) %>%
+  gf_vline(
+    xintercept = pop_mean, inherit = FALSE,
+    color = "blue"
+  ) %>%
+  gf_label(-0.025 ~ pop_mean,
+    label = "Population Mean",
+    color = "blue"
+  ) %>%
+  gf_theme(scale_y_continuous(expand = expansion(mult = c(0.08, 0.02))))
+##
+p6 <- gf_dhistogram(~mean,
+  data = samples_16_1000,
+  color = "grey",
+  fill = "sienna", title = "N = 16"
+) %>%
+  gf_fitdistr(linewidth = 1) %>%
+  gf_vline(
+    xintercept = pop_mean,
+    color = "blue"
+  ) %>%
+  gf_label(-.025 ~ pop_mean,
+    label = "Population Mean",
+    color = "blue"
+  ) %>%
+  gf_theme(scale_y_continuous(expand = expansion(mult = c(0.08, 0.02))))
+##
+p7 <- gf_dhistogram(~mean,
+  data = samples_32_1000,
+  na.rm = TRUE,
+  color = "grey",
+  fill = "palegreen", title = "N = 32"
+) %>%
+  gf_fitdistr(linewidth = 1) %>%
+  gf_vline(
+    xintercept = pop_mean,
+    color = "blue"
+  ) %>%
+  gf_label(-.025 ~ pop_mean,
+    label = "Population Mean", color = "blue"
+  ) %>%
+  gf_theme(scale_y_continuous(expand = expansion(mult = c(0.08, 0.02))))
+
+p8 <- gf_dhistogram(~mean,
+  data = samples_64_1000,
+  na.rm = TRUE,
+  color = "grey",
+  fill = "violetred", title = "N = 64"
+) %>%
+  gf_fitdistr(linewidth = 1) %>%
+  gf_vline(
+    xintercept = pop_mean,
+    color = "blue"
+  ) %>%
+  gf_label(-.025 ~ pop_mean,
+    label = "Population Mean", color = "blue"
+  ) %>%
+  gf_theme(scale_y_continuous(expand = expansion(mult = c(0.08, 0.02))))
+
+# patchwork::wrap_plots(p5,p6,p7,p8)
+p5
+p6
+p7
+p8
+```
+
+```{r}
+mean(~mean, data = samples_08_1000) # Mean of means!!!;-0
+mean(~mean, data = samples_16_1000)
+mean(~mean, data = samples_32_1000)
+mean(~mean, data = samples_64_1000)
+pop_mean
+```
+
+```{r}
+pop_sd
+sd(~mean, data = samples_08_1000)
+sd(~mean, data = samples_16_1000)
+sd(~mean, data = samples_32_1000)
+sd(~mean, data = samples_64_1000)
+```
+
+```{r}
+pop_sd
+pop_sd / sqrt(8)
+pop_sd / sqrt(16)
+pop_sd / sqrt(32)
+pop_sd / sqrt(64)
+```
+
+```{r}
+sample_08 <- mosaic::sample(NHANES_adult, size = 8) %>%
+  select(Height)
+sample_16 <- mosaic::sample(NHANES_adult, size = 16) %>%
+  select(Height)
+sample_32 <- mosaic::sample(NHANES_adult, size = 32) %>%
+  select(Height)
+sample_64 <- mosaic::sample(NHANES_adult, size = 64) %>%
+  select(Height)
+##
+sd(~Height, data = sample_08)
+```
+
+```{r}
+sd(~Height, data = sample_16)
+sd(~Height, data = sample_32)
+sd(~Height, data = sample_64)
+```
+
+```{r}
+pop_sd <- sd(~Height, data = NHANES_adult)
+pop_sd
+sd(~Height, data = sample_08) / sqrt(8)
+sd(~Height, data = sample_16) / sqrt(16)
+sd(~Height, data = sample_32) / sqrt(32)
+sd(~Height, data = sample_64) / sqrt(64)
+```
+
+```{r}
+
+
+tbl_1 <- get_ci(samples_08_1000, level = 0.95)
+tbl_2 <- get_ci(samples_16_1000, level = 0.95)
+tbl_3 <- get_ci(samples_32_1000, level = 0.95)
+tbl_4 <- get_ci(samples_64_1000, level = 0.95)
+rbind(tbl_1, tbl_2, tbl_3, tbl_4) %>%
+  rownames_to_column("index") %>%
+  cbind("sample_size" = c(8, 16, 32, 64)) %>%
+  gf_segment(index + index ~ lower_ci + upper_ci) %>%
+  gf_vline(xintercept = pop_mean) %>%
+  gf_labs(
+    title = "95% Confidence Intervals for the Mean",
+    subtitle = "Varying samples sizes 8-16-32-64",
+    y = "Sample Size", x = "Mean Ranges"
+  ) %>%
+  gf_refine(scale_y_discrete(labels = c(8, 16, 32, 64))) %>%
+  gf_refine(annotate(geom = "label", x = pop_mean + 1.75, y = 1.5, label = "Population Mean"))
+```
+
+```{r}
+
+sample_mean <- mean(~Height, data = sample_16)
+se <- sd(~Height, data = sample_16) / sqrt(16)
+#
+xqnorm(
+  p = c(0.025, 0.975),
+  mean = sample_mean,
+  sd = sd(~Height, data = sample_16),
+  return = c("plot"), verbose = F
+) %>%
+  gf_vline(xintercept = ~pop_mean, colour = "black") %>%
+  gf_vline(xintercept = mean(~Height, data = sample_16), colour = "purple") %>%
+  gf_labs(title = "Confidence Intervals and the Bell Curve. N=16") %>%
+  gf_refine(
+    annotate(geom = "label", x = pop_mean + 15, y = 0.05, label = "Population Mean"),
+    annotate(geom = "label", x = sample_mean - 15, y = 0.05, label = "Sample Mean", colour = "purple")
+  )
+```
+
+```{r}
+pop_mean
+se <- sd(~Height, data = sample_16) / sqrt(16)
+mean(~Height, data = sample_16) - 2.0 * se
+mean(~Height, data = sample_16) + 2.0 * se
+```
+
+## **Workflow**
+
+Thus if we want to estimate a *population mean*:
+
+-   we take one **random** sample from the population
+
+-   we calculate the estimate from the sample
+
+-   we calculate the sample-sd
+
+-   we calculate the *Standard Error* as sample−sdn
+
+-   we calculate 95% confidence intervals for the *population parameter* based on the formula CI95%=sample.mean±2∗SE.
+
+-   Since Standard Error decreases with sample size, we need to make our sample of adequate size.( n=30 seems appropriate in most cases. Why?)
+
+-   And we do not have to worry about the distribution of the population. It need not be normal !!
+
+## ---------------------------------------------------------

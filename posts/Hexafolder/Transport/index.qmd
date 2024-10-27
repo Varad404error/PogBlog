@@ -45,7 +45,7 @@ glimpse(cartelstability)
 
 ## ----------------------------------------------------------------
 
-##  Observations
+## Observations
 
 ### This table shows prices & amount of grain transported by cartels based on the season & condition of lakes.
 
@@ -144,7 +144,7 @@ cartel2 %>%
 
 ## Observations
 
-### The given chart is a Scatterplot with Lines connecting the dots. 
+### The given chart is a Scatterplot with Lines connecting the dots.
 
 ### It has Prices on Y axis, Season on X axis, graphs are separate for each Lake Condition & separate colors for Cartel Operation.
 
@@ -158,7 +158,7 @@ cartel2 %>%
 
 ### We see that prices on average are higher when the cartel is operational than when it is not. Also the prices are slightly higher when the lakes are frozen, because the transportation becomes a headache.
 
-### Also, if lakes are frozen, the prices for inoperational cartel also shoot up for a brief amount of time in late winter/early summer. 
+### Also, if lakes are frozen, the prices for inoperational cartel also shoot up for a brief amount of time in late winter/early summer.
 
 ### Based on the graphs, I would say that the cartel was not beneficial for the JEC customers, as it increased the prices of grain, regardless of the condition of lakes. They were better off when cartel was inoperational.
 

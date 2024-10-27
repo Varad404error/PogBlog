@@ -1,0 +1,13 @@
+---
+title: "Mapping"
+author: "Varad"
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(sf)
+library(tmap)
+library(osmdata)
+library(rnaturalearth)
+```

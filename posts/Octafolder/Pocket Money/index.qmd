@@ -1,0 +1,171 @@
+---
+title: "Pocket Money"
+author: "Varad Akolkar"
+---
+
+```{r}
+
+#| label: Setup
+library(crosstable)
+library(tidyverse)
+library(mosaic)
+library(ggformula)
+library(dplyr)
+```
+
+## Reading Data
+
+```{r}
+spending<- read_csv(file = '../../../datasets/Pock.csv')
+spending
+glimpse(spending)
+```
+
+```{r}
+
+spending%>%
+  group_by(Gender) %>% 
+  summarize(avg_money = mean(Money_spent),count = n())
+  
+
+```
+
+```{r}
+
+
+gf_histogram(~Money_spent, fill = ~Gender,data = spending) %>%
+  gf_labs(
+    title = "Plot 1: Spending vs Gender",
+  )
+
+```
+
+```{r}
+
+gf_histogram(~Money_spent, fill = ~Gender, position = 'dodge',data = spending) %>%
+  gf_labs(
+    title = "Plot 1: Spending vs Gender",
+  )
+
+```
+
+```{r}
+  gf_histogram(~Money_spent, alpha = 0.3, data = spending) %>%
+  gf_facet_wrap(~Gender, scales = "free_y", nrow = 2) 
+```
+
+#### We have spending by gender here. Which graph looks more convenient? You decide.
+
+```{r}
+
+spending %>%  crosstable(Money_spent ~ Gender) %>% as_flextable()
+```
+
+```{r}
+
+
+spending %>%
+  gf_density(
+    ~ Money_spent,
+    fill = ~ Gender,
+    alpha = 0.5,
+    title = "Spending Score Densities",
+    subtitle = "Guys vs Gals"
+  )
+
+
+spending %>%
+  gf_boxplot(
+    Money_spent ~ Gender,
+    fill = ~ Gender,
+    alpha = 1,
+    title = "Spendings by gender",
+  ) %>% 
+
+gf_refine(scale_y_continuous(breaks = seq(0, 15000, by = 1000))) 
+```
+
+#### Also, now we have to check for normality.
+
+```{r}
+
+
+boy_sp <- spending %>% 
+  filter(Gender== "Male") %>% 
+  select(Money_spent)
+
+girl_sp <- spending %>% 
+  filter(Gender== "Female") %>% 
+  select(Money_spent)
+
+shapiro.test(boy_sp$Money_spent)
+shapiro.test(girl_sp$Money_spent)
+```
+
+#### The sample size is too small. Also, the p_values for both are very very low. It is not a normal distribution.
+
+```{r}
+var.test(Money_spent ~ Gender, data = spending, 
+         conf.int = TRUE, conf.level = 0.95) %>% 
+  broom::tidy()
+```
+
+#### The variance is also low.
+
+### -----------------------------------------------------------------
+
+## Hypothesis
+
+### HUNCH- Boys spend more money than girls. (Students only)
+
+### To prove this, we actually start by arguing that their spending is similar.
+
+### Null Hypothesis: The difference between means of spending of guys & gals is zero. Hence we are assuming that the difference of their means lies near 0.
+
+### Now if the hunch is true, then the distribution of means of both should be far from 0, & we should not be able to reach it without bias.
+
+### ------------------------------------------------------------
+
+```{r}
+
+diff_spent <- diffmean(Money_spent ~ Gender, data = spending) 
+diff_spent
+```
+
+## Inference
+
+```{r}
+mosaic::t_test(Money_spent ~ Gender,data = spending) %>% broom::tidy()
+```
+
+```{r}
+
+
+spending_permute <-
+  do(4999) * diffmean(data=spending, Money_spent~shuffle(Gender))
+spending_permute
+```
+
+```{r}
+
+gf_histogram(data =spending_permute, ~ diffmean, bins = 25) %>%
+  gf_vline(xintercept = diff_spent, 
+           colour = "red", linewidth = 1,
+           title = "Null Distribution by Permutation", 
+           subtitle = "Histogram") %>% 
+  gf_labs(x = "Difference in Means")
+###
+gf_ecdf(data = spending_permute, ~ diffmean, 
+        linewidth = 1) %>%
+  gf_vline(xintercept = diff_spent, 
+           colour = "red", linewidth = 1,
+           title = "Null Distribution by Permutation", 
+           subtitle = "Cumulative Density") %>% 
+  gf_labs(x = "Difference in Means")
+```
+
+### Here, the difference in the averages of spending by both genders is 55. We can see that the actual mean difference is something that could easily be generated randomly. Which means that we can achieve this distribution without a bias, i.e. guys spending more. The null hypothesis is not disproved.
+
+### So we CANNOT say that the hunch is true.
+
+## ----------------------------------------------------------------------------
